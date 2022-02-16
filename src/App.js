@@ -1,12 +1,15 @@
-import Side from "./components/side";
+import React from "react";
+import MainSection from "./components/MainSection";
+import SideBar from "./components/SideBar";
+import { AppContainer } from "./styles/Main.styled";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <h1></h1>
-      <Side />
-    </>
+    <AppContainer>
+      <SideBar />
+      <MainSection />
+    </AppContainer>
   );
-}
+};
 
 export default App;
