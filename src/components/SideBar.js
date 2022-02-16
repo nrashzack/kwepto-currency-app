@@ -1,82 +1,36 @@
-import React, { useEffect, useState } from "react";
-
-import logo from "../assets/paw.png";
-import bitcoin from "../assets/bitcoin.png";
-import trend from "../assets/trend.png";
-import faq from "../assets/faq.png";
-import blog from "../assets/blog.png";
+import React from "react";
+import logo from "../assets/logo.png";
+import { SideBarContainer } from "../styles/Main.styled";
 import {
-  Container,
-  Button,
-  SidebarContainer,
-  Logo,
-  SlickBar,
-  Item,
-  Text,
-} from "../styles/Sidebar.styled";
+  SideBarButtons,
+  SideBarContent,
+  SideBarLogo,
+} from "../styles/SideBar.styled";
 
-const Side = () => {
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-  const handleMouseIn = () => {
-    setClick(true);
-  };
-  const handleMouseOut = () => {
-    setClick(false);
-  };
-
+const SideBar = () => {
   return (
-    <Container>
-      <Button clicked={click} onClick={() => handleClick()}></Button>
-      <SidebarContainer
-        onMouseEnter={() => handleMouseIn()}
-        onMouseLeave={() => handleMouseOut()}
-      >
-        <Logo>
-          <img src={logo} alt="logo" />
-        </Logo>
-        <SlickBar clicked={click}>
-          <Item
-            onClick={() => setClick(false)}
-            exact
-            activeClassName="active"
-            to="/"
-          >
-            <img src={bitcoin} alt="Home" />
-            <Text clicked={click}>Price Tracker</Text>
-          </Item>
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/team"
-          >
-            <img src={trend} alt="Now Trending" />
-            <Text clicked={click}>Now Trending</Text>
-          </Item>
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/calender"
-          >
-            <img src={faq} alt="FAQs" />
-            <Text clicked={click}>FAQs</Text>
-          </Item>
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/documents"
-          >
-            <img src={blog} alt="Blog" />
-            <Text clicked={click}>Blog</Text>
-          </Item>
-        </SlickBar>
-
-        <div className="footer">
-          <p>v1.0 Made by BeSquare @2022</p>
-        </div>
-      </SidebarContainer>
-    </Container>
+    <SideBarContainer>
+      <SideBarContent>
+        <SideBarLogo src={logo} alt="logo" />
+        <SideBarButtons>
+          <span>Price Tracker</span>
+        </SideBarButtons>
+        <SideBarButtons>
+          <span>Now Trending</span>
+        </SideBarButtons>
+        <SideBarButtons>
+          <span>FAQs</span>
+        </SideBarButtons>
+        <SideBarButtons>
+          <span>Blogs</span>
+        </SideBarButtons>
+        <SideBarButtons>
+          <span>Memes</span>
+        </SideBarButtons>
+        <span>v1.0 Made By BeSquare, 2022</span>
+      </SideBarContent>
+    </SideBarContainer>
   );
 };
 
-export default Side;
+export default SideBar;
