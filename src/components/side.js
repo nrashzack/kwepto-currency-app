@@ -71,7 +71,7 @@ const Logo = styled.div`
   width: 2rem;
   height: 4em;
   img {
-    width: 40px;
+    width: 39px;
     height: auto;
   }
 `;
