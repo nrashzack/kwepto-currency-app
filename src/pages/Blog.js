@@ -1,9 +1,7 @@
-import MotionHoc from "./MotionHoc";
+import React from "react";
 
-const TeamComponent = () => {
-  return <h1>Team</h1>;
+const Blog = () => {
+  return <h1>1</h1>;
 };
 
-const Team = MotionHoc(TeamComponent);
-
-export default Team;
+export default Blog;

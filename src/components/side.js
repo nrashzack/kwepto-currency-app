@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import logo from "../asset/paw.png";
-import bitcoin from "../asset/bitcoin.png";
-import trend from "../asset/trend.png";
-import faq from "../asset/faq.png";
-import blog from "../asset/blog.png";
-import offbutton from "../asset/off.svg";
+import logo from "../assets/paw.png";
+import bitcoin from "../assets/bitcoin.png";
+import trend from "../assets/trend.png";
+import faq from "../assets/faq.png";
+import blog from "../assets/blog.png";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   position: fixed;
@@ -73,7 +71,7 @@ const Logo = styled.div`
   width: 2rem;
   height: 4em;
   img {
-    width: 40px;
+    width: 39px;
     height: auto;
   }
 `;
@@ -94,7 +92,7 @@ const SlickBar = styled.ul`
   border-radius: 0 30px 30px 0;
 `;
 
-const Item = styled(NavLink)`
+const Item = styled.i`
   text-decoration: none;
   color: var(--white);
   width: 100%;
@@ -124,75 +122,6 @@ const Text = styled.span`
   transition: all 0.3s ease;
 `;
 
-const Profile = styled.div`
-  width: ${(props) => (props.clicked ? "14rem" : "3rem")};
-  height: 3rem;
-  padding: 0.5rem 1rem;
-  /* border: 2px solid var(--white); */
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: ${(props) => (props.clicked ? "9rem" : "0")};
-  background-color: #582f0e;
-  color: var(--white);
-  transition: all 0.3s ease;
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    &:hover {
-      border: 2px solid var(--grey);
-      padding: 2px;
-    }
-  }
-`;
-
-const Details = styled.div`
-  display: ${(props) => (props.clicked ? "flex" : "none")};
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Name = styled.div`
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h4 {
-    display: inline-block;
-  }
-  a {
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: var(--grey);
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const Logout = styled.button`
-  border: none;
-  width: 2rem;
-  height: 2rem;
-  background-color: transparent;
-  img {
-    width: 100%;
-    height: auto;
-    filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
-      brightness(100%) contrast(126%);
-    transition: all 0.3s ease;
-    &:hover {
-      border: none;
-      padding: 0;
-      opacity: 0.5;
-    }
-  }
-`;
-
 const Side = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -202,9 +131,6 @@ const Side = () => {
   const handleMouseOut = () => {
     setClick(false);
   };
-
-  const [profileClick, setprofileClick] = useState(false);
-  const handleProfileClick = () => setprofileClick(!profileClick);
 
   return (
     <Container>
@@ -255,24 +181,6 @@ const Side = () => {
         <div className="footer">
           <p>v1.0 Made by BeSquare @2022</p>
         </div>
-
-        {/* <Profile clicked={profileClick}>
-          <img
-            onClick={() => handleProfileClick()}
-            src="https://picsum.photos/200"
-            alt="Profile"
-          />
-          <Details clicked={profileClick}>
-            <Name>
-              <h4>Jhon&nbsp;Doe</h4>
-              <a href="/#">view&nbsp;profile</a>
-            </Name>
-
-            <Logout>
-              <img src={offbutton} alt="logout" />
-            </Logout>
-          </Details>
-        </Profile> */}
       </SidebarContainer>
     </Container>
   );
