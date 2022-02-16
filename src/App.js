@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div>
       <GlobalStyle />
-      <h1>Hello</h1>
+      <h1>Hello Test Push 2</h1>
     </div>
   );
 };
