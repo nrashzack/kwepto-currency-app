@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div>
       <GlobalStyle />
-      <h1>Hello Test Push BTC BTC 3215</h1>
+      <h1>FFS its 2:00PM already</h1>
     </div>
   );
 };
