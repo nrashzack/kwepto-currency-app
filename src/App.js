@@ -1,13 +1,11 @@
-import React from "react";
-import { GlobalStyle } from "./styles/Global.styled";
+import Side from "./components/side";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <GlobalStyle />
-      <h1>FFS its 2:00PM already</h1>
-    </div>
+    <>
+      <Side />
+    </>
   );
-};
+}
 
 export default App;
