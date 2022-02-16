@@ -3,13 +3,13 @@ import MainSection from "./components/MainSection";
 import SideBar from "./components/SideBar";
 import { AppContainer } from "./styles/Main.styled";
 
-function App() {
+const App = () => {
   return (
     <AppContainer>
       <SideBar />
       <MainSection />
     </AppContainer>
   );
-}
+};
 
 export default App;
