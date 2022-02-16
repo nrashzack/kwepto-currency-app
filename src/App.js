@@ -1,11 +1,11 @@
-import Side from "./components/side";
+import Side from "./components/Side";
+import { AppContainer } from "./styles/Main.styled";
 
 function App() {
   return (
-    <>
-      <h1></h1>
+    <AppContainer>
       <Side />
-    </>
+    </AppContainer>
   );
 }
 

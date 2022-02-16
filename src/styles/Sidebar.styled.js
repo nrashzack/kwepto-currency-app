@@ -4,10 +4,10 @@ export const Container = styled.div`
   position: fixed;
   .active {
     border-right: 4px solid var(--white);
-    img {
+    /* img {
       filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
         brightness(103%) contrast(103%);
-    }
+    } */
   }
 `;
 
@@ -64,7 +64,7 @@ export const Logo = styled.div`
   width: 2rem;
   height: 4em;
   img {
-    width: 40px;
+    width: 39px;
     height: auto;
   }
 `;
@@ -85,7 +85,7 @@ export const SlickBar = styled.ul`
   border-radius: 0 30px 30px 0;
 `;
 
-export const Item = styled(NavLink)`
+export const Item = styled.i`
   text-decoration: none;
   color: var(--white);
   width: 100%;

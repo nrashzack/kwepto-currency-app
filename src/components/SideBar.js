@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import logo from "../assets/paw.png";
 import bitcoin from "../assets/bitcoin.png";
 import trend from "../assets/trend.png";
 import faq from "../assets/faq.png";
 import blog from "../assets/blog.png";
 import {
+  Container,
   Button,
   SidebarContainer,
   Logo,
@@ -13,7 +15,7 @@ import {
   Text,
 } from "../styles/Sidebar.styled";
 
-const Sidebar = () => {
+const Side = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const handleMouseIn = () => {
