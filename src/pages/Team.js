@@ -1,4 +1,4 @@
-import MotionHoc from "./MotionHoc";
+import React from "react";
 
 const TeamComponent = () => {
   return <h1>Team</h1>;

@@ -1,11 +1,12 @@
 import React from "react";
 import { GlobalStyle } from "./styles/Global.styled";
+import Sidebar from "./components/Sidebar";
 
 const App = () => {
   return (
     <div>
       <GlobalStyle />
-      <h1>FFS its 2:00PM already</h1>
+      <Sidebar />
     </div>
   );
 };
