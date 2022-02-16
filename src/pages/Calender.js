@@ -1,9 +1,7 @@
 import React from "react";
 
-const CalenderComponent = () => {
-  return <h1>Calender</h1>;
+const Trending = () => {
+  return <h1>4</h1>;
 };
 
-const Calender = MotionHoc(CalenderComponent);
-
-export default Calender;
+export default Trending;

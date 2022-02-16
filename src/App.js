@@ -1,14 +1,12 @@
-import React from "react";
-import { GlobalStyle } from "./styles/Global.styled";
-import Sidebar from "./components/Sidebar";
+import Side from "./components/side";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <GlobalStyle />
-      <Sidebar />
-    </div>
+    <>
+      <h1></h1>
+      <Side />
+    </>
   );
-};
+}
 
 export default App;
