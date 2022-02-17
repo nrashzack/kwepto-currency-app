@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const AppContainerStyled = styled.div`
   display: grid;
-  grid-template-columns: min(300px, 15%) 1fr;
-  height: 100%;
+  grid-template-columns: minmax(300px, 20vw) 1fr;
 `;
 
 export const SideBarContainerStyled = styled.div`
@@ -12,22 +11,21 @@ export const SideBarContainerStyled = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  max-width: 25%;
+  width: 20vw;
   min-width: 300px;
   background-color: #def3ff;
   overflow-x: hidden;
 `;
 
 export const MainContainerStyled = styled.div`
-  position: absolute;
-  top: 0;
-  left: 25%;
-  width: 100%;
+  margin-left: 20vw;
 `;
 
 export const HeaderStyled = styled.div`
+  width: 100%;
+  background-color: red;
   h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 0.25em;
   }
   p {
