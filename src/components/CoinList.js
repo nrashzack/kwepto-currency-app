@@ -12,7 +12,7 @@ const CoinList = ({ coin }) => {
         <p>{coin.market_cap_rank}</p>
       </CenterCoinStyled>
       <CoinInfoStyled>
-        <img src={coin.image} />
+        <img src={coin.image} alt={coin.name} />
         <strong>{coin.name}</strong>
         <p>{coin.symbol.toUpperCase()}</p>
       </CoinInfoStyled>
