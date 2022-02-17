@@ -2,16 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
     html {
-        margin:0;
-        padding:0;
         box-sizing: border-box;
     }
-
     body {
-        background-color: #fff;
-        color: #2d3436;
+        margin:0;
+        padding:0;
+        background-color: #fff ;
+        color: #000;
         font-family: 'Roboto', sans-serif;
         letter-spacing: .01rem;
     }
@@ -35,10 +33,15 @@ export const GlobalStyle = createGlobalStyle`
 
     p {
         font-size: 12px;
+        color: #636e72;
+    }
+
+    h1,strong {
+        color:#2d3436;
     }
 
     h1 {
-        font-weight:bolder;
+        font-weight: bolder;
     }
 
     button {
