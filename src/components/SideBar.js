@@ -1,35 +1,35 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { SideBarContainer } from "../styles/Main.styled";
+import { SideBarContainerStyled } from "../styles/Main.styled";
 import {
-  SideBarButtons,
-  SideBarContent,
-  SideBarLogo,
+  SideBarButtonsStyled,
+  SideBarContentStyled,
+  SideBarLogoStyled,
 } from "../styles/SideBar.styled";
 
 const SideBar = () => {
   return (
-    <SideBarContainer>
-      <SideBarContent>
-        <SideBarLogo src={logo} alt="logo" />
-        <SideBarButtons>
+    <SideBarContainerStyled>
+      <SideBarContentStyled>
+        <SideBarLogoStyled src={logo} alt="logo" />
+        <SideBarButtonsStyled>
           <span>Price Tracker</span>
-        </SideBarButtons>
-        <SideBarButtons>
+        </SideBarButtonsStyled>
+        <SideBarButtonsStyled>
           <span>Now Trending</span>
-        </SideBarButtons>
-        <SideBarButtons>
+        </SideBarButtonsStyled>
+        <SideBarButtonsStyled>
           <span>FAQs</span>
-        </SideBarButtons>
-        <SideBarButtons>
-          <span>Blogs</span>
-        </SideBarButtons>
-        <SideBarButtons>
+        </SideBarButtonsStyled>
+        <SideBarButtonsStyled>
+          <span>News</span>
+        </SideBarButtonsStyled>
+        <SideBarButtonsStyled>
           <span>Memes</span>
-        </SideBarButtons>
+        </SideBarButtonsStyled>
         <span>v1.0 Made By BeSquare, 2022</span>
-      </SideBarContent>
-    </SideBarContainer>
+      </SideBarContentStyled>
+    </SideBarContainerStyled>
   );
 };
 
