@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-export const SideBarContent = styled.div`
-  margin: 0 auto;
-  height: 100%;
+export const SideBarContentStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  height: 100%;
 
   span {
     font-size: 0.7rem;
@@ -14,15 +13,15 @@ export const SideBarContent = styled.div`
   }
 `;
 
-export const SideBarLogo = styled.img`
-  width: 70%;
+export const SideBarLogoStyled = styled.img`
+  width: 65%;
   height: auto;
 `;
 
-export const SideBarButtons = styled.button`
+export const SideBarButtonsStyled = styled.button`
   background-color: #fff;
   padding: 1.2em 1.5em;
-  width: 70%;
+  width: 55%;
   border-radius: 25px;
   border: solid 3px #636e72;
 

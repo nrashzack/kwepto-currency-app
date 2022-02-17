@@ -1,14 +1,21 @@
 import React from "react";
-import { MainContainer, Header } from "../styles/Main.styled";
+import { HeaderStyled, MainContainerStyled } from "../styles/Main.styled";
+import { MainSectionStyled } from "../styles/MainSection.styled";
+import CoinList from "./CoinList";
 
-const MainSection = () => {
+const MainSection = ({ coins }) => {
   return (
-    <MainContainer>
-      <Header>
-        <h1>Crypto Tracking</h1>
-        <p>Get the latest crypto prices.</p>
-      </Header>
-    </MainContainer>
+    <MainContainerStyled>
+      <MainSectionStyled>
+        <HeaderStyled>
+          <h1>Crypto Tracking</h1>
+          <p>Get the latest crypto prices.</p>
+        </HeaderStyled>
+        {coins.map((coin) => (
+          <CoinList key={coin.market_cap_rank} coin={coin} />
+        ))}
+      </MainSectionStyled>
+    </MainContainerStyled>
   );
 };
 
