@@ -54,4 +54,10 @@ export const GlobalStyle = createGlobalStyle`
             cursor: pointer;
         }
     }
+
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 `;
