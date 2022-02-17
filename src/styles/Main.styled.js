@@ -2,32 +2,25 @@ import styled from "styled-components";
 
 export const AppContainerStyled = styled.div`
   display: grid;
-  /* grid-template-columns: minmax(300px, 20vw) auto; */
-  grid-template-columns: "nav content";
+  grid-template-columns: 20vw auto;
 `;
 
 export const SideBarContainerStyled = styled.div`
-  grid-area: nav;
-  z-index: 1;
-  height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
   width: 20vw;
-  min-width: 300px;
-  overflow-x: hidden;
+  height: 100vh;
   background-color: #def3ff;
 `;
 
 export const MainContainerStyled = styled.div`
-  grid-area:"content"
-  width: 80vw;
-  margin-left: 20vw;
-  padding: 4em 10em;
+  grid-column-start: 2;
+  margin: 2.5em auto;
+  width: 55vw;
 `;
 
 export const HeaderStyled = styled.div`
   width: 100%;
+  margin-bottom: 1.5em;
   h1 {
     font-size: 3rem;
     margin-bottom: 0.25em;
