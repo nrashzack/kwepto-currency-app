@@ -50,3 +50,15 @@ export const CoinInfoStyled = styled.div`
     cursor: pointer;
   }
 `;
+
+export const ListHeaderStyled = styled.div`
+  border: solid 3px;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr repeat(2, 0.5fr) 1fr;
+  place-items: center;
+  width: 55vw;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
