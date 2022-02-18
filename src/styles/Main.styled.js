@@ -20,7 +20,7 @@ export const SideBarContainerStyled = styled.div`
 `;
 
 export const MainContainerStyled = styled.div`
-  grid-area:"content"
+  grid-area: "content";
   width: 80vw;
   margin-left: 20vw;
   padding: 4em 10em;
@@ -35,4 +35,16 @@ export const HeaderStyled = styled.div`
   p {
     font-size: 1.25rem;
   }
+`;
+
+export const ListHeaderStyled = styled.div`
+  border: solid 3px;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr repeat(2, 0.5fr) 1fr;
+  place-items: center;
+  width: 55vw;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
