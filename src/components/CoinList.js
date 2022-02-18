@@ -3,7 +3,6 @@ import {
   CoinListStyled,
   CenterCoinStyled,
   CoinInfoStyled,
-  ListHeaderStyled,
 } from "../styles/CoinList.styled";
 
 const CoinList = ({ coin }) => {
