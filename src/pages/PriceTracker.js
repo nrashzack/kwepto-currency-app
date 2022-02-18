@@ -1,6 +1,10 @@
 import React from "react";
 import { HeaderStyled } from "../styles/Main.styled";
-import { ListHeaderStyled } from "../styles/CoinList.styled";
+import {
+  ListHeaderStyled,
+  CoinInfoStyled,
+  CenterCoinStyled,
+} from "../styles/CoinList.styled";
 import CoinList from "../components/CoinList";
 
 const PriceTracker = ({ coins }) => {
@@ -11,8 +15,12 @@ const PriceTracker = ({ coins }) => {
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
       <ListHeaderStyled>
-        <h3>#</h3>
-        <h3>Name</h3>
+        <CenterCoinStyled>
+          <h3>#</h3>
+        </CenterCoinStyled>
+        <CoinInfoStyled>
+          <h3>Name</h3>
+        </CoinInfoStyled>
         <h3>Price</h3>
         <h3>24hr%</h3>
         <h3>Market Cap</h3>
