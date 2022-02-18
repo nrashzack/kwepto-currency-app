@@ -4,29 +4,36 @@ import {
   ListHeaderStyled,
   CoinInfoStyled,
   CenterCoinStyled,
+  FilterCoinListContainerStyled,
 } from "../styles/CoinList.styled";
 import CoinList from "../components/CoinList";
+import FilterCoinList from "../components/FilterCoinList";
 
-const PriceTracker = ({ coins }) => {
+const PriceTracker = ({ coins, currency, setCurrency }) => {
   return (
     <div>
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
+      <FilterCoinListContainerStyled>
+        <FilterCoinList setCurrency={setCurrency} />
+      </FilterCoinListContainerStyled>
       <ListHeaderStyled>
         <CenterCoinStyled>
-          <h3>#</h3>
+          <strong>#</strong>
         </CenterCoinStyled>
         <CoinInfoStyled>
-          <h3>Name</h3>
+          <strong>Name</strong>
         </CoinInfoStyled>
-        <h3>Price</h3>
-        <h3>24hr%</h3>
-        <h3>Market Cap</h3>
+        <strong>Price</strong>
+        <strong>1hr</strong>
+        <strong>24hr</strong>
+        <strong>7d</strong>
+        <strong>Market Cap</strong>
       </ListHeaderStyled>
       {coins.map((coin) => (
-        <CoinList key={coin.market_cap_rank} coin={coin} />
+        <CoinList key={coin.market_cap_rank} coin={coin} currency={currency} />
       ))}
     </div>
   );

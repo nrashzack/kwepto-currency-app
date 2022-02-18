@@ -2,10 +2,14 @@ import React from "react";
 import PriceTracker from "../pages/PriceTracker";
 import { MainContainerStyled } from "../styles/Main.styled";
 
-const MainSection = ({ coins }) => {
+const MainSection = ({ coins, currency, setCurrency }) => {
   return (
     <MainContainerStyled>
-      <PriceTracker coins={coins} />
+      <PriceTracker
+        coins={coins}
+        currency={currency}
+        setCurrency={setCurrency}
+      />
     </MainContainerStyled>
   );
 };
