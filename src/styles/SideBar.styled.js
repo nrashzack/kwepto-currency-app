@@ -17,11 +17,6 @@ export const SideBarContentStyled = styled.ul`
   }
 `;
 
-export const SideBarEndStyled = styled.li`
-  position: absolute;
-  bottom: 0;
-`;
-
 export const SideBarLogoStyled = styled.img`
   width: 60%;
   height: auto;
@@ -40,8 +35,24 @@ export const SideBarButtonsStyled = styled.button`
   }
 `;
 
+export const SideBarEndStyled = styled.li`
+  position: absolute;
+  bottom: 0;
+`;
+
+export const SideBarFooterIconsStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em 0;
+
+  a {
+    padding: 0 0.5em;
+    color: #000;
+  }
+`;
+
 export const SideBarFooterStyled = styled.span`
-  margin: 1.5em auto;
   font-size: 2.5rem;
   font-weight: bolder;
 `;
