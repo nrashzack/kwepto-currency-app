@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import { AiFillGithub, AiFillApi } from "react-icons/ai";
 import { SideBarContainerStyled } from "../styles/Main.styled";
 import {
   SideBarButtonsStyled,
@@ -7,6 +8,7 @@ import {
   SideBarLogoStyled,
   SideBarEndStyled,
   SideBarFooterStyled,
+  SideBarFooterIconsStyled,
 } from "../styles/SideBar.styled";
 
 const SideBar = () => {
@@ -23,13 +25,7 @@ const SideBar = () => {
         </li>
         <li>
           <SideBarButtonsStyled>
-            <span>Now Trending</span>
-          </SideBarButtonsStyled>
-        </li>
-
-        <li>
-          <SideBarButtonsStyled>
-            <span>FAQs</span>
+            <span>Exchange</span>
           </SideBarButtonsStyled>
         </li>
         <li>
@@ -39,14 +35,26 @@ const SideBar = () => {
         </li>
         <li>
           <SideBarButtonsStyled>
-            <span>Memes</span>
+            <span>Watch List</span>
           </SideBarButtonsStyled>
         </li>
         <SideBarEndStyled>
-          <SideBarLogoStyled
-            src="https://media.giphy.com/media/1GAErYo91X5tejHofL/giphy.gif"
-            alt="elon dancing"
-          />
+          <SideBarFooterIconsStyled>
+            <a
+              href="https://github.com/aizadrzo/kwepto-currency-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillGithub />
+            </a>
+            <a
+              href="https://www.coingecko.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillApi />
+            </a>
+          </SideBarFooterIconsStyled>
           <SideBarFooterStyled>v1.0 Made By BeSquare, 2022</SideBarFooterStyled>
         </SideBarEndStyled>
       </SideBarContentStyled>
