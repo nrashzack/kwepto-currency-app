@@ -6,12 +6,14 @@ import {
   CenterCoinStyled,
   FilterCoinListContainerStyled,
 } from "../styles/CoinList.styled";
+import NowTrending from "./NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
 
-const PriceTracker = ({ coins, currency, setCurrency }) => {
+const PriceTracker = ({ coins, trend, currency, setCurrency }) => {
   return (
     <div>
+      <NowTrending trend={trend} />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>

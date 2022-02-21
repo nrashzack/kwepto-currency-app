@@ -38,7 +38,12 @@ const App = () => {
   return (
     <AppContainerStyled>
       <SideBar />
-      <MainSection coins={coins} trend={trend} setCurrency={setCurrency} />
+      <MainSection
+        coins={coins}
+        trend={trend}
+        currency={currency}
+        setCurrency={setCurrency}
+      />
     </AppContainerStyled>
   );
 };
