@@ -88,4 +88,14 @@ export const PageNumberFooterStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  
+export const SearchBarStyled = styled.div`
+  & .search-bar {
+    border: solid;
+    border-radius: 50px;
+    width: 55vw;
+    padding: 0.5rem;
+    font-size: 20px;
+    text-align: center;
+  }
 `;

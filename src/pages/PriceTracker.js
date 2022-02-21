@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import {
   CardStyled,
   HeaderStyled,
@@ -9,13 +10,16 @@ import {
   CoinInfoStyled,
   FilterCoinListContainerStyled,
   PageNumberFooterStyled,
+  SearchBarStyled,
 } from "../styles/CoinList.styled";
+import NowTrending from "./NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
 
 const PriceTracker = ({
   loading,
   coins,
+  trend,
   page,
   currency,
   setCurrency,
@@ -36,12 +40,31 @@ const PriceTracker = ({
   const PreviosPage = () => {
     setPage((page) => page - 1);
   };
+  
+    const [search, setSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase())
+  );
   return (
     <div>
+      <NowTrending trend={trend} />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
+      <SearchBarStyled>
+        <input
+          class="search-bar"
+          placeholder="Search..."
+          type="text"
+          onChange={handleSearch}
+        ></input>
+      </SearchBarStyled>
       <FilterCoinListContainerStyled>
         <FilterCoinList setCurrency={setCurrency} />
       </FilterCoinListContainerStyled>
@@ -56,13 +79,9 @@ const PriceTracker = ({
           <strong>7d</strong>
           <strong className="center">Market Cap</strong>
         </ListHeaderStyled>
-        {coins.map((coin) => (
-          <CoinList
-            key={coin.market_cap_rank}
-            coin={coin}
-            currency={currency}
-          />
-        ))}
+        {filteredCoins.map((coin) => (
+        <CoinList key={coin.market_cap_rank} coin={coin} currency={currency} />
+      ))}
         <PageNumberFooterStyled>
           {page > 1 ? (
             <button onClick={PreviosPage}>Previos</button>
