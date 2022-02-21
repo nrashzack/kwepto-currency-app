@@ -42,3 +42,7 @@ export const RowStyled = styled.div`
   font-size: 1.2rem;
   place-items: center;
 `;
+
+export const stylingex = styled.div`
+  justify-content: center;
+`;

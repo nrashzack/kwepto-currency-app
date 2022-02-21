@@ -7,7 +7,7 @@ const NowTrending = ({ trend }) => {
   return (
     <MainContainerStyled>
       <HeaderStyled>
-        <h1>Trending Coins</h1>
+        <h1>Trending Coins_</h1>
       </HeaderStyled>
       <CardContainerStyled>
         {trend.map((trends) => (
