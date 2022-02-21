@@ -7,6 +7,7 @@ export const CoinListStyled = styled.div`
   width: 55vw;
   padding: 1rem;
   border-bottom: solid 2px #dfe6e9;
+  background-color: pink;
 
   & .bold {
     font-weight: bolder;
@@ -61,4 +62,15 @@ export const ListHeaderStyled = styled.div`
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+`;
+
+export const SearchBarStyled = styled.div`
+  .search-bar {
+    border: solid;
+    border-radius: 50px;
+    width: 55vw;
+    padding: 0.5rem;
+    font-size: 20px;
+    text-align: center;
+  }
 `;
