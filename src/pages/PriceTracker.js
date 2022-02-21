@@ -25,6 +25,8 @@ const PriceTracker = ({
   setCurrency,
   setPage,
 }) => {
+  const [search, setSearch] = useState("");
+
   if (loading) {
     return (
       <LoadingScreenStyled>
@@ -40,8 +42,6 @@ const PriceTracker = ({
   const PreviosPage = () => {
     setPage((page) => page - 1);
   };
-  
-    const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -80,8 +80,12 @@ const PriceTracker = ({
           <strong className="center">Market Cap</strong>
         </ListHeaderStyled>
         {filteredCoins.map((coin) => (
-        <CoinList key={coin.market_cap_rank} coin={coin} currency={currency} />
-      ))}
+          <CoinList
+            key={coin.market_cap_rank}
+            coin={coin}
+            currency={currency}
+          />
+        ))}
         <PageNumberFooterStyled>
           {page > 1 ? (
             <button onClick={PreviosPage}>Previos</button>

@@ -5,7 +5,7 @@ export const ListHeaderStyled = styled.div`
   display: grid;
   grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr;
   place-items: end;
-  width: 50vw;
+  width: 55vw;
   padding: 1em;
 
   & .center {
@@ -18,7 +18,7 @@ export const CoinListStyled = styled.div`
   grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr;
   place-items: end;
   align-items: center;
-  width: 50vw;
+  width: 55vw;
   padding: 1em;
 
   p {
@@ -88,7 +88,8 @@ export const PageNumberFooterStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  
+`;
+
 export const SearchBarStyled = styled.div`
   & .search-bar {
     border: solid;
