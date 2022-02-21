@@ -6,7 +6,8 @@ import { AppContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
-  const [currency, setCurrency] = useState("myr");
+  const [currency, setCurrency] = useState("usd");
+  const [trend, setTrend] = useState([]);
 
   useEffect(() => {
     axios
@@ -14,7 +15,6 @@ const App = () => {
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
-        console.log(res.data);
         setCoins(res.data);
       })
       .catch((error) => {
@@ -22,14 +22,23 @@ const App = () => {
       });
   }, [currency]);
 
+  useEffect(() => {
+    axios
+
+      .get(`https://api.coingecko.com/api/v3/search/trending`)
+      .then((res) => {
+        console.log(res.data.coins);
+        setTrend(res.data.coins);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <AppContainerStyled>
       <SideBar />
-      <MainSection
-        coins={coins}
-        currency={currency}
-        setCurrency={setCurrency}
-      />
+      <MainSection coins={coins} trend={trend} setCurrency={setCurrency} />
     </AppContainerStyled>
   );
 };
