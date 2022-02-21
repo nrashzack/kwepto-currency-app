@@ -6,7 +6,6 @@ import { AppContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
-  const [currency, setCurrency] = useState("usd");
   const [trend, setTrend] = useState([]);
   const [currency, setCurrency] = useState("myr");
   const [page, setPage] = useState(1);

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const AppContainerStyled = styled.div`
   display: grid;
-  grid-template-columns: 10vw auto;
+  grid-template-columns: 20vw auto;
 `;
 
 export const SideBarContainerStyled = styled.div`
@@ -14,10 +14,8 @@ export const SideBarContainerStyled = styled.div`
 
 export const MainContainerStyled = styled.div`
   grid-column-start: 2;
-  margin: 2.5em auto;
-  display: grid;
-  place-content: center;
-  width: 80vw;
+  margin: 0 auto;
+  width: 60vw;
 `;
 
 export const HeaderStyled = styled.div`
@@ -45,6 +43,7 @@ export const LoadingScreenStyled = styled.div`
 export const CardStyled = styled.div`
   padding: 1em 1.5em;
   border-radius: 25px;
+  width: 60vw;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 `;
