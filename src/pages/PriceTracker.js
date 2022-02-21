@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { HeaderStyled } from "../styles/Main.styled";
-import { ListHeaderStyled, SearchBarStyled } from "../styles/CoinList.styled";
+import {
+  ListHeaderStyled,
+  CoinInfoStyled,
+  CenterCoinStyled,
+  FilterCoinListContainerStyled,
+  SearchBarStyled,
+} from "../styles/CoinList.styled";
+import NowTrending from "./NowTrending";
 import CoinList from "../components/CoinList";
+import FilterCoinList from "../components/FilterCoinList";
 
-const PriceTracker = ({ coins }) => {
+const PriceTracker = ({ coins, trend, currency, setCurrency }) => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
@@ -15,6 +23,7 @@ const PriceTracker = ({ coins }) => {
   );
   return (
     <div>
+      <NowTrending trend={trend} />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
@@ -27,15 +36,24 @@ const PriceTracker = ({ coins }) => {
           onChange={handleSearch}
         ></input>
       </SearchBarStyled>
+      <FilterCoinListContainerStyled>
+        <FilterCoinList setCurrency={setCurrency} />
+      </FilterCoinListContainerStyled>
       <ListHeaderStyled>
-        <h3>#</h3>
-        <h3>Name</h3>
-        <h3>Price</h3>
-        <h3>24hr%</h3>
-        <h3>Market Cap</h3>
+        <CenterCoinStyled>
+          <strong>#</strong>
+        </CenterCoinStyled>
+        <CoinInfoStyled>
+          <strong>Name</strong>
+        </CoinInfoStyled>
+        <strong>Price</strong>
+        <strong>1hr</strong>
+        <strong>24hr</strong>
+        <strong>7d</strong>
+        <strong>Market Cap</strong>
       </ListHeaderStyled>
       {filteredCoins.map((coin) => (
-        <CoinList key={coin.market_cap_rank} coin={coin} />
+        <CoinList key={coin.market_cap_rank} coin={coin} currency={currency} />
       ))}
     </div>
   );
