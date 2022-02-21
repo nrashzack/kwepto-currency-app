@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         margin:0;
         padding:0;
-        background-color: #fff ;
+        background-color: #FCFDFE;
         color: #000;
         font-family: 'Roboto', sans-serif;
         letter-spacing: .01rem;
@@ -42,6 +42,13 @@ export const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-weight: bolder;
+    }
+
+    a{
+        text-decoration:none;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     button {

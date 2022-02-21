@@ -1,18 +1,47 @@
 import React, { useState } from "react";
-import { HeaderStyled } from "../styles/Main.styled";
+
+import {
+  CardStyled,
+  HeaderStyled,
+  LoadingScreenStyled,
+} from "../styles/Main.styled";
 import {
   ListHeaderStyled,
   CoinInfoStyled,
-  CenterCoinStyled,
   FilterCoinListContainerStyled,
+  PageNumberFooterStyled,
   SearchBarStyled,
 } from "../styles/CoinList.styled";
 import NowTrending from "./NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
 
-const PriceTracker = ({ coins, trend, currency, setCurrency }) => {
+const PriceTracker = ({
+  loading,
+  coins,
+  trend,
+  page,
+  currency,
+  setCurrency,
+  setPage,
+}) => {
   const [search, setSearch] = useState("");
+
+  if (loading) {
+    return (
+      <LoadingScreenStyled>
+        <h1>Loading...</h1>
+      </LoadingScreenStyled>
+    );
+  }
+
+  const NextPage = () => {
+    setPage((page) => page + 1);
+  };
+
+  const PreviosPage = () => {
+    setPage((page) => page - 1);
+  };
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -39,22 +68,34 @@ const PriceTracker = ({ coins, trend, currency, setCurrency }) => {
       <FilterCoinListContainerStyled>
         <FilterCoinList setCurrency={setCurrency} />
       </FilterCoinListContainerStyled>
-      <ListHeaderStyled>
-        <CenterCoinStyled>
-          <strong>#</strong>
-        </CenterCoinStyled>
-        <CoinInfoStyled>
-          <strong>Name</strong>
-        </CoinInfoStyled>
-        <strong>Price</strong>
-        <strong>1hr</strong>
-        <strong>24hr</strong>
-        <strong>7d</strong>
-        <strong>Market Cap</strong>
-      </ListHeaderStyled>
-      {filteredCoins.map((coin) => (
-        <CoinList key={coin.market_cap_rank} coin={coin} currency={currency} />
-      ))}
+      <CardStyled>
+        <ListHeaderStyled>
+          <strong className="center">#</strong>
+          <CoinInfoStyled>
+            <strong>Name</strong>
+          </CoinInfoStyled>
+          <strong className="center">Price</strong>
+          <strong>24hr</strong>
+          <strong>7d</strong>
+          <strong className="center">Market Cap</strong>
+        </ListHeaderStyled>
+        {filteredCoins.map((coin) => (
+          <CoinList
+            key={coin.market_cap_rank}
+            coin={coin}
+            currency={currency}
+          />
+        ))}
+        <PageNumberFooterStyled>
+          {page > 1 ? (
+            <button onClick={PreviosPage}>Previos</button>
+          ) : (
+            <div></div>
+          )}
+          <p>Page: {page}</p>
+          {page < 10 ? <button onClick={NextPage}>Next</button> : <div></div>}
+        </PageNumberFooterStyled>
+      </CardStyled>
     </div>
   );
 };
