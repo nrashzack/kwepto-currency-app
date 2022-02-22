@@ -3,22 +3,21 @@ import styled from "styled-components";
 // Base Style for Cointainer
 export const AppContainerStyled = styled.div`
   display: grid;
-  grid-template-columns: 20vw auto;
+  grid-template-rows: 2.5vw auto;
 `;
 
 // Base Style for Cointainer
-export const SideBarContainerStyled = styled.div`
-  position: fixed;
-  width: 20vw;
-  height: 100vh;
-  background-color: #def3ff;
+export const NavBarContainerStyled = styled.div`
+  height: 2.5vw;
+  background-color: #ecf0f1;
+  padding: 0.5em 0em;
 `;
 
 // Base style for Container
 export const MainContainerStyled = styled.div`
-  grid-column-start: 2;
+  grid-row-start: 2;
   margin: 0 auto;
-  width: 60vw;
+  width: 55vw;
 `;
 
 // For headers and big text
@@ -56,5 +55,5 @@ export const CardStyled = styled.div`
 
 // To give space between components
 export const SectionStyled = styled.div`
-  margin: 2em auto;
+  margin: 1em auto;
 `;

@@ -4,6 +4,7 @@ import {
   CardStyled,
   HeaderStyled,
   LoadingScreenStyled,
+  SectionStyled,
 } from "../styles/Main.styled";
 import {
   ListHeaderStyled,
@@ -53,7 +54,7 @@ const PriceTracker = ({
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
   return (
-    <div>
+    <>
       <NowTrending trend={trend} />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
@@ -74,36 +75,37 @@ const PriceTracker = ({
           </SearchBarStyled>
         </SearchStyled>
       </FilterSearchContainer>
-
-      <CardStyled>
-        <ListHeaderStyled>
-          <strong className="center">#</strong>
-          <CoinInfoStyled>
-            <strong>Name</strong>
-          </CoinInfoStyled>
-          <strong>Price</strong>
-          <strong>24hr</strong>
-          <strong>7d</strong>
-          <strong>Market Cap</strong>
-        </ListHeaderStyled>
-        {filteredCoins.map((coin) => (
-          <CoinList
-            key={coin.market_cap_rank}
-            coin={coin}
-            currency={currency}
-          />
-        ))}
-        <PageNumberFooterStyled>
-          {page > 1 ? (
-            <button onClick={PreviosPage}>Previos</button>
-          ) : (
-            <div></div>
-          )}
-          <p>Page: {page}</p>
-          {page < 10 ? <button onClick={NextPage}>Next</button> : <div></div>}
-        </PageNumberFooterStyled>
-      </CardStyled>
-    </div>
+      <SectionStyled>
+        <CardStyled>
+          <ListHeaderStyled>
+            <strong className="center">#</strong>
+            <CoinInfoStyled>
+              <strong>Name</strong>
+            </CoinInfoStyled>
+            <strong>Price</strong>
+            <strong>24hr</strong>
+            <strong>7d</strong>
+            <strong>Market Cap</strong>
+          </ListHeaderStyled>
+          {filteredCoins.map((coin) => (
+            <CoinList
+              key={coin.market_cap_rank}
+              coin={coin}
+              currency={currency}
+            />
+          ))}
+          <PageNumberFooterStyled>
+            {page > 1 ? (
+              <button onClick={PreviosPage}>Previos</button>
+            ) : (
+              <div></div>
+            )}
+            <p>Page: {page}</p>
+            {page < 10 ? <button onClick={NextPage}>Next</button> : <div></div>}
+          </PageNumberFooterStyled>
+        </CardStyled>
+      </SectionStyled>
+    </>
   );
 };
 
