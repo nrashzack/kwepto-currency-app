@@ -28,7 +28,6 @@ const App = () => {
 
   useEffect(() => {
     axios
-
       .get(`https://api.coingecko.com/api/v3/search/trending`)
       .then((res) => {
         console.log(res.data.coins);
