@@ -2,7 +2,7 @@ import React from "react";
 import { FilterCoinListButtonStyled } from "../styles/CoinList.styled";
 const FilterCoinList = ({ setCurrency }) => {
   return (
-    <div>
+    <>
       <FilterCoinListButtonStyled onClick={() => setCurrency("myr")}>
         <span>MYR</span>
       </FilterCoinListButtonStyled>
@@ -15,7 +15,7 @@ const FilterCoinList = ({ setCurrency }) => {
       <FilterCoinListButtonStyled onClick={() => setCurrency("jpy")}>
         <span>JPY</span>
       </FilterCoinListButtonStyled>
-    </div>
+    </>
   );
 };
 

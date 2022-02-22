@@ -53,6 +53,7 @@ export const CoinInfoStyled = styled.div`
   justify-self: start;
   img {
     width: 25px;
+    border-radius: 12.5px;
   }
   p {
     color: #636e72;
@@ -68,7 +69,8 @@ export const CoinInfoStyled = styled.div`
 `;
 
 export const FilterCoinListContainerStyled = styled.div`
-  margin: 1.5em 0;
+  /* margin: 1.5em 0; */
+  /* padding-left: 1rem; */
 `;
 
 export const FilterCoinListButtonStyled = styled.button`
@@ -92,11 +94,30 @@ export const PageNumberFooterStyled = styled.div`
 
 export const SearchBarStyled = styled.div`
   & .search-bar {
-    border: solid;
+    display: flex;
     border-radius: 50px;
-    width: 55vw;
+    width: 100%;
     padding: 0.5rem;
-    font-size: 20px;
-    text-align: center;
+    padding-left: 1rem;
+    font-size: 15px;
+
+    &:hover {
+      background: #eeeeee;
+      color: #74b9ff;
+    }
   }
+`;
+
+export const SearchStyled = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
+export const FilterSearchContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  margin-bottom: 0.8rem;
 `;

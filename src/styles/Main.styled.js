@@ -1,26 +1,29 @@
 import styled from "styled-components";
 
+// Base Style for Cointainer
 export const AppContainerStyled = styled.div`
   display: grid;
-  grid-template-columns: 20vw auto;
+  grid-template-rows: 2.5vw auto;
 `;
 
-export const SideBarContainerStyled = styled.div`
-  position: fixed;
-  width: 20vw;
-  height: 100vh;
-  background-color: #def3ff;
+// Base Style for Cointainer
+export const NavBarContainerStyled = styled.div`
+  height: 2.5vw;
+  background-color: #ecf0f1;
+  padding: 0.5em 0em;
 `;
 
+// Base style for Container
 export const MainContainerStyled = styled.div`
-  grid-column-start: 2;
+  grid-row-start: 2;
   margin: 0 auto;
-  width: 60vw;
+  width: 55vw;
 `;
 
+// For headers and big text
 export const HeaderStyled = styled.div`
   width: 100%;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   h1 {
     font-size: 2rem;
     margin-bottom: 0.25em;
@@ -40,10 +43,16 @@ export const LoadingScreenStyled = styled.div`
   }
 `;
 
+// Apply card-style background with shadow
 export const CardStyled = styled.div`
   padding: 1em 1.5em;
   border-radius: 25px;
   width: 60vw;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+`;
+
+// To give space between components
+export const SectionStyled = styled.div`
+  margin: 1em auto;
 `;

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import MainSection from "./components/MainSection";
-import SideBar from "./components/SideBar";
-import { AppContainerStyled } from "./styles/Main.styled";
+import NavBar from "./components/NavBar";
+import PriceTracker from "./pages/PriceTracker";
+import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -39,18 +39,22 @@ const App = () => {
   }, []);
 
   return (
-    <AppContainerStyled>
-      <SideBar />
-      <MainSection
-        loading={loading}
-        coins={coins}
-        page={page}
-        trend={trend}
-        currency={currency}
-        setCurrency={setCurrency}
-        setPage={setPage}
-      />
-    </AppContainerStyled>
+    <>
+      <NavBar />
+      <AppContainerStyled>
+        <MainContainerStyled>
+          <PriceTracker
+            loading={loading}
+            coins={coins}
+            page={page}
+            trend={trend}
+            currency={currency}
+            setCurrency={setCurrency}
+            setPage={setPage}
+          />
+        </MainContainerStyled>
+      </AppContainerStyled>
+    </>
   );
 };
 
