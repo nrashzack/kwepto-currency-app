@@ -74,10 +74,10 @@ const PriceTracker = ({
           <CoinInfoStyled>
             <strong>Name</strong>
           </CoinInfoStyled>
-          <strong className="center">Price</strong>
+          <strong>Price</strong>
           <strong>24hr</strong>
           <strong>7d</strong>
-          <strong className="center">Market Cap</strong>
+          <strong>Market Cap</strong>
         </ListHeaderStyled>
         {filteredCoins.map((coin) => (
           <CoinList

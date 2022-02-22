@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
+// Base Style for Cointainer
 export const AppContainerStyled = styled.div`
   display: grid;
   grid-template-columns: 20vw auto;
 `;
 
+// Base Style for Cointainer
 export const SideBarContainerStyled = styled.div`
   position: fixed;
   width: 20vw;
@@ -12,12 +14,14 @@ export const SideBarContainerStyled = styled.div`
   background-color: #def3ff;
 `;
 
+// Base style for Container
 export const MainContainerStyled = styled.div`
   grid-column-start: 2;
   margin: 0 auto;
   width: 60vw;
 `;
 
+// For headers and big text
 export const HeaderStyled = styled.div`
   width: 100%;
   margin-bottom: 1.5em;
@@ -40,10 +44,16 @@ export const LoadingScreenStyled = styled.div`
   }
 `;
 
+// Apply card-style background with shadow
 export const CardStyled = styled.div`
   padding: 1em 1.5em;
   border-radius: 25px;
   width: 60vw;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+`;
+
+// To give space between components
+export const SectionStyled = styled.div`
+  margin: 2em auto;
 `;

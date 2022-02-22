@@ -53,6 +53,7 @@ export const CoinInfoStyled = styled.div`
   justify-self: start;
   img {
     width: 25px;
+    border-radius: 12.5px;
   }
   p {
     color: #636e72;
