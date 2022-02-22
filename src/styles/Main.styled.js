@@ -24,6 +24,7 @@ export const MainContainerStyled = styled.div`
 // For headers and big text
 export const HeaderStyled = styled.div`
   width: 100%;
+  padding-top: 3rem;
   margin-bottom: 1.5em;
   h1 {
     font-size: 2rem;

@@ -8,22 +8,25 @@ export const CardCointainerCenterStyled = styled.div`
 
 export const CardContainerStyled = styled.div`
   display: flex;
+  padding: 1rem 0 1em 0;
   flex-direction: row;
-  flex-flow: wrap;
-  justify-content: center;
+  flex-flow: nowrap;
+  justify-content: start;
+  overflow: hidden;
 `;
 
 export const CardStyled = styled.div`
   width: 15rem;
-  padding: 30px 20px 30px 30px;
+  padding: 20px 20px 30px 30px;
   justify-content: flex-start;
   background: #ffffff;
-  border: 2px solid #636e72;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-left: 20px;
   margin-bottom: 20px;
   display: flex;
   flex-flow: wrap;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 
   img {
     padding-right: 1rem;
@@ -41,8 +44,4 @@ export const RowStyled = styled.div`
   align-items: center;
   font-size: 1.2rem;
   place-items: center;
-`;
-
-export const stylingex = styled.div`
-  justify-content: center;
 `;
