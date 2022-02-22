@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import MainSection from "./components/MainSection";
 import NavBar from "./components/NavBar";
-import { AppContainerStyled } from "./styles/Main.styled";
+import PriceTracker from "./pages/PriceTracker";
+import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -28,7 +28,6 @@ const App = () => {
 
   useEffect(() => {
     axios
-
       .get(`https://api.coingecko.com/api/v3/search/trending`)
       .then((res) => {
         console.log(res.data.coins);
@@ -43,15 +42,17 @@ const App = () => {
     <>
       <NavBar />
       <AppContainerStyled>
-        <MainSection
-          loading={loading}
-          coins={coins}
-          page={page}
-          trend={trend}
-          currency={currency}
-          setCurrency={setCurrency}
-          setPage={setPage}
-        />
+        <MainContainerStyled>
+          <PriceTracker
+            loading={loading}
+            coins={coins}
+            page={page}
+            trend={trend}
+            currency={currency}
+            setCurrency={setCurrency}
+            setPage={setPage}
+          />
+        </MainContainerStyled>
       </AppContainerStyled>
     </>
   );

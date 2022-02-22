@@ -62,7 +62,7 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    ul {
-  list-style-type: none;
-}
+    li {
+    list-style-type: none;
+    }
 `;
