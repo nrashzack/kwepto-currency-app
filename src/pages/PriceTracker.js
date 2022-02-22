@@ -11,6 +11,8 @@ import {
   FilterCoinListContainerStyled,
   PageNumberFooterStyled,
   SearchBarStyled,
+  SearchStyled,
+  FilterSearchContainer,
 } from "../styles/CoinList.styled";
 import NowTrending from "./NowTrending";
 import CoinList from "../components/CoinList";
@@ -57,17 +59,22 @@ const PriceTracker = ({
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
-      <SearchBarStyled>
-        <input
-          class="search-bar"
-          placeholder="Search..."
-          type="text"
-          onChange={handleSearch}
-        ></input>
-      </SearchBarStyled>
-      <FilterCoinListContainerStyled>
-        <FilterCoinList setCurrency={setCurrency} />
-      </FilterCoinListContainerStyled>
+      <FilterSearchContainer>
+        <FilterCoinListContainerStyled>
+          <FilterCoinList setCurrency={setCurrency} />
+        </FilterCoinListContainerStyled>
+        <SearchStyled>
+          <SearchBarStyled>
+            <input
+              class="search-bar"
+              placeholder="Search..."
+              type="text"
+              onChange={handleSearch}
+            ></input>
+          </SearchBarStyled>
+        </SearchStyled>
+      </FilterSearchContainer>
+
       <CardStyled>
         <ListHeaderStyled>
           <strong className="center">#</strong>
