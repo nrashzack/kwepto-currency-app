@@ -27,6 +27,10 @@ export const NavBarLinksCointainerStyled = styled.div`
   input {
     margin-left: 1em;
   }
+
+  & .logo {
+    width: 5rem;
+  }
 `;
 
 export const NavBarLogoStyled = styled.img`

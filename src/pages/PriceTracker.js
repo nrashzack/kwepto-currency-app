@@ -16,7 +16,7 @@ import {
   FilterSearchContainer,
   BannerStyled,
 } from "../styles/CoinList.styled";
-import NowTrending from "./NowTrending";
+import NowTrending from "../components/NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
 
@@ -56,9 +56,9 @@ const PriceTracker = ({
   );
   return (
     <>
-      <BannerStyled>
-        <h1>hello</h1>
-      </BannerStyled>
+      {/* <BannerStyled>
+          <h1>hello</h1>
+        </BannerStyled> */}
       <NowTrending trend={trend} />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
