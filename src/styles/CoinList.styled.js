@@ -121,3 +121,8 @@ export const FilterSearchContainer = styled.div`
 
   margin-bottom: 0.8rem;
 `;
+
+export const BannerStyled = styled.div`
+  background-color: black;
+  width: 100%;
+`;
