@@ -11,7 +11,7 @@ const NavBar = () => {
             <span>Logo</span>
           </li>
           <li>
-            <span>Price Tracker</span>
+            <span>Price</span>
           </li>
           <li>
             <span>Exchange</span>

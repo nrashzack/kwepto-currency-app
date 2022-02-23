@@ -77,11 +77,6 @@ export const CoinInfoStyled = styled.div`
   }
 `;
 
-export const FilterCoinListContainerStyled = styled.div`
-  /* margin: 1.5em 0; */
-  /* padding-left: 1rem; */
-`;
-
 export const FilterCoinListButtonStyled = styled.button`
   padding: 0.5em 1.5em;
   margin-right: 0.5em;

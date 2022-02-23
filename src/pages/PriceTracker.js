@@ -21,7 +21,6 @@ import CoinPage from "./CoinPage";
 const PriceTracker = ({
   loading,
   coins,
-  trend,
   page,
   currency,
   setCurrency,
@@ -45,14 +44,12 @@ const PriceTracker = ({
 
   return (
     <>
-      <NowTrending trend={trend} />
+      <NowTrending />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
-      <FilterCoinListContainerStyled>
-        <FilterCoinList setCurrency={setCurrency} />
-      </FilterCoinListContainerStyled>
+      <FilterCoinList setCurrency={setCurrency} />
       <SectionStyled>
         <CardStyled>
           <ListHeaderStyled>

@@ -8,7 +8,6 @@ import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
-  const [trend, setTrend] = useState([]);
   const [currency, setCurrency] = useState("myr");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -29,18 +28,6 @@ const App = () => {
       });
   }, [currency, page]);
 
-  // Get trending coins
-  useEffect(() => {
-    axios
-      .get(`https://api.coingecko.com/api/v3/search/trending`)
-      .then((res) => {
-        setTrend(res.data.coins);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <>
       <NavBar />
@@ -54,7 +41,6 @@ const App = () => {
                   loading={loading}
                   coins={coins}
                   page={page}
-                  trend={trend}
                   currency={currency}
                   setCurrency={setCurrency}
                   setPage={setPage}

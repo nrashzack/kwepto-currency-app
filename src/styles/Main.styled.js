@@ -55,5 +55,5 @@ export const CardStyled = styled.div`
 
 // To give space between components
 export const SectionStyled = styled.div`
-  margin: 1em auto;
+  margin: 1.5em auto;
 `;

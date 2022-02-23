@@ -12,12 +12,14 @@ export const NavBarLinksCointainerStyled = styled.div`
   }
 
   ul {
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    margin-left: 1em;
+    align-items: center;
+    justify-content: space-between;
   }
   li {
-    margin-right: 1em;
     &:hover {
       cursor: pointer;
     }
@@ -26,32 +28,4 @@ export const NavBarLinksCointainerStyled = styled.div`
   & .logo {
     width: 5rem;
   }
-`;
-
-export const NavBarLogoStyled = styled.img`
-  width: 60%;
-  height: auto;
-`;
-
-export const NavBarButtonsStyled = styled.button`
-  background-color: #fff;
-  padding: 1em 1.5em;
-  width: 55%;
-  border-radius: 25px;
-  border: solid 3px #636e72;
-
-  span {
-    font-weight: bolder;
-    font-size: 1rem;
-  }
-`;
-
-export const NavBarEndStyled = styled.li`
-  position: absolute;
-  bottom: 0;
-`;
-
-export const NavBarFooterStyled = styled.span`
-  font-size: 2.5rem;
-  font-weight: bolder;
 `;
