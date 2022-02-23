@@ -14,7 +14,7 @@ const NowTrending = ({ trend }) => {
       <Marquee>
         <CardContainerStyled>
           {trend.map((trends) => (
-            <TrendList key={trends.coin_id} trends={trends} />
+            <TrendList key={trends.coinId} trends={trends} />
           ))}
         </CardContainerStyled>
       </Marquee>

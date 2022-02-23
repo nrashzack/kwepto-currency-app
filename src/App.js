@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import PriceTracker from "./pages/PriceTracker";
+import CoinPage from "./pages/CoinPage";
 import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
@@ -11,6 +13,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  // Get all coins
   useEffect(() => {
     setLoading(true);
     axios
@@ -26,11 +29,11 @@ const App = () => {
       });
   }, [currency, page]);
 
+  // Get trending coins
   useEffect(() => {
     axios
       .get(`https://api.coingecko.com/api/v3/search/trending`)
       .then((res) => {
-        console.log(res.data.coins);
         setTrend(res.data.coins);
       })
       .catch((error) => {
@@ -41,17 +44,26 @@ const App = () => {
   return (
     <>
       <NavBar />
+
       <AppContainerStyled>
         <MainContainerStyled>
-          <PriceTracker
-            loading={loading}
-            coins={coins}
-            page={page}
-            trend={trend}
-            currency={currency}
-            setCurrency={setCurrency}
-            setPage={setPage}
-          />
+          <Routes>
+            <Route
+              path="/currencies"
+              element={
+                <PriceTracker
+                  loading={loading}
+                  coins={coins}
+                  page={page}
+                  trend={trend}
+                  currency={currency}
+                  setCurrency={setCurrency}
+                  setPage={setPage}
+                />
+              }
+            />
+            <Route path=":coindId" element={<CoinPage />} />
+          </Routes>
         </MainContainerStyled>
       </AppContainerStyled>
     </>

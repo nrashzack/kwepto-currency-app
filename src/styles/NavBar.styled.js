@@ -4,8 +4,6 @@ export const NavBarLinksCointainerStyled = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  align-items: center;
-  justify-content: space-between;
   margin: 0 auto;
   width: 55vw;
 
@@ -23,9 +21,6 @@ export const NavBarLinksCointainerStyled = styled.div`
     &:hover {
       cursor: pointer;
     }
-  }
-  input {
-    margin-left: 1em;
   }
 
   & .logo {

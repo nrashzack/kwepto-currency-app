@@ -23,12 +23,6 @@ const NavBar = () => {
             <span>Watch List</span>
           </li>
         </ul>
-        <div className="end">
-          <button>
-            <span>Currency</span>
-          </button>
-          <input type="search" />
-        </div>
       </NavBarLinksCointainerStyled>
     </NavBarContainerStyled>
   );
