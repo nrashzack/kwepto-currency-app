@@ -44,12 +44,11 @@ const App = () => {
   return (
     <>
       <NavBar />
-
       <AppContainerStyled>
         <MainContainerStyled>
           <Routes>
             <Route
-              path="/currencies"
+              path="/"
               element={
                 <PriceTracker
                   loading={loading}
@@ -62,7 +61,7 @@ const App = () => {
                 />
               }
             />
-            <Route path=":coindId" element={<CoinPage />} />
+            <Route path=":coinid" element={<CoinPage />} />
           </Routes>
         </MainContainerStyled>
       </AppContainerStyled>

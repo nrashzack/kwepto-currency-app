@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "../devices";
 
 // Base Style for Cointainer
 export const AppContainerStyled = styled.div`
@@ -20,18 +19,6 @@ export const MainContainerStyled = styled.div`
   place-content: center;
   margin: 0 auto;
   width: 55vw;
-
-  @media screen ${device.mobileL} {
-    max-width: 90vw;
-  }
-
-  @media screen ${device.tablet} {
-    max-width: 90vw;
-  }
-
-  @media screen $(device.desktop) {
-    max-width: 55vw;
-  }
 `;
 
 // For headers and big text

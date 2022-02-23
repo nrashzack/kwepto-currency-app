@@ -50,7 +50,6 @@ const PriceTracker = ({
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
-
       <FilterCoinListContainerStyled>
         <FilterCoinList setCurrency={setCurrency} />
       </FilterCoinListContainerStyled>
@@ -63,11 +62,11 @@ const PriceTracker = ({
             </CoinInfoStyled>
             <strong>Price</strong>
             <strong>24hr</strong>
-            <strong>7d</strong>
+            <strong className="visibility">7d</strong>
             <strong>Market Cap</strong>
           </ListHeaderStyled>
           {coins.map((coin) => (
-            <Link to={`/currencies:${coin.id}`} element={<CoinPage />}>
+            <Link to={`/${coin.id}`} element={<CoinPage />}>
               <CoinList
                 key={coin.market_cap_rank}
                 coin={coin}
