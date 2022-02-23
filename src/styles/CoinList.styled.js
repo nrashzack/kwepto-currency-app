@@ -4,7 +4,6 @@ import { device } from "../devices";
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
-  /* grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr; */
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
   place-items: end;
   width: 55vw;
@@ -13,11 +12,14 @@ export const ListHeaderStyled = styled.div`
   & .center {
     place-self: center;
   }
+
+  & .visibility {
+    visibility: visible;
+  }
 `;
 
 export const CoinListStyled = styled.div`
   display: grid;
-  /* grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr; */
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
   place-items: end;
   align-items: center;
@@ -51,12 +53,6 @@ export const CoinListStyled = styled.div`
   &:hover {
     background-color: #ecf0f1;
   }
-
-  @media screen ${device.tablet} {
-    & .visibility {
-      visibility: hidden;
-    }
-  }
 `;
 
 export const CoinInfoStyled = styled.div`
@@ -79,11 +75,6 @@ export const CoinInfoStyled = styled.div`
   &:hover {
     cursor: pointer;
   }
-`;
-
-export const FilterCoinListContainerStyled = styled.div`
-  /* margin: 1.5em 0; */
-  /* padding-left: 1rem; */
 `;
 
 export const FilterCoinListButtonStyled = styled.button`

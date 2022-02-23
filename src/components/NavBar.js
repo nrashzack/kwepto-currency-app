@@ -11,7 +11,7 @@ const NavBar = () => {
             <span>Logo</span>
           </li>
           <li>
-            <span>Price Tracker</span>
+            <span>Price</span>
           </li>
           <li>
             <span>Exchange</span>
@@ -23,12 +23,6 @@ const NavBar = () => {
             <span>Watch List</span>
           </li>
         </ul>
-        <div className="end">
-          <button>
-            <span>Currency</span>
-          </button>
-          <input type="search" />
-        </div>
       </NavBarLinksCointainerStyled>
     </NavBarContainerStyled>
   );

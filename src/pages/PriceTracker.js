@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   CardStyled,
@@ -11,26 +11,21 @@ import {
   CoinInfoStyled,
   FilterCoinListContainerStyled,
   PageNumberFooterStyled,
-  SearchBarStyled,
-  SearchStyled,
-  FilterSearchContainer,
-  BannerStyled,
 } from "../styles/CoinList.styled";
 import NowTrending from "../components/NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
+import { Link } from "react-router-dom";
+import CoinPage from "./CoinPage";
 
 const PriceTracker = ({
   loading,
   coins,
-  trend,
   page,
   currency,
   setCurrency,
   setPage,
 }) => {
-  const [search, setSearch] = useState("");
-
   if (loading) {
     return (
       <LoadingScreenStyled>
@@ -47,38 +42,14 @@ const PriceTracker = ({
     setPage((page) => page - 1);
   };
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  );
   return (
     <>
-      {/* <BannerStyled>
-          <h1>hello</h1>
-        </BannerStyled> */}
-      <NowTrending trend={trend} />
+      <NowTrending />
       <HeaderStyled>
         <h1>Crypto Price Tracker</h1>
         <p>Get the latest crypto prices.</p>
       </HeaderStyled>
-      <FilterSearchContainer>
-        <FilterCoinListContainerStyled>
-          <FilterCoinList setCurrency={setCurrency} />
-        </FilterCoinListContainerStyled>
-        <SearchStyled>
-          <SearchBarStyled>
-            <input
-              class="search-bar"
-              placeholder="Search..."
-              type="text"
-              onChange={handleSearch}
-            ></input>
-          </SearchBarStyled>
-        </SearchStyled>
-      </FilterSearchContainer>
+      <FilterCoinList setCurrency={setCurrency} />
       <SectionStyled>
         <CardStyled>
           <ListHeaderStyled>
@@ -88,15 +59,17 @@ const PriceTracker = ({
             </CoinInfoStyled>
             <strong>Price</strong>
             <strong>24hr</strong>
-            <strong>7d</strong>
+            <strong className="visibility">7d</strong>
             <strong>Market Cap</strong>
           </ListHeaderStyled>
-          {filteredCoins.map((coin) => (
-            <CoinList
-              key={coin.market_cap_rank}
-              coin={coin}
-              currency={currency}
-            />
+          {coins.map((coin) => (
+            <Link to={`/${coin.id}`} element={<CoinPage />}>
+              <CoinList
+                key={coin.market_cap_rank}
+                coin={coin}
+                currency={currency}
+              />
+            </Link>
           ))}
           <PageNumberFooterStyled>
             {page > 1 ? (
