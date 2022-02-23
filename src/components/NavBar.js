@@ -7,7 +7,7 @@ const NavBar = () => {
     <NavBarContainerStyled>
       <NavBarLinksCointainerStyled>
         <ul>
-          <li>
+          <li className="logo">
             <span>Logo</span>
           </li>
           <li>
@@ -24,7 +24,9 @@ const NavBar = () => {
           </li>
         </ul>
         <div className="end">
-          <span>Currency</span>
+          <button>
+            <span>Currency</span>
+          </button>
           <input type="search" />
         </div>
       </NavBarLinksCointainerStyled>

@@ -1,4 +1,3 @@
-import Marquee from "react-fast-marquee";
 import styled from "styled-components";
 
 export const CardCointainerCenterStyled = styled.div`
@@ -9,11 +8,22 @@ export const CardCointainerCenterStyled = styled.div`
 
 export const CardContainerStyled = styled.div`
   display: flex;
-  padding: 1rem 0 1em 0;
-  flex-direction: row;
+  padding: 1rem 0;
   flex-flow: nowrap;
-  justify-content: start;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
+  width: 100%;
+  img {
+    margin-right: 0.5em;
+    width: 25px;
+    height: auto;
+    border-radius: 25px;
+  }
+
+  p {
+    padding-left: 5px;
+  }
 `;
 
 export const CardStyled = styled.div`
@@ -28,15 +38,6 @@ export const CardStyled = styled.div`
   flex-flow: wrap;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-
-  img {
-    padding-right: 1rem;
-    width: 30px;
-  }
-
-  p {
-    padding-left: 5px;
-  }
 `;
 
 export const RowStyled = styled.div`

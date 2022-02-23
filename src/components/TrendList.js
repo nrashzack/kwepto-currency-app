@@ -1,5 +1,4 @@
 import React from "react";
-// import { CenterCoinStyled, CoinInfoStyled } from "../styles/CoinList.styled";
 import { CardStyled, RowStyled } from "../styles/TrendList.styled";
 import { CardCointainerCenterStyled } from "../styles/TrendList.styled";
 
@@ -13,7 +12,7 @@ const TrendList = ({ trends }) => {
       </CardCointainerCenterStyled>
 
       <RowStyled>
-        <strong>${trends.item.price_btc.toFixed(15)}</strong>
+        <strong>{trends.item.price_btc.toFixed(15)}</strong>
       </RowStyled>
     </CardStyled>
   );

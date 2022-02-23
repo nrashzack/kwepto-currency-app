@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { device } from "../devices";
 
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
-  grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr;
+  /* grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr; */
+  grid-template-columns: 10% 25% repeat(3, 15%) 20%;
   place-items: end;
   width: 55vw;
   padding: 1em;
@@ -15,7 +17,8 @@ export const ListHeaderStyled = styled.div`
 
 export const CoinListStyled = styled.div`
   display: grid;
-  grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr;
+  /* grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr; */
+  grid-template-columns: 10% 25% repeat(3, 15%) 20%;
   place-items: end;
   align-items: center;
   width: 55vw;
@@ -33,7 +36,7 @@ export const CoinListStyled = styled.div`
     font-weight: bolder;
   }
 
-  & .coin_percent {
+  & .coin-percent {
     color: #6ab04c;
   }
 
@@ -41,8 +44,18 @@ export const CoinListStyled = styled.div`
     color: #eb4d4b;
   }
 
+  & .visibility {
+    visibility: visible;
+  }
+
   &:hover {
     background-color: #ecf0f1;
+  }
+
+  @media screen ${device.tablet} {
+    & .visibility {
+      visibility: hidden;
+    }
   }
 `;
 
