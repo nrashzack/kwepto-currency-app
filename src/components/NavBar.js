@@ -1,6 +1,7 @@
 import React from "react";
 import { NavBarContainerStyled } from "../styles/Main.styled";
 import { NavBarLinksCointainerStyled } from "../styles/NavBar.styled";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -11,10 +12,14 @@ const NavBar = () => {
             <span>Logo</span>
           </li>
           <li>
-            <span>Price</span>
+            <Link to="/">
+              <span>Price</span>
+            </Link>
           </li>
           <li>
-            <span>Exchange</span>
+            <Link to="/exchange">
+              <span>Exchange</span>
+            </Link>
           </li>
           <li>
             <span>News</span>
