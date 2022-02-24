@@ -23,7 +23,7 @@ const NowTrending = () => {
   }, []);
 
   return (
-    <SectionStyled white>
+    <SectionStyled>
       <HeaderStyled>
         <h1>TRENDING COINS</h1>
         <p>Trending coins that people are searching for</p>
