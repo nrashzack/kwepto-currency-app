@@ -5,8 +5,9 @@ export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
-  place-items: end;
-  width: 55vw;
+  align-items: center;
+  justify-self: end;
+  width: 50vw;
   padding: 1em;
 
   & .center {
@@ -21,9 +22,10 @@ export const ListHeaderStyled = styled.div`
 export const CoinListStyled = styled.div`
   display: grid;
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
-  place-items: end;
   align-items: center;
-  width: 55vw;
+  justify-self: end;
+  width: 50vw;
+  height: 4vh;
   padding: 1em;
 
   p {
@@ -62,6 +64,7 @@ export const CoinInfoStyled = styled.div`
   justify-self: start;
   img {
     width: 25px;
+    height: auto;
     border-radius: 12.5px;
   }
   p {
@@ -89,44 +92,15 @@ export const FilterCoinListButtonStyled = styled.button`
   }
 `;
 
-export const PageNumberFooterStyled = styled.div`
+export const PageNumberStyled = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-`;
-
-export const SearchBarStyled = styled.div`
-  & .search-bar {
+  li {
     display: flex;
-    border-radius: 50px;
-    width: 100%;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    font-size: 15px;
-
-    &:hover {
-      background: #eeeeee;
-      color: #74b9ff;
-    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
-`;
-
-export const SearchStyled = styled.div`
-  display: flex;
-  justify-content: end;
-`;
-
-export const FilterSearchContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  margin-bottom: 0.8rem;
-`;
-
-export const BannerStyled = styled.div`
-  background-color: black;
-  width: 100%;
 `;

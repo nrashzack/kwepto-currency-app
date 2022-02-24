@@ -9,6 +9,7 @@ export const NavBarLinksCointainerStyled = styled.div`
 
   span {
     font-weight: bolder;
+    color: #000;
   }
 
   ul {

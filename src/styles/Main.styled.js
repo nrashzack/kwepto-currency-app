@@ -48,7 +48,7 @@ export const LoadingScreenStyled = styled.div`
 export const CardStyled = styled.div`
   padding: 1em 1.5em;
   border-radius: 25px;
-  width: 60vw;
+  width: auto;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 `;
@@ -56,4 +56,12 @@ export const CardStyled = styled.div`
 // To give space between components
 export const SectionStyled = styled.div`
   margin: 1.5em auto;
+  width: auto;
+  max-width: 55vw;
+`;
+
+// Center Everyhthing
+export const CenterEverythingStyled = styled.div`
+  display: grid;
+  place-items: center;
 `;
