@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import PriceTracker from "./pages/PriceTracker";
 import CoinPage from "./pages/CoinPage";
+import Exchange from "./pages/Exchange";
 import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
               }
             />
             <Route path=":coinid" element={<CoinPage />} />
+            <Route path="/exchange" element={<Exchange />} />
           </Routes>
         </MainContainerStyled>
       </AppContainerStyled>
