@@ -9,7 +9,7 @@ export const AppContainerStyled = styled.div`
 // Base Style for Cointainer
 export const NavBarContainerStyled = styled.div`
   height: 2.5vw;
-  background-color: #ecf0f1;
+  background-color: ${(props) => (props.orange ? "#F7A528" : "#FFF")};
   padding: 0.5em 0em;
 `;
 
@@ -23,14 +23,17 @@ export const MainContainerStyled = styled.div`
 
 // For headers and big text
 export const HeaderStyled = styled.div`
+  text-align: ${(props) => (props.left ? "left" : "center")};
   width: 100%;
   margin-bottom: 1em;
   h1 {
-    font-size: 2rem;
-    margin-bottom: 0.25em;
+    font-size: 3em;
+    font-weight: 800;
+    margin-bottom: 0.1em;
   }
   p {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: lighter;
   }
 `;
 
@@ -48,7 +51,9 @@ export const LoadingScreenStyled = styled.div`
 export const CardStyled = styled.div`
   padding: 1em 1.5em;
   border-radius: 25px;
-  width: 60vw;
+  border: 2.5px solid #484848;
+  width: auto;
+  background-color: #fff;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 `;
@@ -56,4 +61,12 @@ export const CardStyled = styled.div`
 // To give space between components
 export const SectionStyled = styled.div`
   margin: 1.5em auto;
+  width: 55vw;
+  background-color: ${(props) => (props.white ? "#fff" : "#FFF6EA")};
+`;
+
+// Center Everyhthing
+export const CenterEverythingStyled = styled.div`
+  display: grid;
+  place-items: center;
 `;

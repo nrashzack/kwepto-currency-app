@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   CardStyled,
+  CenterEverythingStyled,
   HeaderStyled,
   LoadingScreenStyled,
   SectionStyled,
@@ -9,23 +10,30 @@ import {
 import {
   ListHeaderStyled,
   CoinInfoStyled,
-  FilterCoinListContainerStyled,
-  PageNumberFooterStyled,
+  PageNumberStyled,
 } from "../styles/CoinList.styled";
 import NowTrending from "../components/NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
 import { Link } from "react-router-dom";
-import CoinPage from "./CoinPage";
+import ReactPaginate from "react-paginate";
+import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 
-const PriceTracker = ({
-  loading,
-  coins,
-  page,
-  currency,
-  setCurrency,
-  setPage,
-}) => {
+const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
+  const [pageNumber, setPageNumber] = useState(0);
+  const coinsPerPage = 10;
+  const pagesVisited = pageNumber * coinsPerPage;
+
+  const displayCoins = coins
+    .slice(pagesVisited, pagesVisited + coinsPerPage)
+    .map((coin) => {
+      return (
+        <Link to={`/${coin.id}`}>
+          <CoinList key={coin.id} coin={coin} currency={currency} />
+        </Link>
+      );
+    });
+
   if (loading) {
     return (
       <LoadingScreenStyled>
@@ -34,53 +42,44 @@ const PriceTracker = ({
     );
   }
 
-  const NextPage = () => {
-    setPage((page) => page + 1);
-  };
+  const pageCount = Math.ceil(coins.length / coinsPerPage);
 
-  const PreviosPage = () => {
-    setPage((page) => page - 1);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
   };
 
   return (
     <>
       <NowTrending />
       <HeaderStyled>
-        <h1>Crypto Price Tracker</h1>
-        <p>Get the latest crypto prices.</p>
+        <h1>CRYPTOCURRENCIES</h1>
+        <p>Today's Cryptocurrency Prices by Market Cap</p>
       </HeaderStyled>
       <FilterCoinList setCurrency={setCurrency} />
       <SectionStyled>
         <CardStyled>
-          <ListHeaderStyled>
-            <strong className="center">#</strong>
-            <CoinInfoStyled>
-              <strong>Name</strong>
-            </CoinInfoStyled>
-            <strong>Price</strong>
-            <strong>24hr</strong>
-            <strong className="visibility">7d</strong>
-            <strong>Market Cap</strong>
-          </ListHeaderStyled>
-          {coins.map((coin) => (
-            <Link to={`/${coin.id}`}>
-              <CoinList
-                key={coin.market_cap_rank}
-                coin={coin}
-                currency={currency}
-              />
-            </Link>
-          ))}
-          <PageNumberFooterStyled>
-            {page > 1 ? (
-              <button onClick={PreviosPage}>Previos</button>
-            ) : (
-              <div></div>
-            )}
-            <p>Page: {page}</p>
-            {page < 10 ? <button onClick={NextPage}>Next</button> : <div></div>}
-          </PageNumberFooterStyled>
+          <CenterEverythingStyled>
+            <ListHeaderStyled>
+              <strong className="center">#</strong>
+              <CoinInfoStyled>
+                <strong>Name</strong>
+              </CoinInfoStyled>
+              <strong>Price</strong>
+              <strong>24hr</strong>
+              <strong className="visibility">7d</strong>
+              <strong>Market Cap</strong>
+            </ListHeaderStyled>
+            {displayCoins}
+          </CenterEverythingStyled>
         </CardStyled>
+        <SectionStyled>
+          <PageNumberStyled
+            previousLabel={<RiArrowLeftSFill />}
+            nextLabel={<RiArrowRightSFill />}
+            pageCount={pageCount}
+            onPageChange={changePage}
+          />
+        </SectionStyled>
       </SectionStyled>
     </>
   );
