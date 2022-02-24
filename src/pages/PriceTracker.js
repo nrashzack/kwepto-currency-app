@@ -63,7 +63,7 @@ const PriceTracker = ({
             <strong>Market Cap</strong>
           </ListHeaderStyled>
           {coins.map((coin) => (
-            <Link to={`/${coin.id}`} element={<CoinPage />}>
+            <Link to={`/${coin.id}`}>
               <CoinList
                 key={coin.market_cap_rank}
                 coin={coin}
