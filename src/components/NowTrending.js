@@ -3,7 +3,10 @@ import axios from "axios";
 import { HeaderStyled, SectionStyled } from "../styles/Main.styled";
 import TrendList from "./TrendList";
 import { CardContainerStyled } from "../styles/TrendList.styled";
-import Marquee from "react-easy-marquee";
+import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
+import CoinPage from "../pages/CoinPage";
+
 
 const NowTrending = () => {
   const [trend, setTrend] = useState([]);
@@ -29,7 +32,9 @@ const NowTrending = () => {
       <Marquee duration={50000} height="200px" width="60vw" reverse={true}>
         <CardContainerStyled>
           {trend.map((trends) => (
-            <TrendList key={trends.coin_id} trends={trends} />
+            <Link to={`/${trend.id}`} element={<CoinPage />}>
+              <TrendList key={trends.coin_id} trends={trends} />
+            </Link>
           ))}
         </CardContainerStyled>
       </Marquee>
