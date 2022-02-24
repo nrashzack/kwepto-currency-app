@@ -1,17 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     html {
         box-sizing: border-box;
     }
     body {
         margin:0;
         padding:0;
-        background-color: #FCFDFE;
+        background-color: #FFF6EA;
         color: #000;
-        font-family: 'Roboto', sans-serif;
-        letter-spacing: .01rem;
+        font-family: 'Poppins', sans-serif;
     }
 
     p,
@@ -33,11 +32,11 @@ export const GlobalStyle = createGlobalStyle`
 
     p {
         font-size: 12px;
-        color: #636e72;
+        color: #484848;
     }
 
     h1,strong {
-        color:#2d3436;
+        color:#484848;
     }
 
     h1 {

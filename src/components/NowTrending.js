@@ -23,10 +23,10 @@ const NowTrending = () => {
   }, []);
 
   return (
-    <SectionStyled>
+    <SectionStyled white>
       <HeaderStyled>
-        <h1>Trending Coins</h1>
-        <p>The hottest coins in the market right now!</p>
+        <h1>TRENDING COINS</h1>
+        <p>Trending coins that people are searching for</p>
       </HeaderStyled>
       <Marquee duration={50000} height="20vh" width="55vw" reverse={true}>
         <CardContainerStyled>

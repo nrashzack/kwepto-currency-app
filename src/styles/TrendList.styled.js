@@ -20,6 +20,7 @@ export const CardStyled = styled.div`
   width: 15rem;
   padding: 2em 3em;
   background: #ffffff;
+  border: 2.5px solid #484848;
   border-radius: 25px;
   margin-left: 2em;
   display: flex;

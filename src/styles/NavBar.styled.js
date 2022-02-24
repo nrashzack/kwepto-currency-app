@@ -7,23 +7,24 @@ export const NavBarLinksCointainerStyled = styled.div`
   margin: 0 auto;
   width: 55vw;
 
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
   span {
-    font-weight: bolder;
-    color: #000;
+    color: #fff;
+    font-weight: bold;
   }
 
   ul {
-    width: 50%;
+    width: ${(props) => (props.center ? "100%" : "50%")};
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-  }
-  li {
-    &:hover {
-      cursor: pointer;
-    }
+    justify-content: ${(props) =>
+      props.center ? "space-around" : "space-between"};
   }
 
   & .logo {

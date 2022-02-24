@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { device } from "../devices";
+import ReactPaginate from "react-paginate";
 
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
   align-items: center;
-  justify-self: end;
+  text-align: right;
   width: 50vw;
   padding: 1em;
 
@@ -23,7 +24,7 @@ export const CoinListStyled = styled.div`
   display: grid;
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
   align-items: center;
-  justify-self: end;
+  text-align: right;
   width: 50vw;
   height: 4vh;
   padding: 1em;
@@ -83,16 +84,15 @@ export const CoinInfoStyled = styled.div`
 export const FilterCoinListButtonStyled = styled.button`
   padding: 0.5em 1.5em;
   margin-right: 0.5em;
-  background-color: white;
-  border: 2px solid;
+  background-color: #484848;
   border-radius: 25px;
 
   span {
-    font-weight: bolder;
+    color: #fff;
   }
 `;
 
-export const PageNumberStyled = styled.div`
+export const PageNumberStyled = styled(ReactPaginate)`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -102,5 +102,8 @@ export const PageNumberStyled = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+  a {
+    margin: 0 0.5em;
   }
 `;

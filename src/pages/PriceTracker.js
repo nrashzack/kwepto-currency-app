@@ -52,8 +52,8 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
     <>
       <NowTrending />
       <HeaderStyled>
-        <h1>Crypto Price Tracker</h1>
-        <p>Get the latest crypto prices.</p>
+        <h1>CRYPTOCURRENCIES</h1>
+        <p>Today's Cryptocurrency Prices by Market Cap</p>
       </HeaderStyled>
       <FilterCoinList setCurrency={setCurrency} />
       <SectionStyled>
@@ -72,17 +72,14 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
             {displayCoins}
           </CenterEverythingStyled>
         </CardStyled>
-        <CenterEverythingStyled>
-          <SectionStyled>
-            <ReactPaginate
-              previousLabel={<RiArrowLeftSFill />}
-              nextLabel={<RiArrowRightSFill />}
-              pageCount={pageCount}
-              onPageChange={changePage}
-              className={<PageNumberStyled />}
-            />
-          </SectionStyled>
-        </CenterEverythingStyled>
+        <SectionStyled>
+          <PageNumberStyled
+            previousLabel={<RiArrowLeftSFill />}
+            nextLabel={<RiArrowRightSFill />}
+            pageCount={pageCount}
+            onPageChange={changePage}
+          />
+        </SectionStyled>
       </SectionStyled>
     </>
   );
