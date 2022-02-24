@@ -62,7 +62,6 @@ export const CardStyled = styled.div`
 export const SectionStyled = styled.div`
   margin: 1.5em auto;
   width: 55vw;
-  background-color: ${(props) => (props.white ? "#fff" : "#FFF6EA")};
 `;
 
 // Center Everyhthing

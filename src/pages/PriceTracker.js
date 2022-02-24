@@ -16,7 +16,6 @@ import NowTrending from "../components/NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
 import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 
 const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
@@ -51,12 +50,12 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
   return (
     <>
       <NowTrending />
-      <HeaderStyled>
-        <h1>CRYPTOCURRENCIES</h1>
-        <p>Today's Cryptocurrency Prices by Market Cap</p>
-      </HeaderStyled>
-      <FilterCoinList setCurrency={setCurrency} />
       <SectionStyled>
+        <HeaderStyled>
+          <h1>CRYPTOCURRENCIES</h1>
+          <p>Today's Cryptocurrency Prices by Market Cap</p>
+        </HeaderStyled>
+        <FilterCoinList setCurrency={setCurrency} />
         <CardStyled>
           <CenterEverythingStyled>
             <ListHeaderStyled>
