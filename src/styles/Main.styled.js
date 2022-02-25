@@ -28,12 +28,10 @@ export const HeaderStyled = styled.div`
   margin-bottom: 1em;
   h1 {
     font-size: 3em;
-    font-weight: 800;
     margin-bottom: 0.1em;
   }
   p {
     font-size: 1.5rem;
-    font-weight: lighter;
   }
 `;
 

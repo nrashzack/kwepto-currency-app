@@ -63,6 +63,7 @@ export const CoinInfoStyled = styled.div`
   flex-direction: row;
   align-items: center;
   justify-self: start;
+  text-align: start;
   img {
     width: 25px;
     height: auto;
@@ -92,6 +93,14 @@ export const FilterCoinListButtonStyled = styled.button`
   }
 `;
 
+export const CurrenctDropdownStyled = styled.select`
+  display: grid;
+  place-items: center;
+  border: 2.5px solid #484848;
+  border-radius: 25px;
+  padding: 0.5em;
+`;
+
 export const PageNumberStyled = styled(ReactPaginate)`
   display: flex;
   flex-direction: row;
@@ -105,5 +114,8 @@ export const PageNumberStyled = styled(ReactPaginate)`
   }
   a {
     margin: 0 0.5em;
+    &:active {
+      color: #f7a528;
+    }
   }
 `;

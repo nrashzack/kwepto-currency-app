@@ -22,16 +22,11 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
   const [pageNumber, setPageNumber] = useState(0);
   const coinsPerPage = 10;
   const pagesVisited = pageNumber * coinsPerPage;
+  const pageCount = Math.ceil(coins.length / coinsPerPage);
 
-  const displayCoins = coins
-    .slice(pagesVisited, pagesVisited + coinsPerPage)
-    .map((coin) => {
-      return (
-        <Link to={`/${coin.id}`}>
-          <CoinList key={coin.id} coin={coin} currency={currency} />
-        </Link>
-      );
-    });
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   if (loading) {
     return (
@@ -41,21 +36,17 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
     );
   }
 
-  const pageCount = Math.ceil(coins.length / coinsPerPage);
-
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
-
   return (
     <>
-      <NowTrending />
+      <div>
+        <NowTrending />
+      </div>
       <SectionStyled>
         <HeaderStyled>
           <h1>CRYPTOCURRENCIES</h1>
           <p>Today's Cryptocurrency Prices by Market Cap</p>
         </HeaderStyled>
-        <FilterCoinList setCurrency={setCurrency} />
+        <FilterCoinList currency={currency} setCurrency={setCurrency} />
         <CardStyled>
           <CenterEverythingStyled>
             <ListHeaderStyled>
@@ -68,7 +59,15 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
               <strong className="visibility">7d</strong>
               <strong>Market Cap</strong>
             </ListHeaderStyled>
-            {displayCoins}
+            {coins
+              .slice(pagesVisited, pagesVisited + coinsPerPage)
+              .map((coin) => {
+                return (
+                  <Link to={`/${coin.id}`}>
+                    <CoinList key={coin.id} coin={coin} currency={currency} />
+                  </Link>
+                );
+              })}
           </CenterEverythingStyled>
         </CardStyled>
         <SectionStyled>
@@ -77,6 +76,7 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
             nextLabel={<RiArrowRightSFill />}
             pageCount={pageCount}
             onPageChange={changePage}
+            pageRangeDisplayed="10"
           />
         </SectionStyled>
       </SectionStyled>
