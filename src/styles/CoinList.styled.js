@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "../devices";
 import ReactPaginate from "react-paginate";
+import Select from "react-select";
 
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
@@ -99,6 +100,11 @@ export const CurrenctDropdownStyled = styled.select`
   border: 2.5px solid #484848;
   border-radius: 25px;
   padding: 0.5em;
+`;
+
+export const ReactSelectStyled = styled(Select)`
+  width: 15%;
+  text-align: center;
 `;
 
 export const PageNumberStyled = styled(ReactPaginate)`

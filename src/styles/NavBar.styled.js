@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const NavBarLinksCointainerStyled = styled.div`
-  height: 100%;
   display: flex;
   align-items: center;
   margin: 0 auto;
-  width: 55vw;
+  max-width: 55vw;
+  height: 100%;
 
   p {
     font-size: 1rem;

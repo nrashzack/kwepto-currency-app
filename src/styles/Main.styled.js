@@ -1,24 +1,35 @@
 import styled from "styled-components";
 
-// Base Style for Cointainer
+// Base Style for App
 export const AppContainerStyled = styled.div`
-  display: grid;
-  grid-template-rows: 2.5vw auto;
+  /* display: grid;
+  grid-template-rows: 2.5vw auto; */
 `;
 
-// Base Style for Cointainer
+// Base Style for NavBar
 export const NavBarContainerStyled = styled.div`
   height: 2.5vw;
   background-color: ${(props) => (props.orange ? "#F7A528" : "#FFF")};
   padding: 0.5em 0em;
 `;
 
-// Base style for Container
+// Base style for MainSection
 export const MainContainerStyled = styled.div`
-  grid-row-start: 2;
-  place-content: center;
   margin: 0 auto;
   width: 55vw;
+`;
+
+// Base style for Footer
+export const FooterContainerStyled = styled.div`
+  display: grid;
+  place-items: center;
+  background-color: #484848;
+  height: 15vh;
+
+  p {
+    color: #fff;
+    font-size: 1rem;
+  }
 `;
 
 // For headers and big text

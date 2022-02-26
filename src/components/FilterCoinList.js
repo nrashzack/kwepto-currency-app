@@ -1,15 +1,14 @@
 import React from "react";
 import { SectionStyled } from "../styles/Main.styled";
-import { CurrenctDropdownStyled } from "../styles/CoinList.styled";
-import Select from "react-select";
+import { ReactSelectStyled } from "../styles/CoinList.styled";
 
 const FilterCoinList = ({ currency, setCurrency }) => {
   const currencyOptions = [
-    { value: "myr", label: "🇲🇾 MYR" },
-    { value: "usd", label: "🇺🇸 USD" },
-    { value: "eur", label: "🇪🇺 EUR" },
-    { value: "gbp", label: "🇬🇧 GBP" },
-    { value: "jpy", label: "🇯🇵 JPY" },
+    { value: "myr", label: "MYR" },
+    { value: "usd", label: "USD" },
+    { value: "eur", label: "EUR" },
+    { value: "gbp", label: "GBP" },
+    { value: "jpy", label: "JPY" },
   ];
 
   const pickCurrency = (currencyOptions) => {
@@ -17,10 +16,10 @@ const FilterCoinList = ({ currency, setCurrency }) => {
   };
   return (
     <SectionStyled>
-      <Select
+      <ReactSelectStyled
         options={currencyOptions}
         onChange={pickCurrency}
-        placeholder="Select Currency"
+        placeholder={currency.toUpperCase()}
       />
     </SectionStyled>
   );
