@@ -1,12 +1,14 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
-export const NavBarLinksCointainerStyled = styled.div`
+export const NavStyled = styled.nav`
+  background-color: ${(props) => (props.orange ? "#F7A528" : "#FFF")};
+`;
+
+export const NavLinksStyled = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
-  max-width: 55vw;
   height: 100%;
-
   p {
     font-size: 1rem;
     font-weight: 400;
@@ -28,6 +30,8 @@ export const NavBarLinksCointainerStyled = styled.div`
   }
 
   & .logo {
-    width: 5rem;
+    display: grid;
+    place-items: center;
+    width: 100px;
   }
 `;

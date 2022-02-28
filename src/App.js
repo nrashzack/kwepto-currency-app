@@ -5,9 +5,8 @@ import NavBar from "./components/NavBar";
 import PriceTracker from "./pages/PriceTracker";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
-import { MainContainerStyled } from "./styles/Main.styled";
+import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 import Footer from "./components/Footer";
-import Banner from "./components/Banner";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -31,9 +30,8 @@ const App = () => {
   }, [currency]);
 
   return (
-    <>
+    <AppContainerStyled>
       <NavBar />
-      <Banner />
       <MainContainerStyled>
         <Routes>
           <Route
@@ -52,7 +50,7 @@ const App = () => {
         </Routes>
       </MainContainerStyled>
       <Footer />
-    </>
+    </AppContainerStyled>
   );
 };
 

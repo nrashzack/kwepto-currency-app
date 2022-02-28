@@ -1,32 +1,43 @@
-import styled from "styled-components";
-import { device } from "../devices";
+import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
-  grid-template-columns: 10% 25% repeat(3, 15%) 20%;
+  grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 1fr;
   align-items: center;
   text-align: right;
   width: 50vw;
+  min-width: 768px;
   padding: 1em;
 
-  & .center {
+  .center {
     place-self: center;
   }
 
-  & .visibility {
+  .visibility {
     visibility: visible;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    grid-template-columns: 5%repeat (4, 20%);
+    .visibility {
+      visibility: hidden;
+    }
   }
 `;
 
 export const CoinListStyled = styled.div`
   display: grid;
-  grid-template-columns: 10% 25% repeat(3, 15%) 20%;
+  /* grid-template-columns: 10% 25% repeat(3, 15%) 20%; */
+  grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 1fr;
+  /* grid-template-columns: 5% repeat(5, 1fr); */
   align-items: center;
   text-align: right;
   width: 50vw;
+  min-width: 768px;
   height: 4vh;
   padding: 1em;
 
@@ -34,28 +45,36 @@ export const CoinListStyled = styled.div`
     color: #000;
   }
 
-  & .center {
+  .center {
     place-self: center;
   }
 
-  & .bold {
+  .bold {
     font-weight: bolder;
   }
 
-  & .coin-percent {
+  .coin-percent {
     color: #6ab04c;
   }
 
-  & .red {
+  .red {
     color: #eb4d4b;
   }
 
-  & .visibility {
+  .visibility {
     visibility: visible;
   }
 
   &:hover {
     background-color: #ecf0f1;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    grid-template-columns: 5%repeat (4, 20%);
+    .visibility {
+      visibility: hidden;
+    }
   }
 `;
 
@@ -66,7 +85,7 @@ export const CoinInfoStyled = styled.div`
   justify-self: start;
   text-align: start;
   img {
-    width: 25px;
+    width: 18px;
     height: auto;
     border-radius: 12.5px;
   }
@@ -76,10 +95,6 @@ export const CoinInfoStyled = styled.div`
 
   strong {
     padding: 0rem 0.5rem;
-  }
-
-  &:hover {
-    cursor: pointer;
   }
 `;
 
