@@ -1,10 +1,4 @@
-import styled from "styled-components";
-
-export const CardCointainerCenterStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
+import styled from "styled-components/macro";
 
 export const CardContainerStyled = styled.div`
   display: flex;
@@ -40,12 +34,46 @@ export const CardStyled = styled.div`
   p {
     padding-left: 0.5em;
   }
+
+  @media (max-width: 768px) {
+    img {
+      width: 18px;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    p {
+      font-size: 1.2em;
+    }
+  }
+
+  @media (max-width: 375px) {
+    padding: 1em 1.5em;
+    h1 {
+      font-size: 1.5em;
+    }
+    p {
+      font-size: 0.8em;
+    }
+  }
 `;
 
 export const RowStyled = styled.div`
   justify-content: center;
-  padding-top: 10px;
+  padding-top: 0.5em;
   align-items: center;
   font-size: 1.2rem;
   place-items: center;
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 1.2em;
+    }
+  }
+
+  @media (max-width: 375px) {
+    p {
+      font-size: 0.8em;
+    }
+  }
 `;

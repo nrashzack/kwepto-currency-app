@@ -6,6 +6,7 @@ import PriceTracker from "./pages/PriceTracker";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
 import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -29,28 +30,27 @@ const App = () => {
   }, [currency]);
 
   return (
-    <>
+    <AppContainerStyled>
       <NavBar />
-      <AppContainerStyled>
-        <MainContainerStyled>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <PriceTracker
-                  loading={loading}
-                  coins={coins}
-                  currency={currency}
-                  setCurrency={setCurrency}
-                />
-              }
-            />
-            <Route path=":coinid" element={<CoinPage />} />
-            <Route path="/exchange" element={<Exchange />} />
-          </Routes>
-        </MainContainerStyled>
-      </AppContainerStyled>
-    </>
+      <MainContainerStyled>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PriceTracker
+                loading={loading}
+                coins={coins}
+                currency={currency}
+                setCurrency={setCurrency}
+              />
+            }
+          />
+          <Route path=":coinid" element={<CoinPage />} />
+          <Route path="/exchange" element={<Exchange />} />
+        </Routes>
+      </MainContainerStyled>
+      <Footer />
+    </AppContainerStyled>
   );
 };
 
