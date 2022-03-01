@@ -70,6 +70,14 @@ export const CoinTableStyled = styled.table`
   .visibility {
     visibility: visible;
   }
+
+  strong {
+    font-size: clamp(12px, 1vw, 15px);
+  }
+
+  p {
+    font-size: clamp(10px, 1vw, 12px);
+  }
 `;
 
 export const ListHeaderStyled = styled.div`
