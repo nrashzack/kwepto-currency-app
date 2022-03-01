@@ -1,55 +1,37 @@
 import styled from "styled-components/macro";
 
 // Base Style for App
-export const AppContainerStyled = styled.div`
+export const AppStyled = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
 `;
 
 // Base Style for NavBar
-export const NavContainerStyled = styled.div`
+export const NavStyled = styled.nav`
   grid-row-start: 1;
+  background-color: red;
 `;
 
 // Base style for MainSection
-export const MainContainerStyled = styled.div`
+export const BodyStyled = styled.div`
   grid-row-start: 2;
+  margin: 2em 0;
 `;
 
 // Base style for Footer
-export const FooterContainerStyled = styled.div`
+export const FooterStyled = styled.footer`
   grid-row-start: 3;
 `;
 
 // For headers and big text
 export const HeaderStyled = styled.div`
   text-align: center;
-  width: 100%;
-  margin-bottom: 1em;
+  margin: 0.5em;
   h1 {
-    font-size: 3em;
-    margin-bottom: 0.1em;
+    font-size: clamp(30px, 3vw, 50px);
   }
   p {
-    font-size: 1.5em;
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2em;
-    }
-    p {
-      font-size: 1.2em;
-    }
-  }
-
-  @media (max-width: 375px) {
-    h1 {
-      font-size: 1.5em;
-    }
-    p {
-      font-size: 0.8em;
-    }
+    font-size: clamp(18px, 1.5vw, 25px);
   }
 `;
 
@@ -78,15 +60,11 @@ export const CardStyled = styled.div`
 `;
 
 // To give center text and items within a component
-export const SectionStyled = styled.div`
-  margin: 0em auto;
-  width: 55vw;
-  min-width: 768px;
-  padding: 1.5em 0em;
-
-  @media (max-width: 768px) {
-    width: 90vw;
-  }
+export const SectionStyled = styled.section`
+  margin-inline: auto;
+  max-width: 1028px;
+  min-width: 15vw;
+  margin-top: 2em;
 `;
 
 // Center Everyhthing

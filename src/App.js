@@ -1,11 +1,16 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Routes, Route } from "react-router-dom";
+import {
+  AppStyled,
+  NavStyled,
+  BodyStyled,
+  FooterStyled,
+} from "./styles/Main.styled";
 import NavBar from "./components/NavBar";
 import PriceTracker from "./pages/PriceTracker";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
-import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -30,9 +35,11 @@ const App = () => {
   }, [currency]);
 
   return (
-    <AppContainerStyled>
-      <NavBar />
-      <MainContainerStyled>
+    <AppStyled>
+      <NavStyled>
+        <NavBar />
+      </NavStyled>
+      <BodyStyled>
         <Routes>
           <Route
             path="/"
@@ -48,9 +55,11 @@ const App = () => {
           <Route path=":coinid" element={<CoinPage />} />
           <Route path="/exchange" element={<Exchange />} />
         </Routes>
-      </MainContainerStyled>
-      <Footer />
-    </AppContainerStyled>
+      </BodyStyled>
+      <FooterStyled>
+        <Footer />
+      </FooterStyled>
+    </AppStyled>
   );
 };
 

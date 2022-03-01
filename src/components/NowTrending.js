@@ -4,10 +4,12 @@ import {
   CenterEverythingStyled,
   HeaderStyled,
   SectionStyled,
-  WhiteBgStyled,
 } from "../styles/Main.styled";
 import TrendList from "./TrendList";
-import { CardContainerStyled } from "../styles/TrendList.styled";
+import {
+  TrendingCointainerStyled,
+  CardContainerStyled,
+} from "../styles/TrendList.styled";
 import Marquee from "react-easy-marquee";
 
 const NowTrending = () => {
@@ -26,23 +28,27 @@ const NowTrending = () => {
   }, []);
 
   return (
-    <WhiteBgStyled>
-      {/* <SectionStyled> */}
-      <HeaderStyled>
-        <h1>TRENDING COINS</h1>
-        <p>Trending coins that people are searching for</p>
-      </HeaderStyled>
-      <CenterEverythingStyled>
-        <Marquee duration={50000} height="20vh" width="55vw" reverse={true}>
+    <TrendingCointainerStyled>
+      <SectionStyled>
+        <HeaderStyled>
+          <h1>TRENDING COINS</h1>
+          <p>Trending coins that people are searching for</p>
+        </HeaderStyled>
+        <Marquee
+          duration={50000}
+          height="20vh"
+          width="100%"
+          reverse={true}
+          className="marquee"
+        >
           <CardContainerStyled>
             {trend.map((trends) => (
               <TrendList key={trends.coin_id} trends={trends} />
             ))}
           </CardContainerStyled>
         </Marquee>
-      </CenterEverythingStyled>
-      {/* </SectionStyled> */}
-    </WhiteBgStyled>
+      </SectionStyled>
+    </TrendingCointainerStyled>
   );
 };
 

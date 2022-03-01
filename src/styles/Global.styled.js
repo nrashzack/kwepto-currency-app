@@ -64,5 +64,12 @@ export const GlobalStyle = createGlobalStyle`
 
     li {
     list-style-type: none;
+    color: #484848;
+    }
+
+    img{
+        &:hover{
+            pointer-events:none;
+        }
     }
 `;

@@ -1,67 +1,48 @@
 import React from "react";
-import { NavStyled, NavLinksStyled } from "../styles/NavBar.styled";
+import {
+  NavContainerStyled,
+  NavLinksStyled,
+  CrytoMarketStyled,
+} from "../styles/NavBar.styled";
+import Logo from "../assets/LogoImg.svg";
 import { Link } from "react-router-dom";
-import { NavContainerStyled, SectionStyled } from "../styles/Main.styled";
-import IconLogo from "../iconComponents/IconLogo";
 
 const NavBar = () => {
   return (
     <NavContainerStyled>
-      <NavStyled>
-        <SectionStyled>
-          <NavLinksStyled>
-            <ul>
-              <li className="logo">
-                <IconLogo />
-              </li>
-              <li>
-                <Link to="/">
-                  <p>Currencies</p>
-                </Link>
-              </li>
-              <li>
-                <Link to="/exchange">
-                  <p>Exchanges</p>
-                </Link>
-              </li>
-              <li>
-                <p>News</p>
-              </li>
-              <li>
-                <p>Watch List</p>
-              </li>
-            </ul>
-          </NavLinksStyled>
-        </SectionStyled>
-      </NavStyled>
-      <NavStyled orange>
-        <NavLinksStyled center>
-          <SectionStyled>
-            <ul>
-              <li>
-                <p>
-                  Cryptos: <span>17,200</span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  Exchanges: <span>482</span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  Market Cap: <span>$1,707,443,014,522</span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  24h Vol: <span>$83,173,623,418</span>
-                </p>
-              </li>
-            </ul>
-          </SectionStyled>
-        </NavLinksStyled>
-      </NavStyled>
+      <NavLinksStyled>
+        <div className="logo">
+          <img src={Logo} alt="kwepto" />
+        </div>
+        <ul className="links">
+          <Link to="/">
+            <li>Currencies</li>
+          </Link>
+          <Link to="/exchange">
+            <li>Exchanges</li>
+          </Link>
+          <li>News</li>
+        </ul>
+        <ul className="responsive">
+          <li>Currencies</li>
+          <li>Exchanges</li>
+          <li>News</li>
+        </ul>
+      </NavLinksStyled>
+      <CrytoMarketStyled>
+        <li>
+          Cryptos : <span>17,200</span>
+        </li>
+        <li>
+          Exchanges : <span>462</span>
+        </li>
+        <li>
+          Market Cap: <span>$1,707,443,014,522</span>
+        </li>
+        <li>
+          24h Vol: <span>$83,173,623,418</span>
+        </li>
+      </CrytoMarketStyled>
     </NavContainerStyled>
   );
 };
