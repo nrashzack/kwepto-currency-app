@@ -1,27 +1,32 @@
 import styled from "styled-components";
 import { device } from "../devices";
+import ReactPaginate from "react-paginate";
 
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
-  /* grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr; */
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
-  place-items: end;
-  width: 55vw;
+  align-items: center;
+  text-align: right;
+  width: 50vw;
   padding: 1em;
 
   & .center {
     place-self: center;
   }
+
+  & .visibility {
+    visibility: visible;
+  }
 `;
 
 export const CoinListStyled = styled.div`
   display: grid;
-  /* grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 0.8fr; */
   grid-template-columns: 10% 25% repeat(3, 15%) 20%;
-  place-items: end;
   align-items: center;
-  width: 55vw;
+  text-align: right;
+  width: 50vw;
+  height: 4vh;
   padding: 1em;
 
   p {
@@ -51,12 +56,6 @@ export const CoinListStyled = styled.div`
   &:hover {
     background-color: #ecf0f1;
   }
-
-  @media screen ${device.tablet} {
-    & .visibility {
-      visibility: hidden;
-    }
-  }
 `;
 
 export const CoinInfoStyled = styled.div`
@@ -66,6 +65,7 @@ export const CoinInfoStyled = styled.div`
   justify-self: start;
   img {
     width: 25px;
+    height: auto;
     border-radius: 12.5px;
   }
   p {
@@ -81,61 +81,29 @@ export const CoinInfoStyled = styled.div`
   }
 `;
 
-export const FilterCoinListContainerStyled = styled.div`
-  /* margin: 1.5em 0; */
-  /* padding-left: 1rem; */
-`;
-
 export const FilterCoinListButtonStyled = styled.button`
   padding: 0.5em 1.5em;
   margin-right: 0.5em;
-  background-color: white;
-  border: 2px solid;
+  background-color: #484848;
   border-radius: 25px;
 
   span {
-    font-weight: bolder;
+    color: #fff;
   }
 `;
 
-export const PageNumberFooterStyled = styled.div`
+export const PageNumberStyled = styled(ReactPaginate)`
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-`;
-
-export const SearchBarStyled = styled.div`
-  & .search-bar {
+  li {
     display: flex;
-    border-radius: 50px;
-    width: 100%;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    font-size: 15px;
-
-    &:hover {
-      background: #eeeeee;
-      color: #74b9ff;
-    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
-`;
-
-export const SearchStyled = styled.div`
-  display: flex;
-  justify-content: end;
-`;
-
-export const FilterSearchContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  margin-bottom: 0.8rem;
-`;
-
-export const BannerStyled = styled.div`
-  background-color: black;
-  width: 100%;
+  a {
+    margin: 0 0.5em;
+  }
 `;
