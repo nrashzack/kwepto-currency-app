@@ -1,21 +1,26 @@
 import React from "react";
 import { SectionStyled } from "../styles/Main.styled";
-import { FilterCoinListButtonStyled } from "../styles/CoinList.styled";
-const FilterCoinList = ({ setCurrency }) => {
+import { ReactSelectStyled } from "../styles/CoinList.styled";
+
+const FilterCoinList = ({ currency, setCurrency }) => {
+  const currencyOptions = [
+    { value: "myr", label: "MYR" },
+    { value: "usd", label: "USD" },
+    { value: "eur", label: "EUR" },
+    { value: "gbp", label: "GBP" },
+    { value: "jpy", label: "JPY" },
+  ];
+
+  const pickCurrency = (currencyOptions) => {
+    setCurrency(currencyOptions.value);
+  };
   return (
     <SectionStyled>
-      <FilterCoinListButtonStyled onClick={() => setCurrency("myr")}>
-        <span>MYR</span>
-      </FilterCoinListButtonStyled>
-      <FilterCoinListButtonStyled onClick={() => setCurrency("usd")}>
-        <span>USD</span>
-      </FilterCoinListButtonStyled>
-      <FilterCoinListButtonStyled onClick={() => setCurrency("eur")}>
-        <span>EUR</span>
-      </FilterCoinListButtonStyled>
-      <FilterCoinListButtonStyled onClick={() => setCurrency("jpy")}>
-        <span>JPY</span>
-      </FilterCoinListButtonStyled>
+      <ReactSelectStyled
+        options={currencyOptions}
+        onChange={pickCurrency}
+        placeholder={currency.toUpperCase()}
+      />
     </SectionStyled>
   );
 };

@@ -6,6 +6,7 @@ import PriceTracker from "./pages/PriceTracker";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
 import { AppContainerStyled, MainContainerStyled } from "./styles/Main.styled";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -20,7 +21,7 @@ const App = () => {
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
-        setCoins(res.data);
+        setCoins(res.data.slice(0, 100));
         setLoading(false);
       })
       .catch((error) => {
@@ -29,28 +30,27 @@ const App = () => {
   }, [currency]);
 
   return (
-    <>
+    <AppContainerStyled>
       <NavBar />
-      <AppContainerStyled>
-        <MainContainerStyled>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <PriceTracker
-                  loading={loading}
-                  coins={coins}
-                  currency={currency}
-                  setCurrency={setCurrency}
-                />
-              }
-            />
-            <Route path=":coinid" element={<CoinPage />} />
-            <Route path="/exchange" element={<Exchange />} />
-          </Routes>
-        </MainContainerStyled>
-      </AppContainerStyled>
-    </>
+      <MainContainerStyled>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PriceTracker
+                loading={loading}
+                coins={coins}
+                currency={currency}
+                setCurrency={setCurrency}
+              />
+            }
+          />
+          <Route path=":coinid" element={<CoinPage />} />
+          <Route path="/exchange" element={<Exchange />} />
+        </Routes>
+      </MainContainerStyled>
+      <Footer />
+    </AppContainerStyled>
   );
 };
 
