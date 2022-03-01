@@ -25,7 +25,12 @@ export const GlobalStyle = createGlobalStyle`
     ul,
     img, 
     div, 
-    nav {
+    nav, 
+    table, 
+    thead, 
+    tbody, 
+    tr, 
+    td {
         padding:0;
         margin:0;
     }

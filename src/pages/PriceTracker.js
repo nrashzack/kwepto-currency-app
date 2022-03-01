@@ -5,11 +5,7 @@ import {
   LoadingScreenStyled,
   SectionStyled,
 } from "../styles/Main.styled";
-import {
-  ListHeaderStyled,
-  CoinInfoStyled,
-  PageNumberStyled,
-} from "../styles/CoinList.styled";
+import { CoinTableStyled, PageNumberStyled } from "../styles/CoinList.styled";
 import NowTrending from "../components/NowTrending";
 import CoinList from "../components/CoinList";
 import FilterCoinList from "../components/FilterCoinList";
@@ -46,25 +42,39 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
         </HeaderStyled>
         <FilterCoinList currency={currency} setCurrency={setCurrency} />
         <CardStyled>
-          <ListHeaderStyled>
-            <strong className="center">#</strong>
-            <CoinInfoStyled>
-              <strong>Name</strong>
-            </CoinInfoStyled>
-            <strong>Price</strong>
-            <strong>24hr</strong>
-            <strong className="visibility">7d</strong>
-            <strong>Market Cap</strong>
-          </ListHeaderStyled>
-          {coins
-            .slice(pagesVisited, pagesVisited + coinsPerPage)
-            .map((coin) => {
-              return (
-                <Link to={`/${coin.id}`}>
-                  <CoinList key={coin.id} coin={coin} currency={currency} />
-                </Link>
-              );
-            })}
+          <CoinTableStyled>
+            <thead>
+              <tr>
+                <th className="rank">
+                  <strong>#</strong>
+                </th>
+                <th className="coin-name">
+                  <strong>Name</strong>
+                </th>
+                <th>
+                  <strong>Price</strong>
+                </th>
+                <th>
+                  <strong>24hr</strong>
+                </th>
+                <th>
+                  <strong className="visibility">7d</strong>
+                </th>
+                <th>
+                  <strong>Market Cap</strong>
+                </th>
+              </tr>
+            </thead>
+            {coins
+              .slice(pagesVisited, pagesVisited + coinsPerPage)
+              .map((coin) => {
+                return (
+                  <Link to={`/${coin.id}`}>
+                    <CoinList key={coin.id} coin={coin} currency={currency} />
+                  </Link>
+                );
+              })}
+          </CoinTableStyled>
         </CardStyled>
         <SectionStyled>
           <PageNumberStyled

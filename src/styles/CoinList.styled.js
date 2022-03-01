@@ -2,13 +2,83 @@ import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 
+export const CoinTableStyled = styled.table`
+  font-size: clamp(10px, 1.5vw);
+  width: 100%;
+  min-width: 375px;
+  th,
+  td {
+    padding: 0.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  th {
+    border-bottom: solid 2px #dfe6e9;
+    padding: 1em;
+  }
+
+  tr {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em;
+  }
+
+  tbody > tr {
+    &:hover {
+      background-color: #ecf0f1;
+    }
+  }
+
+  .rank {
+    width: 10%;
+    display: grid;
+    place-items: center;
+  }
+
+  .coin-name {
+    min-width: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5em;
+
+    img {
+      width: 25px;
+      height: auto;
+      border-radius: 25px;
+    }
+  }
+
+  .bold {
+    font-weight: bolder;
+  }
+
+  .coin-percent {
+    color: #6ab04c;
+  }
+
+  .red {
+    color: #eb4d4b;
+  }
+
+  .visibility {
+    visibility: visible;
+  }
+`;
+
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
   grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 1fr;
   align-items: center;
   text-align: right;
-  width: 50vw;
+  width: 100%;
   min-width: 768px;
   padding: 1em;
 
@@ -31,12 +101,10 @@ export const ListHeaderStyled = styled.div`
 
 export const CoinListStyled = styled.div`
   display: grid;
-  /* grid-template-columns: 10% 25% repeat(3, 15%) 20%; */
   grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 1fr;
-  /* grid-template-columns: 5% repeat(5, 1fr); */
   align-items: center;
   text-align: right;
-  width: 50vw;
+  width: 100%;
   min-width: 768px;
   height: 4vh;
   padding: 1em;
@@ -98,28 +166,11 @@ export const CoinInfoStyled = styled.div`
   }
 `;
 
-export const FilterCoinListButtonStyled = styled.button`
-  padding: 0.5em 1.5em;
-  margin-right: 0.5em;
-  background-color: #484848;
-  border-radius: 25px;
-
-  span {
-    color: #fff;
-  }
-`;
-
-export const CurrenctDropdownStyled = styled.select`
-  display: grid;
-  place-items: center;
-  border: 2.5px solid #484848;
-  border-radius: 25px;
-  padding: 0.5em;
-`;
-
 export const ReactSelectStyled = styled(Select)`
   width: 15%;
   text-align: center;
+  margin-bottom: 1em;
+  font-weight: 700;
 `;
 
 export const PageNumberStyled = styled(ReactPaginate)`
