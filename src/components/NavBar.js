@@ -25,7 +25,9 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <p>News</p>
+                <Link to="/news">
+                  <p>News</p>
+                </Link>
               </li>
               <li>
                 <p>Watch List</p>
