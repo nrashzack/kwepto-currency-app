@@ -7,7 +7,7 @@ import {
 import Logo from "../assets/LogoImg.svg";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ data, currency }) => {
   return (
     <NavContainerStyled>
       <NavLinksStyled>
@@ -31,13 +31,14 @@ const NavBar = () => {
       </NavLinksStyled>
       <CrytoMarketStyled>
         <li>
-          Cryptos : <span>17,200</span>
+          Cryptos : <span>{data.active_cryptocurrencies}</span>
         </li>
         <li>
-          Exchanges : <span>462</span>
+          Markets : <span>{data.markets}</span>
         </li>
         <li>
           Market Cap: <span>$1,707,443,014,522</span>
+          {/* Market Cap: <span>{data.total_market_cap[currency]}</span> */}
         </li>
         <li>
           24h Vol: <span>$83,173,623,418</span>

@@ -27,13 +27,15 @@ const CoinList = ({ coin, currency }) => {
           </td>
           <td className="coin-name">
             <img src={coin.image} alt={coin.name} />
-            <strong>{coin.name}</strong>
-            <p>{coin.symbol.toUpperCase()}</p>
+            <div>
+              <strong>{coin.name}</strong>
+              <p>{coin.symbol.toUpperCase()}</p>
+            </div>
           </td>
           <td>
             <p>{formatCurrency(coin.current_price)}</p>
           </td>
-          <td>
+          <td className="percentage">
             {coin.price_change_percentage_24h_in_currency < 0 ? (
               <p className="coin-percent bold red ">
                 {coin.price_change_percentage_24h_in_currency.toFixed(2)}%
@@ -44,7 +46,7 @@ const CoinList = ({ coin, currency }) => {
               </p>
             )}
           </td>
-          <td>
+          <td className="percentage visible">
             {coin.price_change_percentage_7d_in_currency < 0 ? (
               <p className="coin-percent bold red visibility">
                 {coin.price_change_percentage_7d_in_currency.toFixed(2)}%

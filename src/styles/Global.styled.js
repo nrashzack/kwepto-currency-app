@@ -73,8 +73,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     img{
-        &:hover{
             pointer-events:none;
-        }
     }
 `;

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  CenterEverythingStyled,
-  HeaderStyled,
-  SectionStyled,
-} from "../styles/Main.styled";
+import { HeaderStyled, SectionStyled } from "../styles/Main.styled";
 import TrendList from "./TrendList";
 import {
   TrendingCointainerStyled,
@@ -12,7 +8,7 @@ import {
 } from "../styles/TrendList.styled";
 import Marquee from "react-easy-marquee";
 
-const NowTrending = () => {
+const Trending = ({ rate, currency }) => {
   const [trend, setTrend] = useState([]);
 
   // Get trending coins
@@ -43,7 +39,12 @@ const NowTrending = () => {
         >
           <CardContainerStyled>
             {trend.map((trends) => (
-              <TrendList key={trends.coin_id} trends={trends} />
+              <TrendList
+                key={trends.coin_id}
+                trends={trends}
+                currency={currency}
+                rate={rate}
+              />
             ))}
           </CardContainerStyled>
         </Marquee>
@@ -52,4 +53,4 @@ const NowTrending = () => {
   );
 };
 
-export default NowTrending;
+export default Trending;

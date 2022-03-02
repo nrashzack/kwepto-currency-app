@@ -21,7 +21,7 @@ export const CoinTableStyled = styled.table`
   }
 
   tr {
-    width: auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -53,6 +53,24 @@ export const CoinTableStyled = styled.table`
       height: auto;
       border-radius: 25px;
     }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 0.25em;
+    }
+
+    @media (max-width: 768px) {
+      div {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .percentage {
+    width: 50%;
   }
 
   .bold {
@@ -67,16 +85,21 @@ export const CoinTableStyled = styled.table`
     color: #eb4d4b;
   }
 
-  .visibility {
-    visibility: visible;
-  }
-
   strong {
     font-size: clamp(12px, 1vw, 15px);
   }
 
   p {
     font-size: clamp(10px, 1vw, 12px);
+  }
+
+  @media (max-width: 600px) {
+    th {
+      justify-content: flex-start;
+    }
+    .visible {
+      display: none;
+    }
   }
 `;
 
@@ -104,73 +127,6 @@ export const ListHeaderStyled = styled.div`
     .visibility {
       visibility: hidden;
     }
-  }
-`;
-
-export const CoinListStyled = styled.div`
-  display: grid;
-  grid-template-columns: 0.25fr 1fr repeat(3, 0.5fr) 1fr;
-  align-items: center;
-  text-align: right;
-  width: 100%;
-  min-width: 768px;
-  height: 4vh;
-  padding: 1em;
-
-  p {
-    color: #000;
-  }
-
-  .center {
-    place-self: center;
-  }
-
-  .bold {
-    font-weight: bolder;
-  }
-
-  .coin-percent {
-    color: #6ab04c;
-  }
-
-  .red {
-    color: #eb4d4b;
-  }
-
-  .visibility {
-    visibility: visible;
-  }
-
-  &:hover {
-    background-color: #ecf0f1;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    grid-template-columns: 5%repeat (4, 20%);
-    .visibility {
-      visibility: hidden;
-    }
-  }
-`;
-
-export const CoinInfoStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-self: start;
-  text-align: start;
-  img {
-    width: 18px;
-    height: auto;
-    border-radius: 12.5px;
-  }
-  p {
-    color: #636e72;
-  }
-
-  strong {
-    padding: 0rem 0.5rem;
   }
 `;
 

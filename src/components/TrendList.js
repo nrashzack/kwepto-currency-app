@@ -1,7 +1,7 @@
 import React from "react";
-import { CardStyled, RowStyled } from "../styles/TrendList.styled";
+import { CardStyled } from "../styles/TrendList.styled";
 
-const TrendList = ({ trends }) => {
+const TrendList = ({ rate, trends }) => {
   return (
     <CardStyled>
       <div className="coin-name">
@@ -10,7 +10,10 @@ const TrendList = ({ trends }) => {
         <p>{trends.item.symbol.toUpperCase()}</p>
       </div>
       <div className="coin-price">
-        <strong>{trends.item.price_btc.toFixed(15)}</strong>
+        <strong>
+          {rate.btc.unit}
+          {trends.item.price_btc.toFixed(10)}
+        </strong>
       </div>
     </CardStyled>
   );

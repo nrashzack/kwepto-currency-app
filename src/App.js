@@ -15,6 +15,8 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
+  const [data, setData] = useState({});
+  const [rate, setRate] = useState([]);
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
 
@@ -32,12 +34,31 @@ const App = () => {
       .catch((error) => {
         console.log(error);
       });
+
+    axios
+      .get(`https://api.coingecko.com/api/v3/exchange_rates`)
+      .then((res) => {
+        setRate(res.data.rates);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(`https://api.coingecko.com/api/v3/global`)
+      .then((res) => {
+        setData(res.data.data);
+        // console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [currency]);
 
   return (
     <AppStyled>
       <NavStyled>
-        <NavBar />
+        <NavBar data={data} currency={currency} />
       </NavStyled>
       <BodyStyled>
         <Routes>
@@ -48,6 +69,7 @@ const App = () => {
                 loading={loading}
                 coins={coins}
                 currency={currency}
+                rate={rate}
                 setCurrency={setCurrency}
               />
             }
