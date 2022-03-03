@@ -49,7 +49,7 @@ const App = () => {
           <Route path="/exchange" element={<Exchange />} />
         </Routes>
       </MainContainerStyled>
-      <Footer />
+      {/* <Footer /> */}
     </AppContainerStyled>
   );
 };
