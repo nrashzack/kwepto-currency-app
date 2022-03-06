@@ -27,7 +27,6 @@ const NowTrending = () => {
 
   return (
     <WhiteBgStyled>
-      {/* <SectionStyled> */}
       <HeaderStyled>
         <h1>TRENDING COINS</h1>
         <p>Trending coins that people are searching for</p>
@@ -41,7 +40,6 @@ const NowTrending = () => {
           </CardContainerStyled>
         </Marquee>
       </CenterEverythingStyled>
-      {/* </SectionStyled> */}
     </WhiteBgStyled>
   );
 };
