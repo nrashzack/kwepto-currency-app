@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import TrendingImg from "../assets/TrendingImg.svg";
 import { HeaderStyled, SectionStyled } from "../styles/Main.styled";
 import TrendList from "./TrendList";
 import {
@@ -7,8 +8,9 @@ import {
   CardContainerStyled,
 } from "../styles/TrendList.styled";
 import Marquee from "react-easy-marquee";
+import { Link } from "react-router-dom";
 
-const Trending = ({ rate, currency }) => {
+const Trending = ({ currency }) => {
   const [trend, setTrend] = useState([]);
 
   // Get trending coins
@@ -26,28 +28,37 @@ const Trending = ({ rate, currency }) => {
   return (
     <TrendingCointainerStyled>
       <SectionStyled>
-        <HeaderStyled>
-          <h1>TRENDING COINS</h1>
-          <p>Trending coins that people are searching for</p>
-        </HeaderStyled>
-        <Marquee
-          duration={50000}
-          height="20vh"
-          width="100%"
-          reverse={true}
-          className="marquee"
-        >
-          <CardContainerStyled>
-            {trend.map((trends) => (
-              <TrendList
-                key={trends.coin_id}
-                trends={trends}
-                currency={currency}
-                rate={rate}
-              />
-            ))}
-          </CardContainerStyled>
-        </Marquee>
+        <div className="flex">
+          <div className="trending-img">
+            <img src={TrendingImg} alt="Trending Mascot" />
+          </div>
+          <div className="trending-content">
+            <HeaderStyled>
+              <h1>TRENDING COINS</h1>
+              <p>Trending coins that people are searching for</p>
+            </HeaderStyled>
+            <Marquee
+              duration={45000}
+              height="25vh"
+              width="100%"
+              reverse={true}
+              pauseOnHover={true}
+              className="marquee"
+            >
+              <CardContainerStyled>
+                {trend.map((trends) => (
+                  <Link to={`/${trends.item.slug}`}>
+                    <TrendList
+                      key={trends.item.symbol}
+                      trends={trends}
+                      currency={currency}
+                    />
+                  </Link>
+                ))}
+              </CardContainerStyled>
+            </Marquee>
+          </div>
+        </div>
       </SectionStyled>
     </TrendingCointainerStyled>
   );

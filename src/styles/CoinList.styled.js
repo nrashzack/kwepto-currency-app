@@ -28,6 +28,13 @@ export const CoinTableStyled = styled.table`
     padding: 0.5em;
   }
 
+  tfoot {
+    padding: 1.5em;
+  }
+  tfoot > tr {
+    justify-content: center;
+  }
+
   tbody > tr {
     &:hover {
       background-color: #ecf0f1;
@@ -40,7 +47,7 @@ export const CoinTableStyled = styled.table`
     place-items: center;
   }
 
-  .coin-name {
+  .coin-info {
     min-width: 20px;
     display: flex;
     flex-direction: row;
@@ -54,23 +61,24 @@ export const CoinTableStyled = styled.table`
       border-radius: 25px;
     }
 
-    div {
+    .coin-name {
       display: flex;
       flex-direction: row;
-      align-items: flex-end;
+      align-items: center;
       gap: 0.25em;
     }
 
     @media (max-width: 768px) {
-      div {
+      .coin-name {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0em;
       }
     }
   }
 
   .percentage {
-    width: 50%;
+    width: 45%;
   }
 
   .bold {
@@ -83,6 +91,10 @@ export const CoinTableStyled = styled.table`
 
   .red {
     color: #eb4d4b;
+  }
+
+  .hide-fs {
+    display: none;
   }
 
   strong {
@@ -99,6 +111,14 @@ export const CoinTableStyled = styled.table`
     }
     .visible {
       display: none;
+    }
+
+    .hide-mobile {
+      display: none;
+    }
+
+    .hide-fs {
+      display: block;
     }
   }
 `;
@@ -131,7 +151,8 @@ export const ListHeaderStyled = styled.div`
 `;
 
 export const ReactSelectStyled = styled(Select)`
-  width: 15%;
+  max-width: 10vw;
+  min-width: 150px;
   text-align: center;
   margin-bottom: 1em;
   font-weight: 700;

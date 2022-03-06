@@ -4,16 +4,15 @@ import { CardStyled } from "../styles/TrendList.styled";
 const TrendList = ({ rate, trends }) => {
   return (
     <CardStyled>
-      <div className="coin-name">
+      <div className="coin-info">
         <img src={trends.item.small} alt={trends.item.name} />
-        {/* <strong>{trends.item.name}</strong> */}
-        <p>{trends.item.symbol.toUpperCase()}</p>
+        <div className="coin-name">
+          <strong>{trends.item.name}</strong>
+          <p>{trends.item.symbol.toUpperCase()}</p>
+        </div>
       </div>
       <div className="coin-price">
-        <strong>
-          {rate.btc.unit}
-          {trends.item.price_btc.toFixed(10)}
-        </strong>
+        <strong>BTC{trends.item.price_btc.toFixed(10)}</strong>
       </div>
     </CardStyled>
   );

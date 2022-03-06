@@ -16,11 +16,10 @@ import Footer from "./components/Footer";
 const App = () => {
   const [coins, setCoins] = useState([]);
   const [data, setData] = useState({});
-  const [rate, setRate] = useState([]);
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
 
-  // Get all coins
+  // Get Data
   useEffect(() => {
     setLoading(true);
     axios
@@ -28,17 +27,8 @@ const App = () => {
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=250&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
       )
       .then((res) => {
-        setCoins(res.data.slice(0, 100));
+        setCoins(res.data.slice(0, 150));
         setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    axios
-      .get(`https://api.coingecko.com/api/v3/exchange_rates`)
-      .then((res) => {
-        setRate(res.data.rates);
       })
       .catch((error) => {
         console.log(error);
@@ -48,7 +38,6 @@ const App = () => {
       .get(`https://api.coingecko.com/api/v3/global`)
       .then((res) => {
         setData(res.data.data);
-        // console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -69,7 +58,6 @@ const App = () => {
                 loading={loading}
                 coins={coins}
                 currency={currency}
-                rate={rate}
                 setCurrency={setCurrency}
               />
             }

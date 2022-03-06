@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavContainerStyled,
   NavLinksStyled,
@@ -6,8 +6,15 @@ import {
 } from "../styles/NavBar.styled";
 import Logo from "../assets/LogoImg.svg";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { FaTimes } from "react-icons/fa";
 
 const NavBar = ({ data, currency }) => {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
   return (
     <NavContainerStyled>
       <NavLinksStyled>
@@ -22,12 +29,25 @@ const NavBar = ({ data, currency }) => {
             <li>Exchanges</li>
           </Link>
           <li>News</li>
+          <li>Watch List</li>
         </ul>
-        <ul className="responsive">
-          <li>Currencies</li>
-          <li>Exchanges</li>
-          <li>News</li>
-        </ul>
+        <div className="responsive">
+          <button className="responsie burger">
+            <GiHamburgerMenu onClick={toggleNav} />
+          </button>
+          {toggleMenu && (
+            <ul>
+              <Link to="/">
+                <li>Currencies</li>
+              </Link>
+              <Link to="/exchange">
+                <li>Exchanges</li>
+              </Link>
+              <li>News</li>
+              <li>Watch List</li>
+            </ul>
+          )}
+        </div>
       </NavLinksStyled>
       <CrytoMarketStyled>
         <li>

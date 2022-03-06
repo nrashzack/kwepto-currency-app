@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 export const NavContainerStyled = styled.nav`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   li {
     font-size: clamp(12px, 5vw, 18px);
@@ -14,10 +15,10 @@ export const NavLinksStyled = styled.div`
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
-  padding: 0.85em;
+  padding: 1em;
 
   .logo {
-    max-width: 5vw;
+    max-width: 5.5vw;
     min-width: 100px;
     margin-right: 1em;
   }
@@ -38,24 +39,56 @@ export const NavLinksStyled = styled.div`
   }
 
   ul {
-    gap: 1em;
+    gap: 1.5em;
   }
 
-  @media (max-width: 376px) {
+  li {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 800px) {
+    padding: 0;
     justify-content: space-between;
+    align-items: center;
+    .logo {
+      margin: 2rem;
+    }
     .links {
       display: none;
     }
     .responsive {
       display: block;
       margin: 2rem;
-    }
-  }
+      z-index: 1;
 
-  @media (max-width: 768px) {
-    padding: 0;
-    .logo {
-      margin: 2rem;
+      .burger {
+        font-size: 45px;
+        color: #484848;
+      }
+
+      ul {
+        margin: 0;
+        position: absolute;
+        top: 120px;
+        right: 0;
+        width: 100%;
+        height: 90vh;
+        background-color: #484848;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+      li {
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 800;
+        padding: 0 2em;
+
+        &:hover {
+          color: #f7a528;
+        }
+      }
     }
   }
 `;

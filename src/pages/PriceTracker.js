@@ -13,9 +13,9 @@ import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 
-const PriceTracker = ({ loading, coins, currency, rate, setCurrency }) => {
+const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
   const [pageNumber, setPageNumber] = useState(0);
-  const coinsPerPage = 10;
+  const coinsPerPage = 15;
   const pagesVisited = pageNumber * coinsPerPage;
   const pageCount = Math.ceil(coins.length / coinsPerPage);
 
@@ -30,21 +30,18 @@ const PriceTracker = ({ loading, coins, currency, rate, setCurrency }) => {
       </LoadingScreenStyled>
     );
   }
-
   return (
     <>
       <Banner />
-      <Trending rate={rate} />
+      <Trending />
       <SectionStyled>
         <HeaderStyled>
           <h1>CRYPTOCURRENCIES</h1>
           <p>Today's Cryptocurrency Prices by Market Cap</p>
         </HeaderStyled>
-        <FilterCoinList
-          rate={rate}
-          currency={currency}
-          setCurrency={setCurrency}
-        />
+        <div>
+          <FilterCoinList currency={currency} setCurrency={setCurrency} />
+        </div>
         <CardStyled>
           <CoinTableStyled>
             <thead>
@@ -58,6 +55,9 @@ const PriceTracker = ({ loading, coins, currency, rate, setCurrency }) => {
                 <th>
                   <strong>Price</strong>
                 </th>
+                <th className="percentage visible">
+                  <strong>1hr</strong>
+                </th>
                 <th className="percentage">
                   <strong>24hr</strong>
                 </th>
@@ -65,7 +65,8 @@ const PriceTracker = ({ loading, coins, currency, rate, setCurrency }) => {
                   <strong>7d</strong>
                 </th>
                 <th>
-                  <strong>Market Cap</strong>
+                  <strong className="hide-mobile">Market Cap</strong>
+                  <strong className="hide-fs">Mkt Cap</strong>
                 </th>
               </tr>
             </thead>
@@ -78,9 +79,20 @@ const PriceTracker = ({ loading, coins, currency, rate, setCurrency }) => {
                   </Link>
                 );
               })}
+            <tfoot>
+              <tr>
+                <PageNumberStyled
+                  previousLabel={<RiArrowLeftSFill />}
+                  nextLabel={<RiArrowRightSFill />}
+                  pageCount={pageCount}
+                  onPageChange={changePage}
+                  pageRangeDisplayed="10"
+                />
+              </tr>
+            </tfoot>
           </CoinTableStyled>
         </CardStyled>
-        <SectionStyled>
+        {/* <SectionStyled>
           <PageNumberStyled
             previousLabel={<RiArrowLeftSFill />}
             nextLabel={<RiArrowRightSFill />}
@@ -88,7 +100,7 @@ const PriceTracker = ({ loading, coins, currency, rate, setCurrency }) => {
             onPageChange={changePage}
             pageRangeDisplayed="10"
           />
-        </SectionStyled>
+        </SectionStyled> */}
       </SectionStyled>
     </>
   );
