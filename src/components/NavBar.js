@@ -7,9 +7,9 @@ import {
 import Logo from "../assets/LogoImg.svg";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaTimes } from "react-icons/fa";
+import FilterCoinList from "./FilterCoinList";
 
-const NavBar = ({ data, currency }) => {
+const NavBar = ({ data, currency, setCurrency }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggleNav = () => {
@@ -30,6 +30,9 @@ const NavBar = ({ data, currency }) => {
           </Link>
           <li>News</li>
           <li>Watch List</li>
+          <div className="end">
+            <FilterCoinList currency={currency} setCurrency={setCurrency} />
+          </div>
         </ul>
         <div className="responsive">
           <button className="responsie burger">
@@ -51,17 +54,25 @@ const NavBar = ({ data, currency }) => {
       </NavLinksStyled>
       <CrytoMarketStyled>
         <li>
-          Cryptos : <span>{data.active_cryptocurrencies}</span>
+          <p>
+            Cryptos : <span>{data.active_cryptocurrencies}</span>
+          </p>
         </li>
         <li>
-          Markets : <span>{data.markets}</span>
+          <p>
+            Markets : <span>{data.markets}</span>
+          </p>
         </li>
         <li>
-          Market Cap: <span>$1,707,443,014,522</span>
-          {/* Market Cap: <span>{data.total_market_cap[currency]}</span> */}
+          <p>
+            Market Cap: <span>$1,707,443,014,522</span>
+            {/* Market Cap: <span>{data.total_market_cap.usd}</span> */}
+          </p>
         </li>
         <li>
-          24h Vol: <span>$83,173,623,418</span>
+          <p>
+            24h Vol: <span>$83,173,623,418</span>
+          </p>
         </li>
       </CrytoMarketStyled>
     </NavContainerStyled>

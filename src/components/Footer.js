@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <FooterContainerStyled>
       <div className="footer-img">
-        <img src={FooterImg} alt="Footer Image" />
+        <img src={FooterImg} alt="Footer" />
       </div>
       <div className="footer-txt">
         <p>© 2022 Kwepto. All rights reserved</p>

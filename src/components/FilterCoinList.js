@@ -1,5 +1,4 @@
 import React from "react";
-import { SectionStyled } from "../styles/Main.styled";
 import { ReactSelectStyled } from "../styles/CoinList.styled";
 
 const FilterCoinList = ({ currency, setCurrency }) => {
@@ -15,13 +14,13 @@ const FilterCoinList = ({ currency, setCurrency }) => {
     setCurrency(currencyOptions.value);
   };
   return (
-    <SectionStyled>
+    <>
       <ReactSelectStyled
         options={currencyOptions}
         onChange={pickCurrency}
         placeholder={currency.toUpperCase()}
       />
-    </SectionStyled>
+    </>
   );
 };
 

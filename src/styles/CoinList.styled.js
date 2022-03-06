@@ -152,10 +152,9 @@ export const ListHeaderStyled = styled.div`
 
 export const ReactSelectStyled = styled(Select)`
   max-width: 10vw;
-  min-width: 150px;
+  min-width: 100px;
   text-align: center;
-  margin-bottom: 1em;
-  font-weight: 700;
+  font-weight: 550;
 `;
 
 export const PageNumberStyled = styled(ReactPaginate)`

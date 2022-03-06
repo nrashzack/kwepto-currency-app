@@ -47,7 +47,7 @@ const App = () => {
   return (
     <AppStyled>
       <NavStyled>
-        <NavBar data={data} currency={currency} />
+        <NavBar data={data} currency={currency} setCurrency={setCurrency} />
       </NavStyled>
       <BodyStyled>
         <Routes>

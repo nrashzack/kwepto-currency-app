@@ -8,7 +8,7 @@ export const BannerContainer = styled.div`
   margin-bottom: 2em;
 
   .banner-img {
-    max-width: 20vw;
+    max-width: 18vw;
     min-width: 325px;
 
     img {
@@ -21,7 +21,7 @@ export const BannerContainer = styled.div`
     width: 45%;
     line-height: 1;
     h1 {
-      font-size: clamp(75px, 6vw, 150px);
+      font-size: clamp(75px, 6vw, 125px);
       font-weight: 800;
     }
     p {

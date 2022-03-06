@@ -8,12 +8,11 @@ import {
 import { CoinTableStyled, PageNumberStyled } from "../styles/CoinList.styled";
 import Trending from "../components/Trending";
 import CoinList from "../components/CoinList";
-import FilterCoinList from "../components/FilterCoinList";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 
-const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
+const PriceTracker = ({ loading, coins, currency }) => {
   const [pageNumber, setPageNumber] = useState(0);
   const coinsPerPage = 15;
   const pagesVisited = pageNumber * coinsPerPage;
@@ -39,9 +38,6 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
           <h1>CRYPTOCURRENCIES</h1>
           <p>Today's Cryptocurrency Prices by Market Cap</p>
         </HeaderStyled>
-        <div>
-          <FilterCoinList currency={currency} setCurrency={setCurrency} />
-        </div>
         <CardStyled>
           <CoinTableStyled>
             <thead>
@@ -75,7 +71,11 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
               .map((coin) => {
                 return (
                   <Link to={`/${coin.id}`}>
-                    <CoinList key={coin.id} coin={coin} currency={currency} />
+                    <CoinList
+                      key={coin.market_cap_rank}
+                      coin={coin}
+                      currency={currency}
+                    />
                   </Link>
                 );
               })}
@@ -92,15 +92,6 @@ const PriceTracker = ({ loading, coins, currency, setCurrency }) => {
             </tfoot>
           </CoinTableStyled>
         </CardStyled>
-        {/* <SectionStyled>
-          <PageNumberStyled
-            previousLabel={<RiArrowLeftSFill />}
-            nextLabel={<RiArrowRightSFill />}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            pageRangeDisplayed="10"
-          />
-        </SectionStyled> */}
       </SectionStyled>
     </>
   );

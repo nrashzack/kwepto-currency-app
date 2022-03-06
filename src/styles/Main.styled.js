@@ -27,7 +27,7 @@ export const FooterStyled = styled.footer`
 // For headers and big text
 export const HeaderStyled = styled.div`
   text-align: center;
-  margin: 0.5em;
+  margin-bottom: 1.5em;
   line-height: 1.2;
   h1 {
     font-size: clamp(35px, 5.5vw, 50px);

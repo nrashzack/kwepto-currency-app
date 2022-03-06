@@ -32,6 +32,13 @@ export const NavLinksStyled = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
+  }
+
+  .end {
+    position: absolute;
+    right: 0px;
+    margin: 0 1em;
   }
 
   .responsive {
@@ -97,7 +104,7 @@ export const CrytoMarketStyled = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: #fff;
   background-color: #f7a528;
   padding: 1em;
@@ -105,6 +112,10 @@ export const CrytoMarketStyled = styled.ul`
   span {
     color: #fff;
     font-weight: bolder;
+  }
+
+  p {
+    font-size: clamp(12px, 2vw, 15px);
   }
   @media (max-width: 800px) {
     display: none;
