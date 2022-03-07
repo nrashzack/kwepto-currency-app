@@ -1,7 +1,18 @@
 import React from "react";
-import { ReactSelectStyled } from "../styles/CoinList.styled";
+import Select from "react-select";
 
 const FilterCoinList = ({ currency, setCurrency }) => {
+  const customTheme = (theme) => {
+    return {
+      ...theme,
+      colors: {
+        ...theme.colors,
+        primary25: "orange",
+        primary: "#484848",
+      },
+    };
+  };
+
   const currencyOptions = [
     { value: "myr", label: "MYR" },
     { value: "usd", label: "USD" },
@@ -14,13 +25,12 @@ const FilterCoinList = ({ currency, setCurrency }) => {
     setCurrency(currencyOptions.value);
   };
   return (
-    <>
-      <ReactSelectStyled
-        options={currencyOptions}
-        onChange={pickCurrency}
-        placeholder={currency.toUpperCase()}
-      />
-    </>
+    <Select
+      theme={customTheme}
+      options={currencyOptions}
+      onChange={pickCurrency}
+      placeholder={currency.toUpperCase()}
+    />
   );
 };
 

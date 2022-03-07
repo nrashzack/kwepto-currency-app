@@ -22,7 +22,7 @@ export const BannerContainer = styled.div`
     line-height: 1;
     h1 {
       font-size: clamp(75px, 6vw, 125px);
-      font-weight: 800;
+      font-weight: 850;
     }
     p {
       font-size: clamp(20px, 2.5vw, 30px);

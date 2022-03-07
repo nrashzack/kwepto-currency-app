@@ -1,6 +1,5 @@
 import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
-import Select from "react-select";
 
 export const CoinTableStyled = styled.table`
   font-size: clamp(10px, 1.5vw);
@@ -148,13 +147,6 @@ export const ListHeaderStyled = styled.div`
       visibility: hidden;
     }
   }
-`;
-
-export const ReactSelectStyled = styled(Select)`
-  max-width: 10vw;
-  min-width: 100px;
-  text-align: center;
-  font-weight: 550;
 `;
 
 export const PageNumberStyled = styled(ReactPaginate)`
