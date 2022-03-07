@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { Button, Spin } from "antd";
 import "../styles/News.css";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
@@ -22,8 +21,6 @@ const News = ({ simplified }) => {
   const showMoreItems = () => {
     setVisible((preValue) => preValue + 4);
   };
-
-  if (!cryptoNews?.value) return <Spin />;
 
   return (
     <>
