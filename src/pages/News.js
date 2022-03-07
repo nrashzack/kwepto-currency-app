@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { Button, Spin } from "antd";
 import "../styles/News.css";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
@@ -23,7 +22,10 @@ const News = ({ simplified }) => {
     setVisible((preValue) => preValue + 4);
   };
 
-  if (!cryptoNews?.value) return <Spin />;
+  if (!cryptoNews?.value) return <h1>Loading..</h1>;
+
+  const demoImage =
+    "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
 
   return (
     <>
@@ -50,7 +52,7 @@ const News = ({ simplified }) => {
                 <div className="news-image-container">
                   <img
                     className="news-img"
-                    src={news?.image?.thumbnail?.contentUrl}
+                    src={news?.image?.thumbnail?.contentUrl || demoImage}
                     alt=""
                   />
                   <div
@@ -60,8 +62,8 @@ const News = ({ simplified }) => {
                       color: "#484848",
                     }}
                   >
-                    {news.name.length > 90
-                      ? `${news.name.substring(0, 90)}...`
+                    {news.name.length > 85
+                      ? `${news.name.substring(0, 85)}...`
                       : news.name}
                   </div>
                 </div>
@@ -75,7 +77,10 @@ const News = ({ simplified }) => {
                   <div className="provider-align">
                     <img
                       className="provider-img"
-                      src={news.provider[0]?.image?.thumbnail?.contentUrl}
+                      src={
+                        news.provider[0]?.image?.thumbnail?.contentUrl ||
+                        demoImage
+                      }
                       alt=""
                     />
                     <div className="provider-name">
