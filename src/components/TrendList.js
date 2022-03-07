@@ -1,6 +1,5 @@
 import React from "react";
 import { CardStyled, RowStyled } from "../styles/TrendList.styled";
-import { CardCointainerCenterStyled } from "../styles/TrendList.styled";
 
 const TrendList = ({ trends }) => {
   return (
