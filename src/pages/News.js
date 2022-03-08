@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import "../styles/News.css";
-
+import { LoadingScreenStyled } from "../styles/Main.styled";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { SectionStyled } from "../styles/Main.styled";
@@ -21,7 +21,12 @@ const News = ({ simplified }) => {
     setVisible((preValue) => preValue + 4);
   };
 
-  if (!cryptoNews?.value) return <h1>Loading..</h1>;
+  if (!cryptoNews?.value)
+    return (
+      <LoadingScreenStyled>
+        <h1>Loading...</h1>
+      </LoadingScreenStyled>
+    );
 
   const demoImage =
     "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
@@ -59,8 +64,8 @@ const News = ({ simplified }) => {
                       color: "#484848",
                     }}
                   >
-                    {news.name.length > 85
-                      ? `${news.name.substring(0, 85)}...`
+                    {news.name.length > 70
+                      ? `${news.name.substring(0, 70)}...`
                       : news.name}
                   </div>
                 </div>
