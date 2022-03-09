@@ -265,9 +265,11 @@ export const CoinDescriptionStyled = styled.div`
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #484848;
   }
   .desc-content {
     /* background-color: aqua; */
+    color: #484848;
     line-height: 2;
   }
 `;

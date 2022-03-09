@@ -18,6 +18,13 @@ import { CgArrowsExchange } from "react-icons/cg";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import DOMPurify from "dompurify";
+import MarketList from "../components/MarketList";
+import {
+  CardStyled,
+  SectionStyled,
+  MarketHeaderStyled,
+} from "../styles/MarketList.styled";
+// import { SectionStyled } from "../styles/Main.styled";
 
 const CoinPage = () => {
   const [coin, setCoin] = useState({});
@@ -39,7 +46,7 @@ const CoinPage = () => {
           },
         } = res.data;
         setCoin(res.data);
-        console.log(coin);
+        console.table(coin.tickers);
         setUsdValue(usd);
       })
       .catch((error) => {
@@ -54,7 +61,7 @@ const CoinPage = () => {
       )
       .then((res) => {
         setHistoricalData(res.data.prices);
-        console.log(historicalData);
+        // console.log(historicalData);
       })
       .catch((error) => {
         console.log(error);
@@ -356,18 +363,43 @@ const CoinPage = () => {
         </div>
       </CoinGraphStatsStyled>
       <CoinDescriptionStyled>
-        {/* <div className="desc-main"> */}
-        <div className="desc-title">What is {coin.name?.toUpperCase()}</div>
-        <div
-          className="desc-content"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(
-              coin.description?.en ? coin.description.en : ""
-            ),
-          }}
-        ></div>
-        {/* </div> */}
+        <div className="desc-main">
+          <div className="desc-title">What is {coin.name?.toUpperCase()}</div>
+          <div
+            className="desc-content"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(
+                coin.description?.en ? coin.description.en : ""
+              ),
+            }}
+          ></div>
+        </div>
       </CoinDescriptionStyled>
+      <SectionStyled>
+        <CardStyled>
+          <div className="market-title">{coin.name} Markets</div>
+          <MarketHeaderStyled>
+            <div className="source">
+              <strong>Source</strong>
+            </div>
+            <div>
+              <strong>Pairs</strong>
+            </div>
+            <div>
+              <strong>24h Volume</strong>
+            </div>
+            <div>
+              <strong>Trust</strong>
+            </div>
+            <div>
+              <strong>Link</strong>
+            </div>
+          </MarketHeaderStyled>
+          {coin.tickers?.slice(0, 6)?.map((market) => {
+            return <MarketList key={market?.id} market={market} />;
+          })}
+        </CardStyled>
+      </SectionStyled>
     </>
   );
 };

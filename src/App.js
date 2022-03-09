@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
+  const [exchanges, setExchanges] = useState();
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
 
@@ -29,6 +30,20 @@ const App = () => {
       });
   }, [currency]);
 
+  // Get all exchanges
+  useEffect(() => {
+    axios
+      .get(`https://api.coingecko.com/api/v3/exchanges?per_page=100`)
+      .then((res) => {
+        setExchanges(res.data.slice(0, 100));
+        setLoading(false);
+        console.log(exchanges);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <AppContainerStyled>
       <NavBar />
@@ -46,7 +61,10 @@ const App = () => {
             }
           />
           <Route path=":coinid" element={<CoinPage />} />
-          <Route path="/exchange" element={<Exchange />} />
+          <Route
+            path="/exchange"
+            element={<Exchange loading={loading} exchanges={exchanges} />}
+          />
         </Routes>
       </MainContainerStyled>
       {/* <Footer /> */}
