@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   HeaderStyled,
   LoadingScreenStyled,
@@ -7,24 +7,13 @@ import {
 import {
   TableContainerStyled,
   CoinTableStyled,
-  PageNumberStyled,
 } from "../styles/CoinList.styled";
 import Trending from "../components/Trending";
 import CoinList from "../components/CoinList";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
-// import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 
-const PriceTracker = ({ loading, coins, currency }) => {
-  // const [pageNumber, setPageNumber] = useState(0);
-  // const coinsPerPage = 10;
-  // const pagesVisited = pageNumber * coinsPerPage;
-  // const pageCount = Math.ceil(coins.length / coinsPerPage);
-
-  // const changePage = ({ selected }) => {
-  //   setPageNumber(selected);
-  // };
-
+const PriceTracker = ({ loading, coins, formatCurrency }) => {
   if (loading) {
     return (
       <LoadingScreenStyled>
@@ -38,8 +27,7 @@ const PriceTracker = ({ loading, coins, currency }) => {
       <Trending />
       <SectionStyled>
         <HeaderStyled>
-          <h1>CRYPTOCURRENCIES</h1>
-          <p>Today's Cryptocurrency Prices by Market Cap</p>
+          <h1>Market</h1>
         </HeaderStyled>
         <TableContainerStyled>
           <CoinTableStyled>
@@ -59,31 +47,22 @@ const PriceTracker = ({ loading, coins, currency }) => {
                 </th>
               </tr>
             </thead>
-            {coins
-              // .slice(pagesVisited, pagesVisited + coinsPerPage)
-              .map((coin) => {
-                return (
-                  <Link to={`/${coin.id}`}>
-                    <CoinList
-                      key={coin.market_cap_rank}
-                      coin={coin}
-                      currency={currency}
-                    />
-                  </Link>
-                );
-              })}
+            {coins.slice(0, 8).map((coin) => {
+              return (
+                <Link to={`/${coin.id}`}>
+                  <CoinList
+                    key={coin.market_cap_rank}
+                    coin={coin}
+                    formatCurrency={formatCurrency}
+                  />
+                </Link>
+              );
+            })}
             <tfoot>
-              <tr>
-                {/* <PageNumberStyled
-                  previousLabel={<RiArrowLeftSFill />}
-                  nextLabel={<RiArrowRightSFill />}
-                  pageCount={pageCount}
-                  onPageChange={changePage}
-                  pageRangeDisplayed="5"
-                /> */}
-              </tr>
               <button>
-                <p>View More</p>
+                <Link to="/currencies">
+                  <p>View More</p>
+                </Link>
               </button>
             </tfoot>
           </CoinTableStyled>

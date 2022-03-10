@@ -19,10 +19,12 @@ const NavBar = ({ data, currency, setCurrency }) => {
     <NavContainerStyled>
       <NavLinksStyled>
         <div className="logo">
-          <img src={Logo} alt="kwepto" />
+          <Link to="/">
+            <img src={Logo} alt="kwepto" />
+          </Link>
         </div>
         <ul className="links">
-          <Link to="/">
+          <Link to="/currencies">
             <li>Currencies</li>
           </Link>
           <Link to="/exchange">
@@ -31,7 +33,6 @@ const NavBar = ({ data, currency, setCurrency }) => {
           <Link to="/news">
             <li>News</li>
           </Link>
-          <li>Watch List</li>
           <div className="end">
             <FilterCoinList currency={currency} setCurrency={setCurrency} />
           </div>
@@ -48,8 +49,9 @@ const NavBar = ({ data, currency, setCurrency }) => {
               <Link to="/exchange">
                 <li>Exchanges</li>
               </Link>
-              <li>News</li>
-              <li>Watch List</li>
+              <Link to="/news">
+                <li>News</li>
+              </Link>
             </ul>
           )}
         </div>

@@ -1,23 +1,7 @@
 import React from "react";
 import { CoinTableStyled } from "../styles/CoinList.styled";
 
-const CoinList = ({ coin, currency }) => {
-  const formatCurrency = (price) => {
-    let newPrice = 0;
-    if (price < 0.99 && price > -1) {
-      newPrice = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: currency.toUpperCase(),
-        maximumFractionDigits: 8,
-      }).format(price);
-    } else {
-      newPrice = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: currency.toUpperCase(),
-      }).format(price);
-    }
-    return newPrice;
-  };
+const CoinList = ({ coin, formatCurrency }) => {
   return (
     <CoinTableStyled>
       <tbody>
