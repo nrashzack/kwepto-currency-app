@@ -47,7 +47,7 @@ const Trending = ({ currency }) => {
             >
               <CardContainerStyled>
                 {trend.map((trends) => (
-                  <Link to={`/${trends.item.id}`}>
+                  <Link to={`/currencies/${trends.item.id}`}>
                     <TrendList
                       key={trends.item.coin_id}
                       trends={trends}
