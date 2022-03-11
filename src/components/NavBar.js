@@ -19,10 +19,12 @@ const NavBar = ({ data, currency, setCurrency }) => {
     <NavContainerStyled>
       <NavLinksStyled>
         <div className="logo">
-          <img src={Logo} alt="kwepto" />
+          <Link to="/">
+            <img src={Logo} alt="kwepto" />
+          </Link>
         </div>
         <ul className="links">
-          <Link to="/">
+          <Link to="/currencies">
             <li>Currencies</li>
           </Link>
           <Link to="/exchange">

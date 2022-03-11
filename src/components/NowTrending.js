@@ -8,7 +8,6 @@ import {
 } from "../styles/Main.styled";
 import TrendList from "./TrendList";
 import { CardContainerStyled } from "../styles/TrendList.styled";
-import Marquee from "react-fast-marquee";
 
 const NowTrending = () => {
   const [trend, setTrend] = useState([]);

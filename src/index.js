@@ -11,6 +11,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
         <GlobalStyle />
+
         <App />
       </Provider>
     </BrowserRouter>

@@ -13,6 +13,7 @@ import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
 import Footer from "./components/Footer";
 import News from "./pages/News";
+import HomeSection from "./components/HomeSection";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -52,8 +53,9 @@ const App = () => {
       </NavStyled>
       <BodyStyled>
         <Routes>
+          <Route path="/" element={<HomeSection />} />
           <Route
-            path="/"
+            path="/currencies"
             element={
               <PriceTracker
                 loading={loading}
