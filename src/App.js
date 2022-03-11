@@ -14,6 +14,7 @@ import CurrencyPage from "./pages/CurrencyPage";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
 import News from "./pages/News";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -91,9 +92,10 @@ const App = () => {
               <CurrencyPage coins={coins} formatCurrency={formatCurrency} />
             }
           />
-          <Route path=":coinid" element={<CoinPage />} />
           <Route path="/exchange" element={<Exchange />} />
           <Route path="/news" element={<News />} />
+          <Route path="/currencies/:coinid" element={<CoinPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BodyStyled>
       <FooterStyled>

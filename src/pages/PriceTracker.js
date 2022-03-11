@@ -49,7 +49,7 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
             </thead>
             {coins.slice(0, 8).map((coin) => {
               return (
-                <Link to={`/${coin.id}`}>
+                <Link to={`/currencies/${coin.id}`}>
                   <CoinList
                     key={coin.market_cap_rank}
                     coin={coin}

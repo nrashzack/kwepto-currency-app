@@ -45,6 +45,9 @@ export const CardCointainerStyled = styled.div`
     width: 100%;
     height: 50%;
   }
+  &:hover {
+    background-color: #ecf0f1;
+  }
 `;
 
 export const CoinRowStyled = styled.div`
@@ -123,7 +126,7 @@ export const CurrencyPageStyled = styled.div`
   .paginate-disable {
   }
   .paginate-active {
-    padding: 0.25em 1.75em;
+    padding: 0.25% 1.75%;
     background-color: #f7a528;
     border-radius: 25px;
     a {
