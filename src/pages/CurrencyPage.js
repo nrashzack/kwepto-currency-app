@@ -18,7 +18,7 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
+  // pray 4 palestine
   const [search, setSearch] = useState("");
   let filterCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLowerCase())
