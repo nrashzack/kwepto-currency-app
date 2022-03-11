@@ -18,7 +18,6 @@ import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
-  const [data, setData] = useState({});
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
 
@@ -33,16 +32,6 @@ const App = () => {
       .then((res) => {
         setCoins(res.data);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    // Get Crypto Market Data
-    axios
-      .get(`https://api.coingecko.com/api/v3/global`)
-      .then((res) => {
-        setData(res.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -70,7 +59,7 @@ const App = () => {
   return (
     <AppStyled>
       <NavStyled>
-        <NavBar data={data} currency={currency} setCurrency={setCurrency} />
+        <NavBar currency={currency} setCurrency={setCurrency} />
       </NavStyled>
       <BodyStyled>
         <Routes>
@@ -92,7 +81,7 @@ const App = () => {
               <CurrencyPage coins={coins} formatCurrency={formatCurrency} />
             }
           />
-          <Route path="/exchange" element={<Exchange />} />
+          <Route path="/exchanges" element={<Exchange />} />
           <Route path="/news" element={<News />} />
           <Route path="/currencies/:coinid" element={<CoinPage />} />
           <Route path="*" element={<PageNotFound />} />

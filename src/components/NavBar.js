@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   NavContainerStyled,
   NavLinksStyled,
@@ -9,20 +10,35 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import FilterCoinList from "./FilterCoinList";
 
-const NavBar = ({ data, currency, setCurrency }) => {
+const NavBar = ({ currency, setCurrency }) => {
+  const [data, setData] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
   };
+
+  useEffect(() => {
+    // Get Crypto Market Data
+    axios
+      .get(`https://api.coingecko.com/api/v3/global`)
+      .then((res) => {
+        console.log(res.data.data);
+        setData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [currency]);
+
   return (
     <NavContainerStyled>
       <NavLinksStyled>
-        <div className="logo">
-          <Link to="/">
+        <Link to="/">
+          <div className="logo">
             <img src={Logo} alt="kwepto" />
-          </Link>
-        </div>
+          </div>
+        </Link>
         <ul className="links">
           <Link to="/currencies">
             <li>Currencies</li>
@@ -43,13 +59,13 @@ const NavBar = ({ data, currency, setCurrency }) => {
           </button>
           {toggleMenu && (
             <ul>
-              <Link to="/">
+              <Link to="/currencies" onClick={toggleNav}>
                 <li>Currencies</li>
               </Link>
-              <Link to="/exchange">
+              <Link to="/exchange" onClick={toggleNav}>
                 <li>Exchanges</li>
               </Link>
-              <Link to="/news">
+              <Link to="/news" onClick={toggleNav}>
                 <li>News</li>
               </Link>
             </ul>
