@@ -18,24 +18,27 @@ const NavBar = ({ currency, setCurrency }) => {
     setToggleMenu(!toggleMenu);
   };
 
+  const closeNav = () => {
+    setToggleMenu(false);
+  };
+
   useEffect(() => {
     // Get Crypto Market Data
     axios
       .get(`https://api.coingecko.com/api/v3/global`)
       .then((res) => {
-        console.log(res.data.data);
         setData(res.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [currency]);
+  }, []);
 
   return (
     <NavContainerStyled>
       <NavLinksStyled>
         <Link to="/">
-          <div className="logo">
+          <div className="logo" onClick={closeNav}>
             <img src={Logo} alt="kwepto" />
           </div>
         </Link>
@@ -43,7 +46,7 @@ const NavBar = ({ currency, setCurrency }) => {
           <Link to="/currencies">
             <li>Currencies</li>
           </Link>
-          <Link to="/exchange">
+          <Link to="/exchanges">
             <li>Exchanges</li>
           </Link>
           <Link to="/news">
@@ -62,7 +65,7 @@ const NavBar = ({ currency, setCurrency }) => {
               <Link to="/currencies" onClick={toggleNav}>
                 <li>Currencies</li>
               </Link>
-              <Link to="/exchange" onClick={toggleNav}>
+              <Link to="/exchanges" onClick={toggleNav}>
                 <li>Exchanges</li>
               </Link>
               <Link to="/news" onClick={toggleNav}>
@@ -86,7 +89,6 @@ const NavBar = ({ currency, setCurrency }) => {
         <li>
           <p>
             Market Cap: <span>$1,707,443,014,522</span>
-            {/* Market Cap: <span>{data.total_market_cap.usd}</span> */}
           </p>
         </li>
         <li>

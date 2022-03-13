@@ -133,22 +133,3 @@ export const CoinTableStyled = styled.table`
     }
   }
 `;
-
-export const PageNumberStyled = styled(ReactPaginate)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  a {
-    margin: 0 0.5em;
-    &:active {
-      color: #f7a528;
-    }
-  }
-`;

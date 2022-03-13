@@ -6,10 +6,11 @@ import {
   NavStyled,
   BodyStyled,
   FooterStyled,
+  LoadingScreenStyled,
 } from "./styles/Main.styled";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import PriceTracker from "./pages/PriceTracker";
+import HomePage from "./pages/HomePage";
 import CurrencyPage from "./pages/CurrencyPage";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
@@ -56,6 +57,14 @@ const App = () => {
     return newPrice;
   };
 
+  if (loading) {
+    return (
+      <LoadingScreenStyled>
+        <h1>Loading...</h1>
+      </LoadingScreenStyled>
+    );
+  }
+
   return (
     <AppStyled>
       <NavStyled>
@@ -66,8 +75,7 @@ const App = () => {
           <Route
             path="/"
             element={
-              <PriceTracker
-                loading={loading}
+              <HomePage
                 coins={coins}
                 currency={currency}
                 setCurrency={setCurrency}

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  HeaderStyled,
-  LoadingScreenStyled,
-  SectionStyled,
-} from "../styles/Main.styled";
+import { HeaderStyled, SectionStyled } from "../styles/Main.styled";
 import {
   TableContainerStyled,
   CoinTableStyled,
@@ -13,14 +9,7 @@ import CoinList from "../components/CoinList";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 
-const PriceTracker = ({ loading, coins, formatCurrency }) => {
-  if (loading) {
-    return (
-      <LoadingScreenStyled>
-        <h1>Loading...</h1>
-      </LoadingScreenStyled>
-    );
-  }
+const HomePage = ({ coins, formatCurrency }) => {
   return (
     <>
       <Banner />
@@ -72,4 +61,4 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
   );
 };
 
-export default PriceTracker;
+export default HomePage;

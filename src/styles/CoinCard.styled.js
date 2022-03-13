@@ -3,13 +3,23 @@ import styled from "styled-components/macro";
 export const CryptoSearhStyled = styled.form`
   margin: 2.5em 0.5em;
 
+  textarea,
+  input {
+    outline: none;
+  }
   input {
     width: 280px;
     padding: 1em;
-    border: 2px solid #484848;
-    border-radius: 25px;
+    border: 1px solid #dedede;
+    border-radius: 15px;
     size: 20px;
+
+    :focus {
+      border: 1px solid #f7a528;
+      box-shadow: 0 4px 30px #f7a528;
+    }
   }
+
   @media (max-width: 1279px) {
     text-align: center;
   }
@@ -20,8 +30,9 @@ export const CurrencyContainerStyled = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(290px, auto));
   column-gap: 2.5em;
   row-gap: 1.5em;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
+  min-height: 50vh;
 
   @media (max-width: 1279px) {
     justify-content: center;
@@ -46,7 +57,7 @@ export const CardCointainerStyled = styled.div`
     height: 50%;
   }
   &:hover {
-    background-color: #ecf0f1;
+    box-shadow: 0 4px 30px #f7a528;
   }
 `;
 
