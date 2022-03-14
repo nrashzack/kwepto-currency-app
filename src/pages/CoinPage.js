@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   CoinInfoDataStyled,
-  CoinInfoStyled,
+  CoinNameStyled,
   CoinDataStyled,
   CoinConverterStyled,
   CoinGraphStatsStyled,
@@ -19,12 +19,8 @@ import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import DOMPurify from "dompurify";
 import MarketList from "../components/MarketList";
-import {
-  CardStyled,
-  SectionStyled,
-  MarketHeaderStyled,
-} from "../styles/MarketList.styled";
-// import { SectionStyled } from "../styles/Main.styled";
+import { CardStyled, MarketHeaderStyled } from "../styles/MarketList.styled";
+import { SectionStyled } from "../styles/Main.styled";
 
 const CoinPage = () => {
   const [coin, setCoin] = useState({});
@@ -78,312 +74,314 @@ const CoinPage = () => {
     setCoinValue(usdValue / coin.market_data?.current_price.usd);
   }, [usdValue]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
-      <CoinInfoDataStyled>
-        <div className="coin-info-card">
-          <CoinInfoStyled>
-            <div className="coin-image">
-              <img src={coin.image?.["large"]} alt={coin.name} />
-            </div>
-            <div className="coin-symbol-name">
-              <span className="coin-symbol">{coin.symbol}</span>
-              <span>{coin.name}</span>
-            </div>
-          </CoinInfoStyled>
+      <SectionStyled>
+        <CoinInfoDataStyled>
+          <div className="coin-info-card">
+            <CoinNameStyled>
+              <div className="coin-image">
+                <img src={coin.image?.["large"]} alt={coin.name} />
+              </div>
+              <div className="coin-symbol-name">
+                <span className="coin-symbol">{coin.symbol}</span>
+                <span>{coin.name}</span>
+              </div>
+            </CoinNameStyled>
 
-          <div className="coin-rank-categories">
-            <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
-            {coin.categories?.[0] ? (
-              <div className="coin-categories">{coin.categories?.[0]}</div>
-            ) : (
-              <div className="coin-categories">{coin.categories?.[1]}</div>
-            )}
-          </div>
+            <div className="coin-rank-categories">
+              <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
+              {coin.categories?.[0] ? (
+                <div className="coin-categories">{coin.categories?.[0]}</div>
+              ) : (
+                <div className="coin-categories">{coin.categories?.[1]}</div>
+              )}
+            </div>
 
-          <div className="coin-website-score">
-            <div className="coin-website-main">
-              <div>Website</div>
-              <div className="coin-website">
-                <a href={coin.links?.homepage[0]}>
-                  <FaLink /> Visit Homepage
-                </a>
+            <div className="coin-website-score">
+              <div className="coin-website-main">
+                <div>Website</div>
+                <div className="coin-website">
+                  <a href={coin.links?.homepage[0]}>
+                    <FaLink /> Visit Homepage
+                  </a>
+                </div>
+              </div>
+              <div className="coin-score-main">
+                <div>Score</div>
+                <div className="coin-score">
+                  {coin.coingecko_score?.toFixed(1)}
+                </div>
               </div>
             </div>
-            <div className="coin-score-main">
-              <div>Score</div>
-              <div className="coin-score">
-                {coin.coingecko_score?.toFixed(1)}
-              </div>
-            </div>
           </div>
-        </div>
 
-        <div className="coin-data-card">
-          <div className="coin-price-main">
-            <div className="coin-price-change">
-              {coin.market_data?.price_change_percentage_24h_in_currency.usd <
-              0 ? (
-                <div className="coin-price-red">
-                  <div>
-                    <FaRegArrowAltCircleDown />
+          <div className="coin-data-card">
+            <div className="coin-price-main">
+              <div className="coin-price-change">
+                {coin.market_data?.price_change_percentage_24h_in_currency.usd <
+                0 ? (
+                  <div className="coin-price-red">
+                    <div>
+                      <FaRegArrowAltCircleDown />
+                    </div>
+                    <div>
+                      {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
+                        2
+                      )}
+                      %
+                    </div>
                   </div>
-                  <div>
+                ) : (
+                  <div className="coin-price-green">
+                    <FaRegArrowAltCircleUp />
                     {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
                       2
                     )}
                     %
                   </div>
-                </div>
-              ) : (
-                <div className="coin-price-green">
-                  <FaRegArrowAltCircleUp />
-                  {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
-                    2
-                  )}
-                  %
-                </div>
-              )}
-            </div>
-            <div className="coin-price">
-              $ {coin.market_data?.current_price.usd.toLocaleString()}
-            </div>
-          </div>
-          <div className="coin-market-main">
-            <CoinDataStyled>
-              <div className="market-data">
-                <div>Market Cap</div>
-                {coin.market_data?.market_cap.usd ? (
-                  <div className="market-value">
-                    $ {coin.market_data?.market_cap.usd.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
                 )}
               </div>
-              <div className="market-data">
-                <div>24 hour Trading Volume</div>
-                {coin.market_data?.total_volume.usd ? (
-                  <div className="market-value">
-                    $ {coin.market_data?.total_volume.usd.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-              <div className="market-data">
-                <div>Fully Diluted Valuation</div>
-                {coin.market_data?.fully_diluted_valuation.usd ? (
-                  <div className="market-value">
-                    {coin.market_data?.fully_diluted_valuation.usd.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-            </CoinDataStyled>
-            <CoinDataStyled>
-              <div className="market-data">
-                <div>Circulating Supply</div>
-                {coin.market_data?.circulating_supply ? (
-                  <div className="market-value">
-                    {coin.market_data?.circulating_supply.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-              <div className="market-data">
-                <div>Total Supply</div>
-                {coin.market_data?.total_supply ? (
-                  <div className="market-value">
-                    {coin.market_data?.total_supply.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-              <div className="market-data">
-                <div>Max Supply</div>
-                {coin.market_data?.max_supply ? (
-                  <div className="market-value">
-                    {coin.market_data?.max_supply.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-            </CoinDataStyled>
-          </div>
-        </div>
-      </CoinInfoDataStyled>
-      <CoinConverterStyled>
-        <div className="coin-converter">
-          <div className="converter-title">
-            {coin.symbol?.toUpperCase()} to USD Converter
-          </div>
-          <form>
-            <div className="coin-amount-value">
-              <div className="header-title">
-                <div>
-                  <img
-                    className="coin-image"
-                    src={coin.image?.["large"]}
-                    alt={coin.name}
-                  />
-                </div>
-                <div>
-                  <div className="coin-symbol">
-                    {coin.symbol?.toUpperCase()}
-                  </div>
-                  <div className="coin-name">{coin.name?.toUpperCase()}</div>
-                </div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="coin-amount"
-                  value={coinValue}
-                  onChange={(e) => setCoinValue(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="converter-symbol">
-              <CgArrowsExchange size="3rem" />
-            </div>
-            <div className="coin-amount-value">
-              <div className="header-title">
-                <div>
-                  <img
-                    className="usd-image"
-                    src={require("../assets/dollarsign.png")}
-                    alt="usd-symbol"
-                  />
-                </div>
-                <div>
-                  <div className="coin-symbol">USD</div>
-                  <div className="coin-name">United States Dollar</div>
-                </div>
-              </div>
-              <div>
-                <input
-                  type="text"
-                  className="coin-amount"
-                  value={usdValue?.toLocaleString()}
-                  onChange={(e) => setUsdValue(e.target.value)}
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-      </CoinConverterStyled>
-      <CoinGraphStatsStyled>
-        <div className="coin-graph">
-          <Line
-            data={{
-              labels: historicalData.map((coin) => {
-                let date = new Date(coin[0]);
-                let time =
-                  date.getHours() > 12
-                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                    : `${date.getHours()}:${date.getMinutes()} AM`;
-                return days === 1 ? time : date.toLocaleDateString();
-              }),
-
-              datasets: [
-                {
-                  data: historicalData.map((coin) => coin[1]),
-                  label: "24hr Price in USD",
-                  borderColor: "#F7A528",
-                },
-              ],
-            }}
-            options={{
-              elements: {
-                point: {
-                  radius: 1,
-                },
-              },
-            }}
-          />
-        </div>
-        <div className="coin-stats">
-          <div className="coin-stats-header">
-            {coin.symbol?.toUpperCase()} Price Statistics
-          </div>
-          <div className="coin-stats-list-main">
-            <div className="coin-stats-list">
-              <div className="coin-stats-title">{coin.name} Price</div>
-              <div className="coin-stats-value">
+              <div className="coin-price">
                 $ {coin.market_data?.current_price.usd.toLocaleString()}
               </div>
             </div>
-            <div className="coin-stats-list">
-              <div className="coin-stats-title">Market Cap</div>
-              <div className="coin-stats-value">
-                {coin.market_data?.market_cap.usd ? (
-                  <div className="market-value">
-                    $ {coin.market_data?.market_cap.usd.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-            </div>
-            <div className="coin-stats-list">
-              <div className="coin-stats-title">Trading Volume</div>
-              <div className="coin-stats-value">
-                {coin.market_data?.total_volume.usd ? (
-                  <div className="market-value">
-                    $ {coin.market_data?.total_volume.usd.toLocaleString()}
-                  </div>
-                ) : (
-                  <div className="market-value">Not available</div>
-                )}
-              </div>
-            </div>
-            <div className="coin-stats-list">
-              <div className="coin-stats-title">24h Low/24h High</div>
-              <div className="coin-stats-value">
-                $ {coin.market_data?.low_24h.usd.toLocaleString()} / ${" "}
-                {coin.market_data?.high_24h.usd.toLocaleString()}
-              </div>
-            </div>
-            <div className="coin-stats-list">
-              <div className="coin-stats-title">All time High</div>
-              <div className="coin-stats-value">
-                $ {coin.market_data?.ath.usd.toLocaleString()}
-              </div>
-            </div>
-            <div className="coin-stats-list">
-              <div className="coin-stats-title">Market Cap Rank</div>
-              <div className="coin-stats-value">#{coin?.market_cap_rank}</div>
+            <div className="coin-market-main">
+              <CoinDataStyled>
+                <div className="market-data">
+                  <div>Market Cap</div>
+                  {coin.market_data?.market_cap.usd ? (
+                    <div className="market-value">
+                      $ {coin.market_data?.market_cap.usd.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+                <div className="market-data">
+                  <div>24 hour Trading Volume</div>
+                  {coin.market_data?.total_volume.usd ? (
+                    <div className="market-value">
+                      $ {coin.market_data?.total_volume.usd.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+                <div className="market-data">
+                  <div>Fully Diluted Valuation</div>
+                  {coin.market_data?.fully_diluted_valuation.usd ? (
+                    <div className="market-value">
+                      {coin.market_data?.fully_diluted_valuation.usd.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+              </CoinDataStyled>
+              <CoinDataStyled>
+                <div className="market-data">
+                  <div>Circulating Supply</div>
+                  {coin.market_data?.circulating_supply ? (
+                    <div className="market-value">
+                      {coin.market_data?.circulating_supply.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+                <div className="market-data">
+                  <div>Total Supply</div>
+                  {coin.market_data?.total_supply ? (
+                    <div className="market-value">
+                      {coin.market_data?.total_supply.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+                <div className="market-data">
+                  <div>Max Supply</div>
+                  {coin.market_data?.max_supply ? (
+                    <div className="market-value">
+                      {coin.market_data?.max_supply.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+              </CoinDataStyled>
             </div>
           </div>
-        </div>
-      </CoinGraphStatsStyled>
-      <CoinDescriptionStyled>
-        <div className="desc-main">
-          <div className="desc-title">What is {coin.name?.toUpperCase()}</div>
-          <div
-            className="desc-content"
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(
-                coin.description?.en ? coin.description.en : ""
-              ),
-            }}
-          ></div>
-        </div>
-      </CoinDescriptionStyled>
-      <SectionStyled>
+        </CoinInfoDataStyled>
+        <CoinConverterStyled>
+          <div className="coin-converter">
+            <div className="converter-title">
+              {coin.symbol?.toUpperCase()} to USD Converter
+            </div>
+            <form>
+              <div className="coin-amount-value">
+                <div className="header-title">
+                  <div>
+                    <img
+                      className="coin-image"
+                      src={coin.image?.["large"]}
+                      alt={coin.name}
+                    />
+                  </div>
+                  <div className="coin-symbol-name">
+                    <div className="coin-symbol">
+                      {coin.symbol?.toUpperCase()}
+                    </div>
+                    <div className="coin-name">{coin.name?.toUpperCase()}</div>
+                  </div>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className="coin-amount"
+                    value={coinValue}
+                    onChange={(e) => setCoinValue(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="converter-symbol">
+                <CgArrowsExchange size="3rem" />
+              </div>
+              <div className="coin-amount-value">
+                <div className="header-title">
+                  <div>
+                    <img
+                      className="usd-image"
+                      src={require("../assets/dollarsign.png")}
+                      alt="usd-symbol"
+                    />
+                  </div>
+                  <div>
+                    <div className="coin-symbol">USD</div>
+                    <div className="coin-name">United States Dollar</div>
+                  </div>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className="coin-amount"
+                    value={usdValue?.toLocaleString()}
+                    onChange={(e) => setUsdValue(e.target.value)}
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </CoinConverterStyled>
+        <CoinGraphStatsStyled>
+          <div className="coin-graph">
+            <Line
+              data={{
+                labels: historicalData.map((coin) => {
+                  let date = new Date(coin[0]);
+                  let time =
+                    date.getHours() > 12
+                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                      : `${date.getHours()}:${date.getMinutes()} AM`;
+                  return days === 1 ? time : date.toLocaleDateString();
+                }),
+
+                datasets: [
+                  {
+                    data: historicalData.map((coin) => coin[1]),
+                    label: "24hr Price in USD",
+                    borderColor: "#F7A528",
+                  },
+                ],
+              }}
+              options={{
+                elements: {
+                  point: {
+                    radius: 1,
+                  },
+                },
+              }}
+            />
+          </div>
+          <div className="coin-stats">
+            <div className="coin-stats-header">
+              {coin.symbol?.toUpperCase()} Price Statistics
+            </div>
+            <div className="coin-stats-list-main">
+              <div className="coin-stats-list">
+                <div className="coin-stats-title">{coin.name} Price</div>
+                <div className="coin-stats-value">
+                  $ {coin.market_data?.current_price.usd.toLocaleString()}
+                </div>
+              </div>
+              <div className="coin-stats-list">
+                <div className="coin-stats-title">Market Cap</div>
+                <div className="coin-stats-value">
+                  {coin.market_data?.market_cap.usd ? (
+                    <div className="market-value">
+                      $ {coin.market_data?.market_cap.usd.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+              </div>
+              <div className="coin-stats-list">
+                <div className="coin-stats-title">Trading Volume</div>
+                <div className="coin-stats-value">
+                  {coin.market_data?.total_volume.usd ? (
+                    <div className="market-value">
+                      $ {coin.market_data?.total_volume.usd.toLocaleString()}
+                    </div>
+                  ) : (
+                    <div className="market-value">Not available</div>
+                  )}
+                </div>
+              </div>
+              <div className="coin-stats-list">
+                <div className="coin-stats-title">24h Low/24h High</div>
+                <div className="coin-stats-value">
+                  $ {coin.market_data?.low_24h.usd.toLocaleString()} / ${" "}
+                  {coin.market_data?.high_24h.usd.toLocaleString()}
+                </div>
+              </div>
+              <div className="coin-stats-list">
+                <div className="coin-stats-title">All time High</div>
+                <div className="coin-stats-value">
+                  $ {coin.market_data?.ath.usd.toLocaleString()}
+                </div>
+              </div>
+              <div className="coin-stats-list">
+                <div className="coin-stats-title">Market Cap Rank</div>
+                <div className="coin-stats-value">#{coin?.market_cap_rank}</div>
+              </div>
+            </div>
+          </div>
+        </CoinGraphStatsStyled>
+        <CoinDescriptionStyled>
+          <div className="desc-main">
+            <div className="desc-title">What is {coin.name?.toUpperCase()}</div>
+            <div
+              className="desc-content"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  coin.description?.en ? coin.description.en : ""
+                ),
+              }}
+            ></div>
+          </div>
+        </CoinDescriptionStyled>
+
         <CardStyled>
           <div className="market-title">{coin.name} Markets</div>
           <MarketHeaderStyled>
             <div className="source">
               <strong>Source</strong>
-            </div>
-            <div>
-              <strong>Pairs</strong>
             </div>
             <div>
               <strong>24h Volume</strong>

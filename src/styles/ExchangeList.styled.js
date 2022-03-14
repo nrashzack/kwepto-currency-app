@@ -1,15 +1,24 @@
 import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
 
+export const CardStyled = styled.div`
+  display: grid;
+  place-items: center;
+  padding: 1em;
+  border-radius: 25px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #d3d3d3;
+`;
+
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
   /* grid-template-columns: 0.25fr 0.5fr repeat(3, 0.5fr) 0.1fr; */
-  grid-template-columns: 0.1fr 0.5fr repeat(4, 0.5fr);
+  grid-template-columns: 0.1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   align-items: center;
   text-align: right;
-  width: 50vw;
-  min-width: 768px;
+  width: 90%;
   padding: 1em;
 
   .center {
@@ -37,10 +46,8 @@ export const ExchangeListStyled = styled.div`
   grid-template-columns: 0.1fr 0.5fr repeat(4, 0.5fr);
   align-items: center;
   text-align: right;
-  width: 50vw;
-  min-width: 768px;
-  height: 4vh;
-  padding: 1em;
+  width: 90%;
+  padding: 10px;
 
   p {
     color: #000;
@@ -174,5 +181,5 @@ export const ExchangeBannerStyled = styled.div`
   align-items: center;
   border-radius: 50px;
   height: 300px;
-  margin-top: 50px;
+  margin-top: 100px;
 `;

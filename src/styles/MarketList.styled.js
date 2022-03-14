@@ -6,17 +6,12 @@ export const CardStyled = styled.div`
   padding: 1em;
   border-radius: 25px;
   width: 100%;
-  background-color: #fff;
+  background-color: white;
   border: 1px solid #d3d3d3;
-`;
-
-export const SectionStyled = styled.div`
-  margin: 0em auto;
-  width: 60vw;
-  min-width: 768px;
-  padding: 1.5em 0em;
+  box-sizing: border-box;
+  margin-top: 20px;
   .market-title {
-    font-size: 30px;
+    font-size: clamp(20px, 2.5vw, 30px);
     font-weight: bold;
     margin-bottom: 20px;
     color: #484848;
@@ -24,6 +19,7 @@ export const SectionStyled = styled.div`
 `;
 
 export const MarketHeaderStyled = styled.div`
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   width: 50vw;
@@ -36,6 +32,7 @@ export const MarketHeaderStyled = styled.div`
 `;
 
 export const MarketListStyled = styled.div`
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   text-align: right;
@@ -44,16 +41,27 @@ export const MarketListStyled = styled.div`
   width: 50vw;
   .market-name {
     text-align: left;
+    box-sizing: border-box;
   }
   .market-pair {
     font-weight: bold;
+    box-sizing: border-box;
   }
   .market-score {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
     background-color: #00c118;
-    margin-left: 120px;
+    margin-left: 100px;
     border-radius: 20px;
     padding: 10px;
     color: white;
     font-weight: bold;
+  }
+  .green-dot {
+    box-sizing: border-box;
+    background-color: #007c0f;
+    width: 20px;
+    border-radius: 20px;
   }
 `;

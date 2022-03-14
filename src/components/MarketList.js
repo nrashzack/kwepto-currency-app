@@ -6,16 +6,19 @@ const MarketList = ({ market }) => {
     <>
       <MarketListStyled>
         <div className="market-name">{market?.market.name}</div>
-        <div className="market-pair">
+        {/* <div className="market-pair">
           {market?.base}/{market?.target}
-        </div>
+        </div> */}
         <div className="market-volume">
           {market?.volume.toLocaleString(undefined, {
             maximumFractionDigits: 2,
           })}
         </div>
         {market?.trust_score === "green" ? (
-          <div className="market-score">High</div>
+          <div className="market-score">
+            <div className="green-dot"></div>
+            <div>High</div>
+          </div>
         ) : (
           ""
         )}

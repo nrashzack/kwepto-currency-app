@@ -1,67 +1,82 @@
-import React from "react";
-import { NavStyled, NavLinksStyled } from "../styles/NavBar.styled";
+import React, { useState } from "react";
+import {
+  NavContainerStyled,
+  NavLinksStyled,
+  CrytoMarketStyled,
+} from "../styles/NavBar.styled";
+import Logo from "../assets/LogoImg.svg";
 import { Link } from "react-router-dom";
-import { NavContainerStyled, SectionStyled } from "../styles/Main.styled";
-import IconLogo from "../iconComponents/IconLogo";
+import { GiHamburgerMenu } from "react-icons/gi";
+import FilterCoinList from "./FilterCoinList";
 
-const NavBar = () => {
+const NavBar = ({ data, currency, setCurrency }) => {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
   return (
     <NavContainerStyled>
-      <NavStyled>
-        <SectionStyled>
-          <NavLinksStyled>
+      <NavLinksStyled>
+        <div className="logo">
+          <img src={Logo} alt="kwepto" />
+        </div>
+        <ul className="links">
+          <Link to="/">
+            <li>Currencies</li>
+          </Link>
+          <Link to="/exchange">
+            <li>Exchanges</li>
+          </Link>
+          <Link to="/news">
+            <li>News</li>
+          </Link>
+          <li>Watch List</li>
+          <div className="end">
+            <FilterCoinList currency={currency} setCurrency={setCurrency} />
+          </div>
+        </ul>
+        <div className="responsive">
+          <button className="responsie burger">
+            <GiHamburgerMenu onClick={toggleNav} />
+          </button>
+          {toggleMenu && (
             <ul>
-              <li className="logo">
-                <IconLogo />
-              </li>
-              <li>
-                <Link to="/">
-                  <p>Currencies</p>
-                </Link>
-              </li>
-              <li>
-                <Link to="/exchange">
-                  <p>Exchanges</p>
-                </Link>
-              </li>
-              <li>
-                <p>News</p>
-              </li>
-              <li>
-                <p>Watch List</p>
-              </li>
+              <Link to="/">
+                <li>Currencies</li>
+              </Link>
+              <Link to="/exchange">
+                <li>Exchanges</li>
+              </Link>
+              <li>News</li>
+              <li>Watch List</li>
             </ul>
-          </NavLinksStyled>
-        </SectionStyled>
-      </NavStyled>
-      <NavStyled orange>
-        <NavLinksStyled center>
-          <SectionStyled>
-            <ul>
-              <li>
-                <p>
-                  Cryptos: <span>17,200</span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  Exchanges: <span>482</span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  Market Cap: <span>$1,707,443,014,522</span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  24h Vol: <span>$83,173,623,418</span>
-                </p>
-              </li>
-            </ul>
-          </SectionStyled>
-        </NavLinksStyled>
-      </NavStyled>
+          )}
+        </div>
+      </NavLinksStyled>
+      <CrytoMarketStyled>
+        <li>
+          <p>
+            Cryptos : <span>{data.active_cryptocurrencies}</span>
+          </p>
+        </li>
+        <li>
+          <p>
+            Markets : <span>{data.markets}</span>
+          </p>
+        </li>
+        <li>
+          <p>
+            Market Cap: <span>$1,707,443,014,522</span>
+            {/* Market Cap: <span>{data.total_market_cap.usd}</span> */}
+          </p>
+        </li>
+        <li>
+          <p>
+            24h Vol: <span>$83,173,623,418</span>
+          </p>
+        </li>
+      </CrytoMarketStyled>
     </NavContainerStyled>
   );
 };

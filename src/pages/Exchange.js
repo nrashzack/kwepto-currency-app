@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  CardStyled,
   HeaderStyled,
   LoadingScreenStyled,
   SectionStyled,
@@ -10,6 +9,7 @@ import {
   ExchangeInfoStyled,
   PageNumberStyled,
   ExchangeBannerStyled,
+  CardStyled,
 } from "../styles/ExchangeList.styled";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 import ExchangeList from "../components/ExchangeList";
