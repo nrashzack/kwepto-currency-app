@@ -1,8 +1,8 @@
 import React from "react";
 import {
   HeaderStyled,
-  LoadingScreenStyled,
   SectionStyled,
+  LoadingScreenStyled,
 } from "../styles/Main.styled";
 import {
   TableContainerStyled,
@@ -11,13 +11,11 @@ import {
 import Trending from "../components/Trending";
 import CoinList from "../components/CoinList";
 import Banner from "../components/Banner";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import { Link } from "react-router-dom";
+import MarketData from "../components/MarketData";
 
-AOS.init();
-
-const PriceTracker = ({ loading, coins, formatCurrency }) => {
+const HomePage = ({ loading, coins, formatCurrency }) => {
   if (loading) {
     return (
       <LoadingScreenStyled>
@@ -31,11 +29,12 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
       <div data-aos="fade-up" data-aos-duration="1000" id="trend">
         <Trending />
         <div data-aos="fade-up" data-aos-duration="1000">
+          <MarketData coins={coins} formatCurrency={formatCurrency} />
           <SectionStyled>
-            <HeaderStyled>
+            {/* <HeaderStyled>
               <h1>Market</h1>
-            </HeaderStyled>
-            <TableContainerStyled>
+            </HeaderStyled> */}
+            {/* <TableContainerStyled>
               <CoinTableStyled>
                 <thead>
                   <tr>
@@ -72,7 +71,7 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
                   </button>
                 </tfoot>
               </CoinTableStyled>
-            </TableContainerStyled>
+            </TableContainerStyled> */}
           </SectionStyled>
         </div>
       </div>
@@ -80,4 +79,4 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
   );
 };
 
-export default PriceTracker;
+export default HomePage;

@@ -41,6 +41,8 @@ export const BannerContainer = styled.div`
     flex-direction: column;
     margin-top: 18rem;
     padding: 2rem;
+    animation: bounceIn;
+    animation-duration: 2s;
   }
 
   @media (max-width: 800px) {
@@ -94,7 +96,7 @@ export const Button = styled.button`
   background: #f7a528;
   white-space: nowrap;
   padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
-  color: #484848;
+  color: #fff;
   font-size: 20px;
   outline: none;
   border: none;
@@ -108,6 +110,7 @@ export const Button = styled.button`
     font-size: 20px;
     margin-left: 8px;
     font-weight: 500;
+    color: #fff;
   }
 
   &:hover {

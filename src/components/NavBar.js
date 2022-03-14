@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   NavContainerStyled,
   NavLinksStyled,
@@ -9,17 +10,35 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import FilterCoinList from "./FilterCoinList";
 
-const NavBar = ({ data, currency, setCurrency }) => {
+const NavBar = ({ currency, setCurrency }) => {
+  const [data, setData] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
   };
+
+  const closeNav = () => {
+    setToggleMenu(false);
+  };
+
+  useEffect(() => {
+    // Get Crypto Market Data
+    axios
+      .get(`https://api.coingecko.com/api/v3/global`)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <NavContainerStyled>
       <NavLinksStyled>
         <Link to="/">
-          <div className="logo">
+          <div className="logo" onClick={closeNav}>
             <img src={Logo} alt="kwepto" />
           </div>
         </Link>
@@ -27,7 +46,7 @@ const NavBar = ({ data, currency, setCurrency }) => {
           <Link to="/currencies">
             <li>Currencies</li>
           </Link>
-          <Link to="/exchange">
+          <Link to="/exchanges">
             <li>Exchanges</li>
           </Link>
           <Link to="/news">
@@ -43,13 +62,13 @@ const NavBar = ({ data, currency, setCurrency }) => {
           </button>
           {toggleMenu && (
             <ul>
-              <Link to="/">
+              <Link to="/currencies" onClick={toggleNav}>
                 <li>Currencies</li>
               </Link>
-              <Link to="/exchange">
+              <Link to="/exchanges" onClick={toggleNav}>
                 <li>Exchanges</li>
               </Link>
-              <Link to="/news">
+              <Link to="/news" onClick={toggleNav}>
                 <li>News</li>
               </Link>
             </ul>
@@ -70,7 +89,6 @@ const NavBar = ({ data, currency, setCurrency }) => {
         <li>
           <p>
             Market Cap: <span>$1,707,443,014,522</span>
-            {/* Market Cap: <span>{data.total_market_cap.usd}</span> */}
           </p>
         </li>
         <li>

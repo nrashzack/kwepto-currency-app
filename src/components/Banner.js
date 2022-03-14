@@ -8,10 +8,7 @@ import {
   HomeContainer,
 } from "../styles/Banner.styled";
 import { Link } from "react-router-dom";
-import "aos/dist/aos.css";
-import AOS from "aos";
-
-AOS.init();
+import "animate.css";
 
 const Banner = () => {
   const [hover, setHover] = useState(false);
@@ -35,7 +32,7 @@ const Banner = () => {
         <div data-aos="zoom-in" data-aos-duration="500" className="banner-img">
           <img src={BannerImg} alt="banner" />
         </div>
-        <div data-aos="fade-right" data-aos-duration="500" className="homeBtn">
+        <div className="homeBtn">
           <Button onMouseEnter={onHover} onMouseLeave={onHover}>
             <Link to="/currencies">
               <p>Let's geddit {hover ? <ArrowForward /> : <ArrowRight />}</p>

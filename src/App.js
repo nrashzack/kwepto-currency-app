@@ -6,18 +6,19 @@ import {
   NavStyled,
   BodyStyled,
   FooterStyled,
+  LoadingScreenStyled,
 } from "./styles/Main.styled";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import PriceTracker from "./pages/PriceTracker";
+import HomePage from "./pages/HomePage";
 import CurrencyPage from "./pages/CurrencyPage";
 import CoinPage from "./pages/CoinPage";
 import Exchange from "./pages/Exchange";
 import News from "./pages/News";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
-  const [data, setData] = useState({});
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
 
@@ -31,17 +32,8 @@ const App = () => {
       )
       .then((res) => {
         setCoins(res.data);
+        console.log(res.data);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    // Get Crypto Market Data
-    axios
-      .get(`https://api.coingecko.com/api/v3/global`)
-      .then((res) => {
-        setData(res.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -66,18 +58,25 @@ const App = () => {
     return newPrice;
   };
 
+  if (loading) {
+    return (
+      <LoadingScreenStyled>
+        <h1>Loading...</h1>
+      </LoadingScreenStyled>
+    );
+  }
+
   return (
     <AppStyled>
       <NavStyled>
-        <NavBar data={data} currency={currency} setCurrency={setCurrency} />
+        <NavBar currency={currency} setCurrency={setCurrency} />
       </NavStyled>
       <BodyStyled>
         <Routes>
           <Route
             path="/"
             element={
-              <PriceTracker
-                loading={loading}
+              <HomePage
                 coins={coins}
                 currency={currency}
                 setCurrency={setCurrency}
@@ -91,9 +90,10 @@ const App = () => {
               <CurrencyPage coins={coins} formatCurrency={formatCurrency} />
             }
           />
-          <Route path=":coinid" element={<CoinPage />} />
-          <Route path="/exchange" element={<Exchange />} />
+          <Route path="/exchanges" element={<Exchange />} />
           <Route path="/news" element={<News />} />
+          <Route path="/currencies/:coinid" element={<CoinPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BodyStyled>
       <FooterStyled>
