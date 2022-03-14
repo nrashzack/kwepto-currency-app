@@ -52,7 +52,7 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
               <Link to={`/currencies/${coin.id}`}>
                 <CoinCard
                   coin={coin}
-                  key={coin.symbol}
+                  key={coin.market_cap_rank}
                   formatCurrency={formatCurrency}
                 />
               </Link>

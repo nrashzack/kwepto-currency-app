@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  HeaderStyled,
-  LoadingScreenStyled,
-  SectionStyled,
-} from "../styles/Main.styled";
+import { HeaderStyled, SectionStyled } from "../styles/Main.styled";
 import {
   TableContainerStyled,
   CoinTableStyled,
@@ -12,20 +8,15 @@ import Trending from "../components/Trending";
 import CoinList from "../components/CoinList";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
+import MarketData from "../components/MarketData";
 
-const PriceTracker = ({ loading, coins, formatCurrency }) => {
-  if (loading) {
-    return (
-      <LoadingScreenStyled>
-        <h1>Loading...</h1>
-      </LoadingScreenStyled>
-    );
-  }
+const HomePage = ({ coins, formatCurrency }) => {
   return (
     <>
       <Banner />
       <Trending />
-      <SectionStyled>
+      <MarketData coins={coins} formatCurrency={formatCurrency} />
+      {/* <SectionStyled>
         <HeaderStyled>
           <h1>Market</h1>
         </HeaderStyled>
@@ -67,9 +58,9 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
             </tfoot>
           </CoinTableStyled>
         </TableContainerStyled>
-      </SectionStyled>
+      </SectionStyled> */}
     </>
   );
 };
 
-export default PriceTracker;
+export default HomePage;
