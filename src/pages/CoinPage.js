@@ -62,7 +62,7 @@ const CoinPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [params.coinid]);
+  }, []);
 
   useEffect(() => {
     // const floatValue = parseFloat(coinValue) || 0;

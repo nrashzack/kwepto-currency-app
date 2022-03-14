@@ -37,6 +37,10 @@ export const HeaderStyled = styled.div`
     font-size: clamp(18px, 2.5vw, 25px);
     font-weight: 400;
   }
+
+  @media (max-width: 375px) {
+    text-align: center;
+  }
 `;
 
 // Loading Screen Style
@@ -50,22 +54,15 @@ export const LoadingScreenStyled = styled.div`
   }
 `;
 
-// Apply card-style background with shadow
-export const CardStyled = styled.div`
-  padding: 1em;
-  border-radius: 25px;
-  border: 2.5px solid #484848;
-  width: auto;
-  background-color: #fff;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-`;
-
 // To give center text and items within a component
 export const SectionStyled = styled.section`
   margin-inline: auto;
   max-width: 1280px;
   margin-top: 2em;
+`;
+
+export const WrapperStyled = styled.div`
+  padding: 3em 0em;
 `;
 
 // Center Everyhthing

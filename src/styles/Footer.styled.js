@@ -1,15 +1,9 @@
 import styled from "styled-components/macro";
 
 export const FooterContainerStyled = styled.footer`
-  width: 100%;
-  height: 100%;
   background-color: #484848;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   .footer-img {
-    height: 90%;
+    height: 100%;
     img {
       height: 100%;
       width: 100%;
@@ -19,6 +13,7 @@ export const FooterContainerStyled = styled.footer`
   .footer-txt {
     padding: 2em;
     p {
+      text-align: center;
       font-size: clamp(15px, 1.5vw, 20px);
       font-weight: 400;
       color: #fff;

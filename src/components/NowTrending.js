@@ -3,7 +3,6 @@ import axios from "axios";
 import {
   CenterEverythingStyled,
   HeaderStyled,
-  SectionStyled,
   WhiteBgStyled,
 } from "../styles/Main.styled";
 import TrendList from "./TrendList";
@@ -12,7 +11,7 @@ import { CardContainerStyled } from "../styles/TrendList.styled";
 const NowTrending = () => {
   const [trend, setTrend] = useState([]);
 
-  // Get trending coins
+  // Get Trending Coins
   useEffect(() => {
     axios
       .get(`https://api.coingecko.com/api/v3/search/trending`)
@@ -31,13 +30,11 @@ const NowTrending = () => {
         <p>Trending coins that people are searching for</p>
       </HeaderStyled>
       <CenterEverythingStyled>
-        <Marquee duration={50000} height="20vh" width="55vw" reverse={true}>
-          <CardContainerStyled>
-            {trend.map((trends) => (
-              <TrendList key={trends.coin_id} trends={trends} />
-            ))}
-          </CardContainerStyled>
-        </Marquee>
+        <CardContainerStyled>
+          {trend.map((trends) => (
+            <TrendList key={trends.coin_id} trends={trends} />
+          ))}
+        </CardContainerStyled>
       </CenterEverythingStyled>
     </WhiteBgStyled>
   );
