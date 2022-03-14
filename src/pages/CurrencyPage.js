@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import CoinCard from "../components/CoinCard";
 import { SectionStyled, HeaderStyled } from "../styles/Main.styled";
@@ -18,6 +18,10 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [search, setSearch] = useState("");
   let filterCoins = coins.filter((coin) =>

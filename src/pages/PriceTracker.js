@@ -11,7 +11,11 @@ import {
 import Trending from "../components/Trending";
 import CoinList from "../components/CoinList";
 import Banner from "../components/Banner";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
+
+AOS.init();
 
 const PriceTracker = ({ loading, coins, formatCurrency }) => {
   if (loading) {
@@ -24,50 +28,54 @@ const PriceTracker = ({ loading, coins, formatCurrency }) => {
   return (
     <>
       <Banner />
-      <Trending />
-      <SectionStyled>
-        <HeaderStyled>
-          <h1>Market</h1>
-        </HeaderStyled>
-        <TableContainerStyled>
-          <CoinTableStyled>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "center" }}>
-                  <strong>Name</strong>
-                </th>
-                <th>
-                  <strong>Price</strong>
-                </th>
-                <th className="percentage">
-                  <strong>24hr</strong>
-                </th>
-                <th className="visible">
-                  <strong>Mkt Cap</strong>
-                </th>
-              </tr>
-            </thead>
-            {coins.slice(0, 8).map((coin) => {
-              return (
-                <Link to={`/${coin.id}`}>
-                  <CoinList
-                    key={coin.market_cap_rank}
-                    coin={coin}
-                    formatCurrency={formatCurrency}
-                  />
-                </Link>
-              );
-            })}
-            <tfoot>
-              <button>
-                <Link to="/currencies">
-                  <p>View More</p>
-                </Link>
-              </button>
-            </tfoot>
-          </CoinTableStyled>
-        </TableContainerStyled>
-      </SectionStyled>
+      <div data-aos="fade-up" data-aos-duration="1000" id="trend">
+        <Trending />
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <SectionStyled>
+            <HeaderStyled>
+              <h1>Market</h1>
+            </HeaderStyled>
+            <TableContainerStyled>
+              <CoinTableStyled>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: "center" }}>
+                      <strong>Name</strong>
+                    </th>
+                    <th>
+                      <strong>Price</strong>
+                    </th>
+                    <th className="percentage">
+                      <strong>24hr</strong>
+                    </th>
+                    <th className="visible">
+                      <strong>Mkt Cap</strong>
+                    </th>
+                  </tr>
+                </thead>
+                {coins.slice(0, 8).map((coin) => {
+                  return (
+                    <Link to={`/${coin.id}`}>
+                      <CoinList
+                        key={coin.market_cap_rank}
+                        coin={coin}
+                        formatCurrency={formatCurrency}
+                      />
+                    </Link>
+                  );
+                })}
+                <tfoot>
+                  <button>
+                    <Link to="/currencies">
+                      <p>View More</p>
+                    </Link>
+                  </button>
+                </tfoot>
+              </CoinTableStyled>
+            </TableContainerStyled>
+          </SectionStyled>
+        </div>
+      </div>
     </>
   );
 };
