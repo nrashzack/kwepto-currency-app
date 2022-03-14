@@ -29,10 +29,15 @@ const Trending = ({ currency }) => {
     <TrendingCointainerStyled>
       <SectionStyled>
         <div className="flex">
-          <div className="trending-img">
+          <div
+            className="trending-img"
+            data-aos="fade-up-right"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
             <img src={TrendingImg} alt="Trending Mascot" />
           </div>
-          <div className="trending-content">
+          <div className="trending-content" data-aos="fade-in">
             <HeaderStyled>
               <h1>TRENDING COINS</h1>
               <p>Trending coins that people are searching for</p>

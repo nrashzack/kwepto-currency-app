@@ -34,29 +34,33 @@ const News = ({ simplified }) => {
 
   return (
     <>
-      <SectionStyled>
-        <NewsHeaderContainer>
-          <div className="news-img">
-            <img src={NewsLogo} alt="news-logo" />
-          </div>
-          <div className="news-txt">
-            <h1>CRYPTO NEWS</h1>
-            <p>It is always important to be in tune with the latest news.</p>
-          </div>
-        </NewsHeaderContainer>
-      </SectionStyled>
-      <SectionStyled>
-        <NewsContainerGridStyled>
-          {cryptoNews.value.slice(0, visible).map((news) => (
-            <NewsCard news={news} />
-          ))}
-        </NewsContainerGridStyled>
-      </SectionStyled>
-      <LoadMoreContainer>
-        <button onClick={showMoreItems} className="loadBtn">
-          Load More
-        </button>
-      </LoadMoreContainer>
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <SectionStyled>
+          <NewsHeaderContainer>
+            <div className="news-img">
+              <img src={NewsLogo} alt="news-logo" />
+            </div>
+            <div className="news-txt">
+              <h1>CRYPTO NEWS</h1>
+              <p>It is always important to be in tune with the latest news.</p>
+            </div>
+          </NewsHeaderContainer>
+        </SectionStyled>
+        <SectionStyled>
+          <NewsContainerGridStyled>
+            {cryptoNews.value.slice(0, visible).map((news) => (
+              <div data-aos="flip-left" data-aos-duration="1000">
+                <NewsCard news={news} />
+              </div>
+            ))}
+          </NewsContainerGridStyled>
+        </SectionStyled>
+        <LoadMoreContainer>
+          <button onClick={showMoreItems} className="loadBtn">
+            Load More
+          </button>
+        </LoadMoreContainer>
+      </div>
     </>
   );
 };
