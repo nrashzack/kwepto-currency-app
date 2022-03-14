@@ -8,13 +8,15 @@ import Trending from "../components/Trending";
 import CoinList from "../components/CoinList";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
+import MarketData from "../components/MarketData";
 
 const HomePage = ({ coins, formatCurrency }) => {
   return (
     <>
       <Banner />
       <Trending />
-      <SectionStyled>
+      <MarketData coins={coins} formatCurrency={formatCurrency} />
+      {/* <SectionStyled>
         <HeaderStyled>
           <h1>Market</h1>
         </HeaderStyled>
@@ -56,7 +58,7 @@ const HomePage = ({ coins, formatCurrency }) => {
             </tfoot>
           </CoinTableStyled>
         </TableContainerStyled>
-      </SectionStyled>
+      </SectionStyled> */}
     </>
   );
 };

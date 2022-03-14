@@ -61,6 +61,10 @@ export const SectionStyled = styled.section`
   margin-top: 2em;
 `;
 
+export const WrapperStyled = styled.div`
+  padding: 3em 0em;
+`;
+
 // Center Everyhthing
 export const CenterEverythingStyled = styled.div`
   display: grid;

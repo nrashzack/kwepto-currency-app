@@ -32,6 +32,7 @@ const App = () => {
       )
       .then((res) => {
         setCoins(res.data);
+        console.log(res.data);
         setLoading(false);
       })
       .catch((error) => {

@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import ReactPaginate from "react-paginate";
 
 export const TableContainerStyled = styled.div`
   width: 100%;
