@@ -117,6 +117,8 @@ export const MarketContainerStyled = styled.div`
       padding: 0.5em 2em;
       border-radius: 25px;
       background-color: #f8a122;
+      animation: pulse infinite;
+      animation-duration: 1s;
     }
   }
   .market-coin {
