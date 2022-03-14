@@ -8,8 +8,7 @@ export const BannerContainer = styled.div`
   margin-bottom: 2em;
 
   .banner-img {
-    max-width: 18vw;
-    min-width: 325px;
+    width: clamp(250px, 18vw, 20vw);
 
     img {
       height: 100%;

@@ -14,7 +14,7 @@ export const MarketInfoContainer = styled.div`
     line-height: 1;
 
     h1 {
-      font-size: clamp(50px, 3.5vw, 60px);
+      font-size: clamp(40px, 3.5vw, 65px);
       font-weight: 700;
     }
     p {
@@ -23,16 +23,26 @@ export const MarketInfoContainer = styled.div`
       color: #8f8f8f;
       margin: 1.5em 0em;
     }
+    @media (max-width: 450px) {
+      .market-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 
   .info-card-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 295px);
     align-items: center;
     justify-content: center;
-    column-gap: 2.5em;
-    row-gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 295px);
+    column-gap: 1.5em;
+    row-gap: 1.5em;
+    align-items: center;
+    justify-content: center;
 
     .info-card {
       background-color: #fff;
@@ -91,7 +101,7 @@ export const MarketContainerStyled = styled.div`
     width: 50%;
     line-height: 1.3;
     h1 {
-      font-size: clamp(50px, 3.5vw, 65px);
+      font-size: clamp(40px, 3.5vw, 65px);
       font-weight: 700;
     }
     p {
@@ -112,14 +122,19 @@ export const MarketContainerStyled = styled.div`
   .market-coin {
     display: grid;
     grid-template-columns: repeat(2, 250px);
+    align-items: center;
+    justify-content: center;
     column-gap: 1em;
     row-gap: 1em;
-    place-items: center;
+    width: 50%;
   }
 
   @media (max-width: 425px) {
     .market-txt {
       width: 80%;
+    }
+    .market-coin {
+      width: 100%;
     }
   }
   @media (max-width: 768px) {
