@@ -48,10 +48,10 @@ const News = ({ simplified }) => {
         </SectionStyled>
         <SectionStyled>
           <NewsContainerGridStyled>
-            {cryptoNews.value.slice(0, visible).map((news) => (
-              <div data-aos="flip-left" data-aos-duration="1000">
-                <NewsCard news={news} />
-              </div>
+            {cryptoNews.value.slice(0, visible).map((news, i) => (
+              // <div data-aos="flip-left" data-aos-duration="1000" key={i}>
+              <NewsCard news={news} key={i} />
+              // </div>
             ))}
           </NewsContainerGridStyled>
         </SectionStyled>

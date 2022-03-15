@@ -32,6 +32,9 @@ const NavBar = ({ currency, setCurrency }) => {
       .catch((error) => {
         console.log(error);
       });
+    return () => {
+      setData();
+    };
   }, []);
 
   return (
