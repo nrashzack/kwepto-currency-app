@@ -5,7 +5,6 @@ export const CoinInfoDataStyled = styled.div`
   justify-content: space-between;
   margin-top: 30px;
   color: #484848;
-  background-color: red;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -26,7 +25,6 @@ export const CoinInfoDataStyled = styled.div`
     }
   }
   .coin-data-card {
-    background-color: green;
     padding: 50px;
     width: 50%;
     box-sizing: border-box;
@@ -37,7 +35,6 @@ export const CoinInfoDataStyled = styled.div`
     }
   }
   .coin-rank-categories {
-    background-color: blue;
     display: flex;
     margin-top: 20px;
     column-gap: 10px;
@@ -58,7 +55,6 @@ export const CoinInfoDataStyled = styled.div`
     border-radius: 50px;
   }
   .coin-website-score {
-    background-color: yellow;
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
@@ -86,6 +82,8 @@ export const CoinInfoDataStyled = styled.div`
     border-radius: 20px;
   }
   .coin-price {
+    display: flex;
+    column-gap: 10px;
     font-size: 50px;
     font-weight: bold;
   }
@@ -94,7 +92,6 @@ export const CoinInfoDataStyled = styled.div`
     margin-bottom: 10px;
   }
   .coin-market-main {
-    background-color: purple;
     display: flex;
     margin-top: 20px;
     column-gap: 20px;
@@ -178,7 +175,6 @@ export const CoinDataStyled = styled.div`
 `;
 
 export const CoinConverterStyled = styled.div`
-  background-color: red;
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -266,7 +262,6 @@ export const CoinConverterStyled = styled.div`
 
 export const CoinGraphStatsStyled = styled.div`
   display: flex;
-  background-color: red;
   margin-top: 20px;
   justify-content: space-between;
   color: #484848;
@@ -314,23 +309,19 @@ export const CoinGraphStatsStyled = styled.div`
     margin: 30px;
   }
   .coin-stats-title {
-    background-color: aqua;
   }
   .coin-stats-value {
-    background-color: green;
     font-weight: bold;
     text-align: right;
   }
 `;
 
 export const CoinDescriptionStyled = styled.div`
-  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 20px;
   .desc-main {
-    background-color: yellow;
     @media (max-width: 768px) {
       width: 90%;
       margin: auto;

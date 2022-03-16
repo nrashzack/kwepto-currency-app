@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   CoinInfoDataStyled,
@@ -42,7 +42,6 @@ const CoinPage = () => {
           },
         } = res.data;
         setCoin(res.data);
-        console.table(coin.tickers);
         setUsdValue(usd);
       })
       .catch((error) => {
@@ -78,6 +77,39 @@ const CoinPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    let ws = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${coin?.symbol}usdt@trade`
+    );
+    console.log(ws);
+    let stockPriceElement = document.getElementById("price");
+    let lastPrice = null;
+
+    ws.onopen = () => {
+      console.log("Connection Started");
+    };
+
+    ws.onmessage = (event) => {
+      let stockObject = JSON.parse(event.data);
+      console.log(stockObject);
+
+      let price = parseFloat(stockObject.p);
+      stockPriceElement.innerText = price;
+      stockPriceElement.style.color =
+        !lastPrice || lastPrice === price
+          ? "#484848"
+          : price > lastPrice
+          ? "green"
+          : "red";
+      lastPrice = price;
+    };
+
+    return () => {
+      ws.close();
+      console.log("Connection Closed");
+    };
+  }, [coin.symbol]);
+
   return (
     <>
       <SectionStyled>
@@ -85,11 +117,11 @@ const CoinPage = () => {
           <div className="coin-info-card">
             <CoinNameStyled>
               <div className="coin-image">
-                <img src={coin.image?.["large"]} alt={coin.name} />
+                <img src={coin.image?.["large"]} alt={coin?.name} />
               </div>
               <div className="coin-symbol-name">
-                <span className="coin-symbol">{coin.symbol}</span>
-                <span>{coin.name}</span>
+                <span className="coin-symbol">{coin?.symbol}</span>
+                <span>{coin?.name}</span>
               </div>
             </CoinNameStyled>
 
@@ -147,7 +179,9 @@ const CoinPage = () => {
                 )}
               </div>
               <div className="coin-price">
-                $ {coin.market_data?.current_price.usd.toLocaleString()}
+                <div className="currency">$</div>
+                <div className="amount" id="price"></div>
+                {/* $ {coin.market_data?.current_price.usd.toLocaleString()} */}
               </div>
             </div>
             <div className="coin-market-main">
