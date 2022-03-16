@@ -7,13 +7,14 @@ import {
 import {
   ListHeaderStyled,
   ExchangeInfoStyled,
-  PageNumberStyled,
   ExchangeBannerStyled,
   CardStyled,
 } from "../styles/ExchangeList.styled";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 import ExchangeList from "../components/ExchangeList";
 import ExchangeBanner from "../assets/ExchangeBanner.svg";
+import ReactPaginate from "react-paginate";
+import { CurrencyPageStyled } from "../styles/CoinCard.styled";
 
 function Exchange({ loading, exchanges }) {
   const [pageNumber, setPageNumber] = useState(0);
@@ -51,7 +52,6 @@ function Exchange({ loading, exchanges }) {
             </ExchangeInfoStyled>
             <strong>Trust Score</strong>
             <strong>24hr Volume</strong>
-            <strong>24hr Volume Normalized</strong>
             <strong>Website</strong>
           </ListHeaderStyled>
           {exchanges
@@ -60,15 +60,20 @@ function Exchange({ loading, exchanges }) {
               return <ExchangeList key={exchange?.id} exchange={exchange} />;
             })}
         </CardStyled>
-        <SectionStyled>
-          <PageNumberStyled
+        <CurrencyPageStyled>
+          <ReactPaginate
             previousLabel={<RiArrowLeftSFill />}
             nextLabel={<RiArrowRightSFill />}
             pageCount={pageCount}
             onPageChange={changePage}
             pageRangeDisplayed="10"
+            containerClassName={"paginate-container"}
+            previousLinkClassName={"paginate-prev"}
+            nextLinkClassName={"paginate-next"}
+            disabledClassName={"paginate-disable"}
+            activeClassName={"paginate-active"}
           />
-        </SectionStyled>
+        </CurrencyPageStyled>
       </SectionStyled>
     </>
   );

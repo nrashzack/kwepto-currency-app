@@ -51,7 +51,6 @@ const ExchangeList = ({ exchange }) => {
         </div>
         <p>{exchange?.trust_score}</p>
       </div>
-      <p>{exchange?.trade_volume_24h_btc_normalized.toLocaleString()}</p>
       <p>{exchange?.trade_volume_24h_btc.toLocaleString()}</p>
       <div className="website-url">
         <a href={exchange?.url}>Visit</a>

@@ -8,16 +8,14 @@ export const CardStyled = styled.div`
   border-radius: 25px;
   width: 100%;
   background-color: white;
-  border: 1px solid #d3d3d3;
 `;
 
 export const ListHeaderStyled = styled.div`
   border-bottom: solid 2px #dfe6e9;
   display: grid;
-  /* grid-template-columns: 0.25fr 0.5fr repeat(3, 0.5fr) 0.1fr; */
-  grid-template-columns: 0.1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.25fr 0.5fr repeat(3, 1fr);
   align-items: center;
-  text-align: right;
+  text-align: center;
   width: 90%;
   padding: 1em;
 
@@ -40,10 +38,7 @@ export const ListHeaderStyled = styled.div`
 
 export const ExchangeListStyled = styled.div`
   display: grid;
-  /* grid-template-columns: 10% 25% repeat(3, 15%) 20%; */
-  /* grid-template-columns: 0.25fr 0.5fr repeat(3, 0.5fr) 0.1fr; */
-  /* grid-template-columns: 5% repeat(5, 1fr); */
-  grid-template-columns: 0.1fr 0.5fr repeat(4, 0.5fr);
+  grid-template-columns: 0.25fr 0.5fr repeat(3, 1fr);
   align-items: center;
   text-align: right;
   width: 90%;
@@ -130,7 +125,7 @@ export const ExchangeListStyled = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    grid-template-columns: 5%repeat (4, 20%);
+    grid-template-columns: 5%, repeat (3, 20%);
     .visibility {
       visibility: hidden;
     }
@@ -143,12 +138,10 @@ export const ExchangeInfoStyled = styled.div`
   align-items: center;
   justify-self: start;
   text-align: start;
-  /* background-color: red; */
   column-gap: 10px;
   img {
     width: auto;
     height: auto;
-    /* border-radius: 12.5px; */
   }
   p {
     color: #636e72;
