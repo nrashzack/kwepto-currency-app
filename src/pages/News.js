@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/News.css";
 
-import { useGetCryptosQuery } from "../services/cryptoApi";
+// import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { SectionStyled, LoadingScreenStyled } from "../styles/Main.styled";
 import {
@@ -15,7 +15,7 @@ import NewsCard from "../components/NewsCard";
 const News = ({ simplified }) => {
   //categorize in cryptocurrency
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
-  const { data } = useGetCryptosQuery(100);
+  // const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory,
     count: simplified ? 6 : 50,
