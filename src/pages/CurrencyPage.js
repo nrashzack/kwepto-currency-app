@@ -54,8 +54,8 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
           <CurrencyContainerStyled>
             {filterCoins
               .slice(pagesVisited, pagesVisited + coinsPerPage)
-              .map((coin) => (
-                <Link to={`/currencies/${coin.id}`}>
+              .map((coin, i) => (
+                <Link to={`/currencies/${coin.id}`} key={i}>
                   <div data-aos="flip-left" data-aos-duration="1000">
                     <CoinCard
                       coin={coin}

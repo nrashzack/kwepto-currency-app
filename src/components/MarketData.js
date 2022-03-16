@@ -84,9 +84,9 @@ const MarketData = ({ coins, formatCurrency }) => {
               data-aos="zoom-in-left"
               data-aos-duration="500"
             >
-              {coins.slice(0, 4).map((coin) => {
+              {coins.slice(0, 4).map((coin, i) => {
                 return (
-                  <Link to={`/currencies/${coin.id}`}>
+                  <Link to={`/currencies/${coin.id}`} key={i}>
                     <MarketCardStyled>
                       <img src={coin.image} alt={coin.name} />
                       <strong>{coin.name}</strong>
