@@ -27,17 +27,17 @@ const Banner = () => {
         >
           <h1>KWEPTO</h1>
           <p>ALL YOUR COINS UNDER ONE ROOF</p>
+          <div className="home-btn">
+            <Button onMouseEnter={onHover} onMouseLeave={onHover}>
+              <Link to="/currencies">
+                <p>View More {hover ? <ArrowForward /> : <ArrowRight />}</p>
+              </Link>
+            </Button>
+          </div>
         </div>
 
         <div data-aos="zoom-in" data-aos-duration="500" className="banner-img">
           <img src={BannerImg} alt="banner" />
-        </div>
-        <div className="homeBtn">
-          <Button onMouseEnter={onHover} onMouseLeave={onHover}>
-            <Link to="/currencies">
-              <p>Let's geddit {hover ? <ArrowForward /> : <ArrowRight />}</p>
-            </Link>
-          </Button>
         </div>
       </BannerContainer>
     </HomeContainer>
