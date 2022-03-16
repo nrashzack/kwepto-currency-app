@@ -101,7 +101,7 @@ export const MarketContainerStyled = styled.div`
     width: 50%;
     line-height: 1.3;
     h1 {
-      font-size: clamp(40px, 3.5vw, 65px);
+      font-size: clamp(40px, 3.5vw, 60px);
       font-weight: 700;
     }
     p {
@@ -123,7 +123,7 @@ export const MarketContainerStyled = styled.div`
   }
   .market-coin {
     display: grid;
-    grid-template-columns: repeat(2, 250px);
+    grid-template-columns: repeat(auto-fit, 250px);
     align-items: center;
     justify-content: center;
     column-gap: 1em;
@@ -135,14 +135,14 @@ export const MarketContainerStyled = styled.div`
     .market-txt {
       width: 80%;
     }
-    .market-coin {
-      width: 100%;
-    }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1030px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .market-coin {
+      width: 100%;
+    }
     .market-txt {
       width: 100%;
       text-align: center;
