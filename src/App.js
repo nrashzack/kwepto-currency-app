@@ -40,6 +40,17 @@ const App = () => {
       });
   }, [currency]);
 
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/exchanges
+`
+      )
+      .then((res) => setExchanges(res.data))
+      .catch((error) => console.log(error));
+  }, []);
+
   // Format Currency
   const formatCurrency = (price) => {
     let newPrice = 0;
