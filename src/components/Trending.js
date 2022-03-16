@@ -44,8 +44,7 @@ const Trending = ({ currency }) => {
             </HeaderStyled>
             <Marquee
               speed={50}
-              height="25vh"
-              width="100%"
+              style={{ width: "100%", height: "25vh" }}
               reverse={true}
               pauseOnHover={true}
               className="marquee"

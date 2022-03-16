@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   CoinInfoDataStyled,
-  CoinNameStyled,
+  CoinPriceStyled,
+  CoinRightContainerStyled,
+  CoinDataContainerStyled,
   CoinDataStyled,
   CoinConverterStyled,
   CoinGraphStatsStyled,
   CoinDescriptionStyled,
+  CoinContainerStyled,
 } from "../styles/CoinPage.styled";
 import {
   FaLink,
@@ -42,7 +45,7 @@ const CoinPage = () => {
           },
         } = res.data;
         setCoin(res.data);
-        console.table(coin.tickers);
+        // console.table(coin.tickers);
         setUsdValue(usd);
       })
       .catch((error) => {
@@ -81,47 +84,58 @@ const CoinPage = () => {
   return (
     <>
       <SectionStyled>
-        <CoinInfoDataStyled>
-          <div className="coin-info-card">
-            <CoinNameStyled>
-              <div className="coin-image">
-                <img src={coin.image?.["large"]} alt={coin.name} />
-              </div>
-              <div className="coin-symbol-name">
-                <span className="coin-symbol">{coin.symbol}</span>
-                <span>{coin.name}</span>
-              </div>
-            </CoinNameStyled>
+        <CoinContainerStyled>
+          <CoinInfoDataStyled>
+            {/* Left */}
+            <div className="coin-info-card">
+              <div className="coin-content">
+                <div className="coin-name">
+                  <div className="coin-image">
+                    <img src={coin.image?.["large"]} alt={coin.name} />
+                  </div>
+                  <div className="coin-symbol-name">
+                    <strong className="coin-symbol">{coin.symbol}</strong>
+                    <p>{coin.name}</p>
+                  </div>
+                </div>
 
-            <div className="coin-rank-categories">
-              <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
-              {coin.categories?.[0] ? (
-                <div className="coin-categories">{coin.categories?.[0]}</div>
-              ) : (
-                <div className="coin-categories">{coin.categories?.[1]}</div>
-              )}
-            </div>
+                <div className="coin-rank-categories">
+                  <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
+                  {coin.categories?.[0] ? (
+                    <div className="coin-categories">
+                      {coin.categories?.[0]}
+                    </div>
+                  ) : (
+                    <div className="coin-categories">
+                      {coin.categories?.[1]}
+                    </div>
+                  )}
+                </div>
 
-            <div className="coin-website-score">
-              <div className="coin-website-main">
-                <div>Website</div>
-                <div className="coin-website">
-                  <a href={coin.links?.homepage[0]}>
-                    <FaLink /> Visit Homepage
-                  </a>
+                <div className="coin-website-score">
+                  <div className="coin-website-main">
+                    <p>Website</p>
+                    <div className="coin-website">
+                      <a href={coin.links?.homepage[0]} target="_blank">
+                        <span>
+                          <FaLink /> Visit Homepage
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="coin-score-main">
+                    <p>Score</p>
+                    <div className="coin-score">
+                      {coin.coingecko_score?.toFixed(1)}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="coin-score-main">
-                <div>Score</div>
-                <div className="coin-score">
-                  {coin.coingecko_score?.toFixed(1)}
-                </div>
-              </div>
             </div>
-          </div>
-
-          <div className="coin-data-card">
-            <div className="coin-price-main">
+          </CoinInfoDataStyled>
+          {/* Rigth */}
+          <CoinRightContainerStyled>
+            <CoinPriceStyled>
               <div className="coin-price-change">
                 {coin.market_data?.price_change_percentage_24h_in_currency.usd <
                 0 ? (
@@ -147,13 +161,15 @@ const CoinPage = () => {
                 )}
               </div>
               <div className="coin-price">
-                $ {coin.market_data?.current_price.usd.toLocaleString()}
+                <strong>
+                  $ {coin.market_data?.current_price.usd.toLocaleString()}
+                </strong>
               </div>
-            </div>
-            <div className="coin-market-main">
+            </CoinPriceStyled>
+            <CoinDataContainerStyled>
               <CoinDataStyled>
                 <div className="market-data">
-                  <div>Market Cap</div>
+                  <p>Market Cap</p>
                   {coin.market_data?.market_cap.usd ? (
                     <div className="market-value">
                       $ {coin.market_data?.market_cap.usd.toLocaleString()}
@@ -163,7 +179,7 @@ const CoinPage = () => {
                   )}
                 </div>
                 <div className="market-data">
-                  <div>24 hour Trading Volume</div>
+                  <p>24 hour Trading Volume</p>
                   {coin.market_data?.total_volume.usd ? (
                     <div className="market-value">
                       $ {coin.market_data?.total_volume.usd.toLocaleString()}
@@ -173,7 +189,7 @@ const CoinPage = () => {
                   )}
                 </div>
                 <div className="market-data">
-                  <div>Fully Diluted Valuation</div>
+                  <p>Fully Diluted Valuation</p>
                   {coin.market_data?.fully_diluted_valuation.usd ? (
                     <div className="market-value">
                       {coin.market_data?.fully_diluted_valuation.usd.toLocaleString()}
@@ -185,7 +201,7 @@ const CoinPage = () => {
               </CoinDataStyled>
               <CoinDataStyled>
                 <div className="market-data">
-                  <div>Circulating Supply</div>
+                  <p>Circulating Supply</p>
                   {coin.market_data?.circulating_supply ? (
                     <div className="market-value">
                       {coin.market_data?.circulating_supply.toLocaleString()}
@@ -195,7 +211,7 @@ const CoinPage = () => {
                   )}
                 </div>
                 <div className="market-data">
-                  <div>Total Supply</div>
+                  <p>Total Supply</p>
                   {coin.market_data?.total_supply ? (
                     <div className="market-value">
                       {coin.market_data?.total_supply.toLocaleString()}
@@ -205,7 +221,7 @@ const CoinPage = () => {
                   )}
                 </div>
                 <div className="market-data">
-                  <div>Max Supply</div>
+                  <p>Max Supply</p>
                   {coin.market_data?.max_supply ? (
                     <div className="market-value">
                       {coin.market_data?.max_supply.toLocaleString()}
@@ -215,9 +231,9 @@ const CoinPage = () => {
                   )}
                 </div>
               </CoinDataStyled>
-            </div>
-          </div>
-        </CoinInfoDataStyled>
+            </CoinDataContainerStyled>
+          </CoinRightContainerStyled>
+        </CoinContainerStyled>
         <CoinConverterStyled>
           <div className="coin-converter">
             <div className="converter-title">
