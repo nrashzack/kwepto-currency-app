@@ -309,7 +309,7 @@ const CoinPage = () => {
 
                 datasets: [
                   {
-                    data: historicalData.map((coin) => coin[1]),
+                    data: historicalData.map((coin, i) => coin[1]),
                     label: "24hr Price in USD",
                     borderColor: "#F7A528",
                   },
@@ -393,7 +393,7 @@ const CoinPage = () => {
           </div>
         </CoinDescriptionStyled>
 
-        <CardStyled>
+        {/* <CardStyled>
           <div className="market-title">{coin.name} Markets</div>
           <MarketHeaderStyled>
             <div className="source">
@@ -412,7 +412,7 @@ const CoinPage = () => {
           {coin.tickers?.slice(0, 6)?.map((market) => {
             return <MarketList key={market?.id} market={market} />;
           })}
-        </CardStyled>
+        </CardStyled> */}
       </SectionStyled>
     </>
   );
