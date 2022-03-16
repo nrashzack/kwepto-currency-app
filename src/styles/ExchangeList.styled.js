@@ -1,150 +1,79 @@
 import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
 
+export const ExchangeBannerStyled = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  height: 300px;
+  margin-top: 100px;
+`;
+
+export const ExchangeContainerStyled = styled.div`
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0.5em;
+  row-gap: 1em;
+`;
+
 export const CardStyled = styled.div`
+  background-color: #fff;
+  width: 300px;
+  height: 350px;
   display: grid;
   place-items: center;
-  padding: 1em;
-  border-radius: 25px;
-  width: 100%;
-  background-color: white;
-`;
-
-export const ListHeaderStyled = styled.div`
-  border-bottom: solid 2px #dfe6e9;
-  display: grid;
-  grid-template-columns: 0.25fr 0.5fr repeat(3, 1fr);
-  align-items: center;
-  text-align: center;
-  width: 90%;
-  padding: 1em;
-
-  .center {
-    place-self: center;
-  }
-
-  .visibility {
-    visibility: visible;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    grid-template-columns: 5%repeat (4, 20%);
-    .visibility {
-      visibility: hidden;
-    }
-  }
-`;
-
-export const ExchangeListStyled = styled.div`
-  display: grid;
-  grid-template-columns: 0.25fr 0.5fr repeat(3, 1fr);
-  align-items: center;
-  text-align: right;
-  width: 90%;
-  padding: 10px;
-
-  p {
-    color: #000;
-  }
-
-  .center {
-    place-self: center;
-  }
-
-  &:hover {
-    background-color: #ecf0f1;
-  }
-  .trust-main {
+  border-radius: 28px;
+  .exchange-content {
     display: flex;
-    justify-content: flex-end;
-    column-gap: 1rem;
+    flex-direction: column;
     align-items: center;
+    padding: 1em;
+    gap: 2em;
   }
-  .main-bar {
-    background-color: #dcdcdc;
-    border-radius: 10px;
-    width: 100px;
-    height: 10px;
+
+  img {
+    width: 65px;
+    height: auto;
+    border-radius: 50%;
   }
-  .green-bar-10 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 100%;
-  }
-  .green-bar-9 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 90%;
-  }
-  .green-bar-8 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 80%;
-  }
-  .green-bar-7 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 70%;
-  }
-  .green-bar-6 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 60%;
-  }
-  .green-bar-5 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 50%;
-  }
-  .green-bar-4 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 40%;
-  }
-  .website-url {
-    background-color: #d3d3d3;
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 50%;
+  .exchange-name {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    font-weight: bold;
-  }
-
-  .website-url:hover {
-    background-color: #f7a528;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    grid-template-columns: 5%, repeat (3, 20%);
-    .visibility {
-      visibility: hidden;
+    align-items: center;
+    strong {
+      font-size: 20px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 20px;
+      color: #8a8a8a;
+      font-weight: 700;
     }
   }
-`;
-
-export const ExchangeInfoStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-self: start;
-  text-align: start;
-  column-gap: 10px;
-  img {
-    width: auto;
-    height: auto;
+  .exchange-info {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
   }
-  p {
-    color: #636e72;
+  .exchange-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    strong {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 15px;
+      color: #8a8a8a;
+      font-weight: 600;
+    }
   }
 `;
 
@@ -165,14 +94,4 @@ export const PageNumberStyled = styled(ReactPaginate)`
       color: #f7a528;
     }
   }
-`;
-
-export const ExchangeBannerStyled = styled.div`
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  height: 300px;
-  margin-top: 100px;
 `;

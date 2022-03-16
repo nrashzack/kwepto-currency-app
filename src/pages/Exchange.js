@@ -5,10 +5,8 @@ import {
   SectionStyled,
 } from "../styles/Main.styled";
 import {
-  ListHeaderStyled,
-  ExchangeInfoStyled,
   ExchangeBannerStyled,
-  CardStyled,
+  ExchangeContainerStyled,
 } from "../styles/ExchangeList.styled";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 import ExchangeList from "../components/ExchangeList";
@@ -44,22 +42,13 @@ function Exchange({ loading, exchanges }) {
           <h1>EXCHANGES</h1>
           <p>Top Exchanges ranked by trading volume</p>
         </HeaderStyled>
-        <CardStyled>
-          <ListHeaderStyled>
-            <strong className="center">#</strong>
-            <ExchangeInfoStyled>
-              <strong>Exchange</strong>
-            </ExchangeInfoStyled>
-            <strong>Trust Score</strong>
-            <strong>24hr Volume</strong>
-            <strong>Website</strong>
-          </ListHeaderStyled>
+        <ExchangeContainerStyled>
           {exchanges
             ?.slice(pagesVisited, pagesVisited + exchangesPerPage)
             ?.map((exchange) => {
               return <ExchangeList key={exchange?.id} exchange={exchange} />;
             })}
-        </CardStyled>
+        </ExchangeContainerStyled>
         <CurrencyPageStyled>
           <ReactPaginate
             previousLabel={<RiArrowLeftSFill />}
