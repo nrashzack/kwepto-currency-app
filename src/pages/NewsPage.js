@@ -12,7 +12,7 @@ import {
 import NewsLogo from "../assets/NewsLogo.svg";
 import NewsCard from "../components/NewsCard";
 
-const News = ({ simplified }) => {
+const NewsPage = ({ simplified }) => {
   //categorize in cryptocurrency
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
   const { data: cryptoNews } = useGetCryptoNewsQuery({
@@ -23,6 +23,10 @@ const News = ({ simplified }) => {
   const showMoreItems = () => {
     setVisible((preValue) => preValue + 3);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     setNewsCategory("Cryptocurrency");
@@ -72,4 +76,4 @@ const News = ({ simplified }) => {
   );
 };
 
-export default News;
+export default NewsPage;

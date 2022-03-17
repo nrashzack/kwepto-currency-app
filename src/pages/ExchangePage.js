@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HeaderStyled,
   LoadingScreenStyled,
@@ -14,11 +14,15 @@ import ExchangeBanner from "../assets/ExchangeBanner.svg";
 import ReactPaginate from "react-paginate";
 import { CurrencyPageStyled } from "../styles/CoinCard.styled";
 
-function Exchange({ loading, exchanges }) {
+function ExchangePage({ loading, exchanges }) {
   const [pageNumber, setPageNumber] = useState(0);
   const exchangesPerPage = 10;
   const pagesVisited = pageNumber * exchangesPerPage;
   const pageCount = Math.ceil(exchanges?.length / exchangesPerPage);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -68,4 +72,4 @@ function Exchange({ loading, exchanges }) {
   );
 }
 
-export default Exchange;
+export default ExchangePage;

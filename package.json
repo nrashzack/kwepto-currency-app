@@ -27,7 +27,8 @@
     "react-select": "^5.2.2",
     "react-sparklines": "^1.7.0",
     "styled-components": "^5.3.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "ws": "^8.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
