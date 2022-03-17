@@ -22,7 +22,11 @@ const ExchangeList = ({ exchange }) => {
             </div>
             <div className="exchange-col">
               <strong>Score</strong>
-              <p className="score">{exchange.trust_score}</p>
+              {exchange.trust_score > 6 ? (
+                <p className="green">{exchange.trust_score}</p>
+              ) : (
+                <p className="yellow">{exchange.trust_score}</p>
+              )}
             </div>
           </div>
         </div>

@@ -9,14 +9,23 @@ export const ExchangeBannerStyled = styled.div`
   border-radius: 50px;
   height: 300px;
   margin-top: 100px;
+
+  @media (max-width: 425px) {
+    img {
+      width: 300px;
+      height: 100%;
+    }
+  }
 `;
 
 export const ExchangeContainerStyled = styled.div`
   display: grid;
-  place-content: center;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 0.5em;
   row-gap: 1em;
+  place-items: center;
+  @media (max-width: 768px) {
+  }
 `;
 
 export const CardStyled = styled.div`
@@ -30,12 +39,14 @@ export const CardStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1em;
+    padding: 2em;
     gap: 2em;
+    height: 306px;
+    width: 248px;
   }
 
   img {
-    width: 65px;
+    width: 80px;
     height: auto;
     border-radius: 50%;
   }
@@ -45,11 +56,11 @@ export const CardStyled = styled.div`
     justify-content: center;
     align-items: center;
     strong {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
     }
     p {
-      font-size: 20px;
+      font-size: 18px;
       color: #8a8a8a;
       font-weight: 700;
     }
@@ -72,8 +83,19 @@ export const CardStyled = styled.div`
     p {
       font-size: 15px;
       color: #8a8a8a;
-      font-weight: 600;
+      font-weight: 700;
     }
+    .green {
+      color: #1a8917;
+    }
+    .yellow {
+      color: #ffc700;
+    }
+  }
+  .bars {
+    padding: 0 0.5em;
+    border-right: 2px solid #484848;
+    border-left: 2px solid #484848;
   }
 `;
 
