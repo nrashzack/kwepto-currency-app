@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   HeaderStyled,
   LoadingScreenStyled,
   SectionStyled,
 } from "../styles/Main.styled";
 import {
-  ListHeaderStyled,
-  ExchangeInfoStyled,
-  PageNumberStyled,
   ExchangeBannerStyled,
-  CardStyled,
+  ExchangeContainerStyled,
 } from "../styles/ExchangeList.styled";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 import ExchangeList from "../components/ExchangeList";
 import ExchangeBanner from "../assets/ExchangeBanner.svg";
+import ReactPaginate from "react-paginate";
+import { CurrencyPageStyled } from "../styles/CoinCard.styled";
 
 function Exchange({ loading, exchanges }) {
   const [pageNumber, setPageNumber] = useState(0);
@@ -43,32 +42,27 @@ function Exchange({ loading, exchanges }) {
           <h1>EXCHANGES</h1>
           <p>Top Exchanges ranked by trading volume</p>
         </HeaderStyled>
-        <CardStyled>
-          <ListHeaderStyled>
-            <strong className="center">#</strong>
-            <ExchangeInfoStyled>
-              <strong>Exchange</strong>
-            </ExchangeInfoStyled>
-            <strong>Trust Score</strong>
-            <strong>24hr Volume</strong>
-            <strong>24hr Volume Normalized</strong>
-            <strong>Website</strong>
-          </ListHeaderStyled>
+        <ExchangeContainerStyled>
           {exchanges
             ?.slice(pagesVisited, pagesVisited + exchangesPerPage)
             ?.map((exchange) => {
               return <ExchangeList key={exchange?.id} exchange={exchange} />;
             })}
-        </CardStyled>
-        <SectionStyled>
-          <PageNumberStyled
+        </ExchangeContainerStyled>
+        <CurrencyPageStyled>
+          <ReactPaginate
             previousLabel={<RiArrowLeftSFill />}
             nextLabel={<RiArrowRightSFill />}
             pageCount={pageCount}
             onPageChange={changePage}
             pageRangeDisplayed="10"
+            containerClassName={"paginate-container"}
+            previousLinkClassName={"paginate-prev"}
+            nextLinkClassName={"paginate-next"}
+            disabledClassName={"paginate-disable"}
+            activeClassName={"paginate-active"}
           />
-        </SectionStyled>
+        </CurrencyPageStyled>
       </SectionStyled>
     </>
   );

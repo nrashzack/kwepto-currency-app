@@ -22,15 +22,10 @@ export const CryptoSearhStyled = styled.form`
     }
   }
 
-  @media (max-width: 425px) {
-    input {
-      width: 280px;
-    }
-  }
-
   @media (max-width: 768px) {
+    width: 375px;
     input {
-      width: 400px;
+      width: 100%;
     }
   }
 `;
@@ -46,6 +41,10 @@ export const CurrencyContainerStyled = styled.div`
 
   @media (max-width: 1279px) {
     justify-content: center;
+  }
+  @media (max-width: 500px) {
+    margin: 0 auto;
+    max-width: 375px;
   }
 `;
 

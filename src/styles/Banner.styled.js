@@ -22,13 +22,10 @@ export const BannerContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* margin-bottom: 10em;
-  height: 80vh;
-  padding: 0em 25em; */
   height: 80vh;
 
   .banner-img {
-    width: clamp(250px, 18vw, 20vw);
+    width: clamp(250px, 25vw, 25vw);
 
     img {
       height: 100%;
