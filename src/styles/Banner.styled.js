@@ -50,10 +50,8 @@ export const BannerContainer = styled.div`
     }
   }
 
-  .home-btn {
+  .home_btn {
     padding: 2em 0em;
-    animation: bounceIn;
-    animation-duration: 2s;
   }
 
   @media (max-width: 800px) {
@@ -73,6 +71,8 @@ export const Button = styled.button`
   padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
   color: #fff;
   font-size: 20px;
+  margin-top: 20px;
+
   transition: all 0.2s ease-in-out;
 
   p {

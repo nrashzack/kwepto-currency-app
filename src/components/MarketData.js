@@ -19,7 +19,7 @@ const MarketData = ({ coins, formatCurrency }) => {
             <div
               className="market-text"
               data-aos="fade-up"
-              data-aos-duration="1000"
+              data-aos-duration="800"
             >
               <h1>Market Data</h1>
               <p>Latest and in-depth data from CoinGecko</p>
