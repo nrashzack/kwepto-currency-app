@@ -393,7 +393,7 @@ const CoinPage = () => {
           </div>
         </CoinDescriptionStyled>
 
-        {/* <CardStyled>
+        <CardStyled>
           <div className="market-title">{coin.name} Markets</div>
           <MarketHeaderStyled>
             <div className="source">
@@ -412,7 +412,7 @@ const CoinPage = () => {
           {coin.tickers?.slice(0, 6)?.map((market) => {
             return <MarketList key={market?.id} market={market} />;
           })}
-        </CardStyled> */}
+        </CardStyled>
       </SectionStyled>
     </>
   );
