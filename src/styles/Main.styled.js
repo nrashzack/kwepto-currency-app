@@ -13,6 +13,7 @@ export const NavStyled = styled.nav`
 
 // Base style for MainSection
 export const BodyStyled = styled.div`
+  margin-top: 15vh;
   grid-row-start: 2;
   width: 100%;
   @media (max-width: 425px) {
