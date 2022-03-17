@@ -21,6 +21,19 @@ export const CoinContainerStyled = styled.div`
       }
     }
   }
+
+  .backBtn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: #ddd;
+      color: black;
+    }
+  }
   /* card-content */
   .coin-content {
     display: flex;
