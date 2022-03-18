@@ -22,7 +22,7 @@ const MarketData = ({ coins, formatCurrency }) => {
               data-aos-duration="800"
             >
               <h1>Market Data</h1>
-              <p>Latest and in-depth data from CoinGecko</p>
+              <p>Latest and in-depth data from trusted sources</p>
             </div>
             <div
               className="info-card-container"

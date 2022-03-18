@@ -87,6 +87,42 @@ const CoinPage = (loading) => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    let ws = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${coin?.symbol}usdt@trade`
+    );
+    console.log(ws);
+    let stockPriceElement = document.getElementById("price");
+    let lastPrice = null;
+
+    ws.onopen = () => {
+      console.log("Connection Started");
+    };
+
+    ws.onmessage = (event) => {
+      let stockObject = JSON.parse(event.data);
+      console.log(stockObject);
+
+      let price = parseFloat(stockObject.p);
+      stockPriceElement.innerText =
+        price > 0
+          ? price
+          : coin.market_data?.current_price.usd.toLocaleString();
+      stockPriceElement.style.color =
+        !lastPrice || lastPrice === price
+          ? "#484848"
+          : price > lastPrice
+          ? "green"
+          : "red";
+      lastPrice = price;
+    };
+
+    return () => {
+      ws.close();
+      console.log("Connection Closed");
+    };
+  }, [coin.symbol]);
+
   return (
     <>
       <SectionStyled>
@@ -110,7 +146,7 @@ const CoinPage = (loading) => {
                 </div>
 
                 <div className="coin-rank-categories">
-                  <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
+                  <div className="coin-rank">Rank #{coin?.market_cap_rank}</div>
                   {coin.categories?.[0] ? (
                     <div className="coin-categories">
                       {coin.categories?.[0]}
@@ -381,10 +417,6 @@ const CoinPage = (loading) => {
                 <div className="coin-stats-value">
                   $ {coin.market_data?.ath.usd.toLocaleString()}
                 </div>
-              </div>
-              <div className="coin-stats-list">
-                <div className="coin-stats-title">Market Cap Rank</div>
-                <div className="coin-stats-value">#{coin?.market_cap_rank}</div>
               </div>
             </div>
           </div>

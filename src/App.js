@@ -13,9 +13,11 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import CurrencyPage from "./pages/CurrencyPage";
 import CoinPage from "./pages/CoinPage";
-import Exchange from "./pages/Exchange";
-import News from "./pages/News";
+import NewsPage from "./pages/NewsPage";
 import PageNotFound from "./pages/PageNotFound";
+import ExchangePage from "./pages/ExchangePage";
+import LiveGraphPage from "./pages/LiveGraphPage";
+import DiscoverPage from "./pages/DiscoverPage";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -101,11 +103,13 @@ const App = () => {
               <CurrencyPage coins={coins} formatCurrency={formatCurrency} />
             }
           />
+          <Route path="/discover" element={<DiscoverPage />} />
           <Route
             path="/exchanges"
-            element={<Exchange loading={loading} exchanges={exchanges} />}
+            element={<ExchangePage loading={loading} exchanges={exchanges} />}
           />
-          <Route path="/news" element={<News />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/livegraph" element={<LiveGraphPage />} />
           <Route path="/currencies/:coinid" element={<CoinPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
