@@ -94,7 +94,10 @@ const CoinPage = () => {
       console.log(stockObject);
 
       let price = parseFloat(stockObject.p);
-      stockPriceElement.innerText = price;
+      stockPriceElement.innerText =
+        price > 0
+          ? price
+          : coin.market_data?.current_price.usd.toLocaleString();
       stockPriceElement.style.color =
         !lastPrice || lastPrice === price
           ? "#484848"
