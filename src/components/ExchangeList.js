@@ -1,62 +1,56 @@
-import React from "react";
-import {
-  ExchangeListStyled,
-  ExchangeInfoStyled,
-} from "../styles/ExchangeList.styled";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { CardStyled } from "../styles/ExchangeList.styled";
 
 const ExchangeList = ({ exchange }) => {
+  const [exchanges, setExchanges] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`https://api.coinpaprika.com/v1/exchanges/${exchange.id}`)
+      .then((res) => {
+        setExchanges(res.data);
+        console.log(exchanges);
+      });
+  }, []);
   return (
-    <ExchangeListStyled>
-      <p className="center">{exchange?.trust_score_rank}</p>
-      <ExchangeInfoStyled>
-        <img src={exchange?.image} alt={exchange?.name} />
-        <div>
-          <strong>{exchange?.name}</strong>
-          <p>Centralized</p>
+    <CardStyled>
+      <a href={exchange.url} target="_blank">
+        <div className="exchange-content">
+          <img src={exchange.image} alt={exchange?.name} />
+          <div className="exchange-name">
+            <strong>{exchange.name}</strong>
+            {exchange.year_established ? (
+              <p>{exchange.year_established}</p>
+            ) : (
+              <p>2020</p>
+            )}
+          </div>
+          <div className="exchange-info">
+            <div className="exchange-col">
+              <strong>Coins</strong>
+              {exchanges?.currencies ? (
+                <p>{exchanges?.currencies}</p>
+              ) : (
+                <p>176</p>
+              )}
+            </div>
+            <div className="exchange-col bars">
+              <strong>Markets</strong>
+              {exchanges?.markets ? <p>{exchanges?.markets}</p> : <p>240</p>}
+            </div>
+            <div className="exchange-col">
+              <strong>Score</strong>
+              {exchange.trust_score > 6 ? (
+                <p className="green">{exchange.trust_score}</p>
+              ) : (
+                <p className="yellow">{exchange.trust_score}</p>
+              )}
+            </div>
+          </div>
         </div>
-      </ExchangeInfoStyled>
-      <div className="trust-main">
-        <div className="rank-bar">
-          {exchange?.trust_score === 10 ? (
-            <div className="main-bar">
-              <div className="green-bar-10"></div>
-            </div>
-          ) : exchange?.trust_score === 9 ? (
-            <div className="main-bar">
-              <div className="green-bar-9"></div>
-            </div>
-          ) : exchange?.trust_score === 8 ? (
-            <div className="main-bar">
-              <div className="green-bar-8"></div>
-            </div>
-          ) : exchange?.trust_score === 7 ? (
-            <div className="main-bar">
-              <div className="green-bar-7"></div>
-            </div>
-          ) : exchange?.trust_score === 6 ? (
-            <div className="main-bar">
-              <div className="green-bar-6"></div>
-            </div>
-          ) : exchange?.trust_score === 5 ? (
-            <div className="main-bar">
-              <div className="green-bar-5"></div>
-            </div>
-          ) : exchange?.trust_score === 4 ? (
-            <div className="main-bar">
-              <div className="green-bar-4"></div>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
-        <p>{exchange?.trust_score}</p>
-      </div>
-      <p>{exchange?.trade_volume_24h_btc_normalized.toLocaleString()}</p>
-      <p>{exchange?.trade_volume_24h_btc.toLocaleString()}</p>
-      <div className="website-url">
-        <a href={exchange?.url}>Visit</a>
-      </div>
-    </ExchangeListStyled>
+      </a>
+    </CardStyled>
   );
 };
 

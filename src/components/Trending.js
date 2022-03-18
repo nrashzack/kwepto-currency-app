@@ -23,6 +23,10 @@ const Trending = ({ currency }) => {
       .catch((error) => {
         console.log(error);
       });
+
+    return () => {
+      setTrend();
+    };
   }, []);
 
   return (
@@ -44,15 +48,14 @@ const Trending = ({ currency }) => {
             </HeaderStyled>
             <Marquee
               speed={50}
-              height="25vh"
-              width="100%"
+              style={{ width: "100%", height: "25vh" }}
               reverse={true}
               pauseOnHover={true}
               className="marquee"
             >
               <CardContainerStyled>
-                {trend.map((trends) => (
-                  <Link to={`/currencies/${trends.item.id}`}>
+                {trend.map((trends, i) => (
+                  <Link to={`/currencies/${trends.item.id}`} key={i}>
                     <TrendList
                       key={trends.item.coin_id}
                       trends={trends}

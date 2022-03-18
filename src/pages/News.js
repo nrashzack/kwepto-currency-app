@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/News.css";
 
-import { useGetCryptosQuery } from "../services/cryptoApi";
+// import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { SectionStyled, LoadingScreenStyled } from "../styles/Main.styled";
 import {
@@ -15,7 +15,6 @@ import NewsCard from "../components/NewsCard";
 const News = ({ simplified }) => {
   //categorize in cryptocurrency
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
-  const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory,
     count: simplified ? 6 : 50,
@@ -24,6 +23,10 @@ const News = ({ simplified }) => {
   const showMoreItems = () => {
     setVisible((preValue) => preValue + 3);
   };
+
+  useEffect(() => {
+    setNewsCategory("Cryptocurrency");
+  }, []);
 
   if (!cryptoNews?.value)
     return (
@@ -48,11 +51,15 @@ const News = ({ simplified }) => {
         </SectionStyled>
         <SectionStyled>
           <NewsContainerGridStyled>
-            {cryptoNews.value.slice(0, visible).map((news) => (
-              <div data-aos="flip-left" data-aos-duration="1000">
-                <NewsCard news={news} />
-              </div>
-            ))}
+            {cryptoNews.value
+              .slice()
+              .sort(function (a, b) {
+                return new Date(b.datePublished) - new Date(a.datePublished);
+              })
+              .slice(0, visible)
+              .map((news, i) => (
+                <NewsCard news={news} key={i} />
+              ))}
           </NewsContainerGridStyled>
         </SectionStyled>
         <LoadMoreContainer>

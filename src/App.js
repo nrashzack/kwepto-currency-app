@@ -33,13 +33,23 @@ const App = () => {
       )
       .then((res) => {
         setCoins(res.data);
-        console.log(res.data);
         setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [currency]);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/exchanges
+`
+      )
+      .then((res) => setExchanges(res.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   // Format Currency
   const formatCurrency = (price) => {

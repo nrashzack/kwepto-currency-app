@@ -19,7 +19,7 @@ const MarketData = ({ coins, formatCurrency }) => {
             <div
               className="market-text"
               data-aos="fade-up"
-              data-aos-duration="1000"
+              data-aos-duration="800"
             >
               <h1>Market Data</h1>
               <p>Latest and in-depth data from CoinGecko</p>
@@ -84,9 +84,9 @@ const MarketData = ({ coins, formatCurrency }) => {
               data-aos="zoom-in-left"
               data-aos-duration="500"
             >
-              {coins.slice(0, 4).map((coin) => {
+              {coins.slice(0, 4).map((coin, i) => {
                 return (
-                  <Link to={`/currencies/${coin.id}`}>
+                  <Link to={`/currencies/${coin.id}`} key={i}>
                     <MarketCardStyled>
                       <img src={coin.image} alt={coin.name} />
                       <strong>{coin.name}</strong>

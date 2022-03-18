@@ -3,8 +3,7 @@ import moment from "moment";
 import { NewsCardStyled } from "../styles/News.styled";
 
 const NewCard = ({ news }) => {
-  const demoImage =
-    "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News";
+  const demoImage = "https://static.thenounproject.com/png/340719-200.png";
   return (
     <NewsCardStyled>
       <a href={news.url} target="_blank" rel="noreferrer">

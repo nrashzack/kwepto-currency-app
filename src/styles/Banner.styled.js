@@ -1,17 +1,31 @@
 import styled from "styled-components/macro";
 import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 
+export const HomeContainer = styled.div`
+  position: relative;
+
+  :before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%);
+  }
+  @media (max-width: 425px) {
+    overflow-x: hidden;
+  }
+`;
+
 export const BannerContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 2rem;
-  margin-bottom: 10em;
-  margin-top: 2em;
+  height: 80vh;
 
   .banner-img {
-    max-width: 18vw;
-    min-width: 340px;
+    width: clamp(250px, 25vw, 25vw);
 
     img {
       height: 100%;
@@ -20,7 +34,10 @@ export const BannerContainer = styled.div`
   }
 
   .banner-txt {
-    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     padding: 2rem;
     line-height: 1;
     h1 {
@@ -33,16 +50,8 @@ export const BannerContainer = styled.div`
     }
   }
 
-  .homeBtn {
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 18rem;
-    padding: 2rem;
-    animation: bounceIn;
-    animation-duration: 2s;
+  .home_btn {
+    padding: 2em 0em;
   }
 
   @media (max-width: 800px) {
@@ -51,33 +60,30 @@ export const BannerContainer = styled.div`
     justify-content: center;
 
     .banner-txt {
-      text-align: center;
-      width: 100%;
-    }
-
-    .homeBtn {
-      display: none;
+      align-items: center;
     }
   }
 `;
 
-export const HomeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
-  height: 800px;
-  position: relative;
-  z-index: 1;
+export const Button = styled.button`
+  border-radius: 25px;
+  background: #f7a528;
+  padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
+  color: #fff;
+  font-size: 20px;
+  margin-top: 20px;
 
-  :before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%);
+  transition: all 0.2s ease-in-out;
+
+  p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
 `;
 
@@ -89,31 +95,4 @@ export const ArrowForward = styled(MdArrowForward)`
 export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
-`;
-
-export const Button = styled.button`
-  border-radius: 50px;
-  background: #f7a528;
-  white-space: nowrap;
-  padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
-  color: #fff;
-  font-size: 20px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
-
-  p {
-    font-size: 20px;
-    margin-left: 8px;
-    font-weight: 500;
-    color: #fff;
-  }
-
-  &:hover {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  }
 `;

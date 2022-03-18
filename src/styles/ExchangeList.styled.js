@@ -1,157 +1,106 @@
 import styled from "styled-components/macro";
 import ReactPaginate from "react-paginate";
 
+export const ExchangeBannerStyled = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  height: 300px;
+  margin-top: 100px;
+
+  @media (max-width: 425px) {
+    img {
+      width: 300px;
+      height: 100%;
+    }
+  }
+`;
+
+export const ExchangeContainerStyled = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 0.5em;
+  row-gap: 1em;
+  place-items: center;
+  @media (max-width: 768px) {
+  }
+`;
+
 export const CardStyled = styled.div`
+  background-color: #fff;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  width: 310px;
+  height: 350px;
   display: grid;
   place-items: center;
-  padding: 1em;
   border-radius: 25px;
-  width: 100%;
-  background-color: white;
-  border: 1px solid #d3d3d3;
-`;
-
-export const ListHeaderStyled = styled.div`
-  border-bottom: solid 2px #dfe6e9;
-  display: grid;
-  /* grid-template-columns: 0.25fr 0.5fr repeat(3, 0.5fr) 0.1fr; */
-  grid-template-columns: 0.1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
-  align-items: center;
-  text-align: right;
-  width: 90%;
-  padding: 1em;
-
-  .center {
-    place-self: center;
-  }
-
-  .visibility {
-    visibility: visible;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    grid-template-columns: 5%repeat (4, 20%);
-    .visibility {
-      visibility: hidden;
-    }
-  }
-`;
-
-export const ExchangeListStyled = styled.div`
-  display: grid;
-  /* grid-template-columns: 10% 25% repeat(3, 15%) 20%; */
-  /* grid-template-columns: 0.25fr 0.5fr repeat(3, 0.5fr) 0.1fr; */
-  /* grid-template-columns: 5% repeat(5, 1fr); */
-  grid-template-columns: 0.1fr 0.5fr repeat(4, 0.5fr);
-  align-items: center;
-  text-align: right;
-  width: 90%;
-  padding: 10px;
-
-  p {
-    color: #000;
-  }
-
-  .center {
-    place-self: center;
-  }
-
-  &:hover {
-    background-color: #ecf0f1;
-  }
-  .trust-main {
+  .exchange-content {
     display: flex;
-    justify-content: flex-end;
-    column-gap: 1rem;
+    flex-direction: column;
     align-items: center;
+    padding: 2em;
+    gap: 2em;
+    height: 306px;
+    width: 248px;
   }
-  .main-bar {
-    background-color: #dcdcdc;
-    border-radius: 10px;
-    width: 100px;
-    height: 10px;
+
+  img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
   }
-  .green-bar-10 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 100%;
-  }
-  .green-bar-9 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 90%;
-  }
-  .green-bar-8 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 80%;
-  }
-  .green-bar-7 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 70%;
-  }
-  .green-bar-6 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 60%;
-  }
-  .green-bar-5 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 50%;
-  }
-  .green-bar-4 {
-    background-color: #00c118;
-    border-radius: 10px;
-    height: 10px;
-    width: 40%;
-  }
-  .website-url {
-    background-color: #d3d3d3;
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 50%;
+  .exchange-name {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    font-weight: bold;
-  }
-
-  .website-url:hover {
-    background-color: #f7a528;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    grid-template-columns: 5%repeat (4, 20%);
-    .visibility {
-      visibility: hidden;
+    align-items: center;
+    strong {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 18px;
+      color: #8a8a8a;
+      font-weight: 700;
     }
   }
-`;
-
-export const ExchangeInfoStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-self: start;
-  text-align: start;
-  /* background-color: red; */
-  column-gap: 10px;
-  img {
-    width: auto;
-    height: auto;
-    /* border-radius: 12.5px; */
+  .exchange-info {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
   }
-  p {
-    color: #636e72;
+  .exchange-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    strong {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 15px;
+      color: #8a8a8a;
+      font-weight: 700;
+    }
+    .green {
+      color: #1a8917;
+    }
+    .yellow {
+      color: #ffc700;
+    }
+  }
+  .bars {
+    padding: 0 0.5em;
+    border-right: 2px solid #484848;
+    border-left: 2px solid #484848;
+  }
+  &:hover {
+    box-shadow: 0 4px 30px #f7a528;
   }
 `;
 
@@ -172,14 +121,4 @@ export const PageNumberStyled = styled(ReactPaginate)`
       color: #f7a528;
     }
   }
-`;
-
-export const ExchangeBannerStyled = styled.div`
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  height: 300px;
-  margin-top: 100px;
 `;

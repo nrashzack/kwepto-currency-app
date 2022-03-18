@@ -1,91 +1,168 @@
 import styled from "styled-components/macro";
 
-export const CoinInfoDataStyled = styled.div`
+export const CoinContainerStyled = styled.div`
+  /* base styling */
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  color: #484848;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2em;
 
+  /* background-card */
+  .coin-info-card {
+    background-color: white;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 2em;
+
+    @media (max-width: 768px) {
+      .coin-info-card {
+        width: 100%;
+      }
+    }
+  }
+  /* card-content */
+  .coin-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2em;
+    width: 100%;
+    /* coin-name - 1st row*/
+    .coin-name {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .coin-symbol-name {
+        margin-left: 1em;
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        justify-content: flex-start;
+        line-height: 1;
+        p {
+          font-weight: 400;
+          font-size: clamp(30px, 2.5vw, 45px);
+        }
+        strong {
+          font-weight: 800;
+          font-size: clamp(20px, 2.5vw, 30px);
+        }
+      }
+      img {
+        width: 150px;
+        height: auto;
+      }
+      @media (max-width: 768px) {
+        .coin-symbol-name {
+          line-height: 1.2;
+        }
+        img {
+          width: 100px;
+          height: auto;
+        }
+      }
+    }
+    /* coin-rank - 2nd row */
+    .coin-rank-categories {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 1em;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .coin-rank {
+        background-color: #d3d3d3;
+        padding: 1em 2em;
+        border-radius: 50px;
+      }
+      .coin-categories {
+        background-color: #d3d3d3;
+        padding: 15px;
+        border-radius: 50px;
+      }
+    }
+    /* coin-website - 3nd row */
+    .coin-website-score {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      p {
+        font-weight: 400;
+        font-size: clamp(12px, 1.5vw, 15px);
+        padding-bottom: 0.5em;
+      }
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .coin-website {
+      padding: 0.5em 1em;
+      border-radius: 10px;
+      background-color: #484848;
+    }
+    a {
+      color: white;
+    }
+    span {
+      color: white;
+      font-weight: 400;
+      text-align: center;
+      font-size: clamp(12px, 1.25vw, 15px);
+    }
+    .coin-score-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .coin-score {
+      background-color: #d4f5c8;
+      color: #287e00;
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: bold;
+      padding: 20px;
+      border-radius: 20px;
+    }
+  }
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 2em;
   }
-
-  .coin-info-card {
-    background-color: white;
-    padding: 50px;
-    border-radius: 50px;
-    width: 50%;
-    box-sizing: border-box;
-    margin: auto;
-
-    @media (max-width: 768px) {
-      width: 90%;
-    }
+`;
+export const CoinInfoDataStyled = styled.div`
+  width: 50%;
+  @media (max-width: 768px) {
+    width: 90%;
   }
-  .coin-data-card {
-    padding: 50px;
-    width: 50%;
-    box-sizing: border-box;
-
-    @media (max-width: 768px) {
-      width: 90%;
-      padding: 30px;
-    }
+`;
+export const CoinRightContainerStyled = styled.div`
+  width: 50%;
+  @media (max-width: 768px) {
+    width: 90%;
   }
-  .coin-rank-categories {
-    display: flex;
-    margin-top: 20px;
-    column-gap: 10px;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      row-gap: 10px;
-    }
-  }
-  .coin-rank {
-    background-color: #d3d3d3;
-    padding: 15px;
-    border-radius: 50px;
-  }
-  .coin-categories {
-    background-color: #d3d3d3;
-    padding: 15px;
-    border-radius: 50px;
-  }
-  .coin-website-score {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 10px;
-  }
-  .coin-website {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #484848;
-  }
-  a {
-    color: white;
-  }
-  .coin-score-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .coin-score {
-    background-color: #d4f5c8;
-    color: #287e00;
-    font-size: clamp(20px, 2vw, 30px);
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 20px;
-  }
+`;
+export const CoinPriceStyled = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+  align-items: flex-start;
+  justify-content: flex-start;
   .coin-price {
     display: flex;
-    column-gap: 10px;
-    font-size: 50px;
-    font-weight: bold;
+    align-items: center;
+    justify-content: flex-start;
+    strong {
+      font-size: clamp(50px, 4vw, 120px);
+      font-weight: 800;
+    }
   }
   .coin-price-change {
     width: 100px;
@@ -93,13 +170,9 @@ export const CoinInfoDataStyled = styled.div`
   }
   .coin-market-main {
     display: flex;
-    margin-top: 20px;
-    column-gap: 20px;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      row-gap: 20px;
-    }
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5em;
   }
   .coin-price-red {
     background-color: #f5c8c8;
@@ -127,38 +200,25 @@ export const CoinInfoDataStyled = styled.div`
     font-weight: bold;
     column-gap: 3px;
   }
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
-
-export const CoinNameStyled = styled.div`
+export const CoinDataContainerStyled = styled.div`
   display: flex;
-  .coin-symbol-name {
-    margin-left: 20px;
-    display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1em;
+  @media (max-width: 600px) {
     flex-direction: column;
-    text-transform: uppercase;
-    font-size: clamp(30px, 2vw, 60px);
-    font-weight: bold;
-    line-height: auto;
-    justify-content: center;
-  }
-  span.coin-symbol {
-    font-weight: bold;
-    font-size: clamp(20px, 2.5vw, 30px);
-  }
-  img {
-    width: 100px;
-    height: 100px;
+    width: 90%;
   }
 `;
-
 export const CoinDataStyled = styled.div`
-  background-color: white;
-  padding: 10px;
-  width: 20vw;
-  border: 1px solid #d3d3d3;
-  border-radius: 50px;
-  font-size: 15px;
-  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 1em;
+  width: 30vh;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -166,24 +226,35 @@ export const CoinDataStyled = styled.div`
   .market-data {
     margin: 20px;
     box-sizing: border-box;
+    p {
+      font-size: clamp(12px, 1.5vw, 15px);
+    }
   }
   .market-value {
-    font-weight: bold;
+    font-weight: 800;
     margin-top: 10px;
     box-sizing: border-box;
   }
 `;
 
+// Ends Here
 export const CoinConverterStyled = styled.div`
-  margin-top: 20px;
+  margin: 2em 0;
   display: flex;
   justify-content: center;
-  font-size: 20px;
+  width: 100%;
   color: #484848;
+  .coin-converter {
+    width: 100%;
+    @media (max-width: 768px) {
+      width: 90%;
+    }
+  }
   .converter-title {
-    margin-bottom: 10px;
-    font-weight: bold;
+    font-size: clamp(18px, 3vw, 25px);
+    font-weight: 800;
     text-align: center;
+    margin-bottom: 1em;
   }
   form {
     display: flex;
@@ -205,6 +276,9 @@ export const CoinConverterStyled = styled.div`
       flex-direction: column;
       justify-content: space-evenly;
       text-align: center;
+      input {
+        text-align: center;
+      }
     }
   }
   .header-title {
@@ -307,6 +381,11 @@ export const CoinGraphStatsStyled = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 30px;
+    align-items: flex-start;
+    @media (max-width: 425px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   .coin-stats-title {
   }
@@ -320,10 +399,12 @@ export const CoinDescriptionStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 20px;
+  margin: 2em 0;
   .desc-main {
     @media (max-width: 768px) {
       width: 90%;
+      text-align: justify;
+      text-justify: inter-word;
       margin: auto;
     }
   }
