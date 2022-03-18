@@ -30,11 +30,13 @@ export const ExchangeContainerStyled = styled.div`
 
 export const CardStyled = styled.div`
   background-color: #fff;
-  width: 300px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  width: 310px;
   height: 350px;
   display: grid;
   place-items: center;
-  border-radius: 28px;
+  border-radius: 25px;
   .exchange-content {
     display: flex;
     flex-direction: column;
@@ -96,6 +98,9 @@ export const CardStyled = styled.div`
     padding: 0 0.5em;
     border-right: 2px solid #484848;
     border-left: 2px solid #484848;
+  }
+  &:hover {
+    box-shadow: 0 4px 30px #f7a528;
   }
 `;
 

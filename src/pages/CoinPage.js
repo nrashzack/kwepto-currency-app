@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   CoinInfoDataStyled,
@@ -80,6 +80,42 @@ const CoinPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    let ws = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${coin?.symbol}usdt@trade`
+    );
+    console.log(ws);
+    let stockPriceElement = document.getElementById("price");
+    let lastPrice = null;
+
+    ws.onopen = () => {
+      console.log("Connection Started");
+    };
+
+    ws.onmessage = (event) => {
+      let stockObject = JSON.parse(event.data);
+      console.log(stockObject);
+
+      let price = parseFloat(stockObject.p);
+      stockPriceElement.innerText =
+        price > 0
+          ? price
+          : coin.market_data?.current_price.usd.toLocaleString();
+      stockPriceElement.style.color =
+        !lastPrice || lastPrice === price
+          ? "#484848"
+          : price > lastPrice
+          ? "green"
+          : "red";
+      lastPrice = price;
+    };
+
+    return () => {
+      ws.close();
+      console.log("Connection Closed");
+    };
+  }, [coin.symbol]);
 
   return (
     <>
