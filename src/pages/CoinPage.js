@@ -136,7 +136,7 @@ const CoinPage = () => {
                 </div>
 
                 <div className="coin-rank-categories">
-                  <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
+                  <div className="coin-rank">Rank #{coin?.market_cap_rank}</div>
                   {coin.categories?.[0] ? (
                     <div className="coin-categories">
                       {coin.categories?.[0]}
@@ -407,10 +407,6 @@ const CoinPage = () => {
                 <div className="coin-stats-value">
                   $ {coin.market_data?.ath.usd.toLocaleString()}
                 </div>
-              </div>
-              <div className="coin-stats-list">
-                <div className="coin-stats-title">Market Cap Rank</div>
-                <div className="coin-stats-value">#{coin?.market_cap_rank}</div>
               </div>
             </div>
           </div>

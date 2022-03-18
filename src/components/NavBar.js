@@ -49,11 +49,17 @@ const NavBar = ({ currency, setCurrency }) => {
           <Link to="/currencies">
             <li>Currencies</li>
           </Link>
+          <Link to="/discover">
+            <li>Discover</li>
+          </Link>
           <Link to="/exchanges">
             <li>Exchanges</li>
           </Link>
           <Link to="/news">
             <li>News</li>
+          </Link>
+          <Link to="/livegraph">
+            <li>Live Graph</li>
           </Link>
         </ul>
         <div className="end">
