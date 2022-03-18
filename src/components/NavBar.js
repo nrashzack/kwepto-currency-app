@@ -49,6 +49,9 @@ const NavBar = ({ currency, setCurrency }) => {
           <Link to="/currencies">
             <li>Currencies</li>
           </Link>
+          <Link to="/discover">
+            <li>Discover</li>
+          </Link>
           <Link to="/exchanges">
             <li>Exchanges</li>
           </Link>
