@@ -110,7 +110,12 @@ const App = () => {
           />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/livegraph" element={<LiveGraphPage />} />
-          <Route path="/currencies/:coinid" element={<CoinPage />} />
+          <Route
+            path="/currencies/:coinid"
+            element={
+              <CoinPage currency={currency} formatCurrency={formatCurrency} />
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BodyStyled>

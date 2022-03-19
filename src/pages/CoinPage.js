@@ -25,7 +25,7 @@ import MarketList from "../components/MarketList";
 import { CardStyled, MarketHeaderStyled } from "../styles/MarketList.styled";
 import { SectionStyled } from "../styles/Main.styled";
 
-const CoinPage = (loading) => {
+const CoinPage = ({ currency }) => {
   const [coin, setCoin] = useState({});
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
