@@ -1,22 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { SectionStyled } from "../styles/Main.styled";
 import {
-  DiscoverTitleStyled,
-  DiscoverContainerStyled,
-  DiscoverCardStyled,
-} from "../styles/Discover.styled";
+  HeaderStyled,
+  SectionStyled,
+  WrapperStyled,
+} from "../styles/Main.styled";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { CurrencyContainerStyled } from "../styles/CoinCard.styled";
+import DiscoverCard from "../components/DiscoverCard";
+import CoinCard from "../components/CoinCard";
+import { DiscoverTitleStyled } from "../styles/Discover.styled";
 
-const DiscoverPage = () => {
+const DiscoverPage = ({ currency, formatCurrency }) => {
+  const [trendCoins, setTrendCoins] = useState([]);
   const [gainCoins, setGainCoins] = useState([]);
-  const [loserCoins, setLoserCoins] = useState([]);
-  const [price, setPrice] = useState([]);
+
+  const getTrendCoins = async () => {
+    await axios
+      .get(`https://api.coingecko.com/api/v3/search/trending`)
+      .then((res) => {
+        setTrendCoins(res.data.coins);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Get Trending Coins
+  useEffect(async () => {
+    getTrendCoins();
+  }, []);
 
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=8&page=1&sparkline=true
-`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=8&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d
+  `
       )
       .then((res) => {
         setGainCoins(res.data);
@@ -24,42 +43,13 @@ const DiscoverPage = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_asc&per_page=8&page=1&sparkline=true
-`
-      )
-      .then((res) => {
-        setLoserCoins(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }, []);
 
-  // useEffect(() => {
-  //   console.log("start connection");
-  //   let ws = new WebSocket(`wss://stream.binance.com:9443/ws/btcusdt@trade`);
-
-  //   ws.onmessage = (event) => {
-  //     console.log("connection is ON");
-  //     let stockObject = JSON.parse(event.data);
-  //     let realprice = parseFloat(stockObject.p).toFixed(2);
-  //     setPrice(realprice);
-  //     console.log(price);
-  //   };
-  //   return () => {
-  //     ws.close();
-  //     console.log("connection off");
-  //   };
-  // }, []);
-
+  const [price, setPrice] = useState([]);
+  // Get Current Price For Currencies
   useEffect(() => {
     console.log("open connection");
-    var ws = new WebSocket(
-      "wss://ws.coincap.io/prices?assets=bitcoin,ethereum"
-    );
+    var ws = new WebSocket("wss://ws.coincap.io/prices?assets=ethereum");
 
     ws.onopen = () => {
       console.log("connection is on");
@@ -67,7 +57,9 @@ const DiscoverPage = () => {
 
     ws.onmessage = (msg) => {
       var data = JSON.parse(msg.data);
-      console.log("Price right here", data);
+      var coinPrice = data.ethereum;
+      console.log("Price right here", coinPrice);
+      setPrice((currentPrice) => [...currentPrice, coinPrice]);
     };
 
     return () => {
@@ -78,42 +70,37 @@ const DiscoverPage = () => {
 
   return (
     <SectionStyled>
-      <DiscoverContainerStyled>
-        <DiscoverTitleStyled>
+      <WrapperStyled>
+        <HeaderStyled>
           <h1>Discover</h1>
+        </HeaderStyled>
+        <DiscoverTitleStyled>
+          <h1>Trending Coin</h1>
         </DiscoverTitleStyled>
-        <h1>Top Gainers</h1>
-        <div className="topCoins">
-          {gainCoins.map((coins, i) => (
-            <DiscoverCardStyled>
-              <div className="regular" key={i}>
-                <div className="content-container">
-                  <img src={coins.image} />
-                  <strong>{coins.name}</strong>
-                  <p>{coins.symbol.toUpperCase()}</p>
-                </div>
-              </div>
-            </DiscoverCardStyled>
+        <CurrencyContainerStyled>
+          {trendCoins.map((coin, i) => (
+            <Link to={`/currencies/${coin.item.id}`}>
+              <DiscoverCard
+                key={i}
+                coin={coin}
+                currency={currency}
+                formatCurrency={formatCurrency}
+              />
+            </Link>
           ))}
-        </div>
-        <h1>Top Losers</h1>
-        <div className="topCoins">
-          {loserCoins.map((coins, i) => (
-            <DiscoverCardStyled>
-              <div className="regular" key={i}>
-                <div className="content-container">
-                  <img src={coins.image} />
-                  <strong>{coins.name}</strong>
-                  <p>{coins.symbol.toUpperCase()}</p>
-                </div>
-              </div>
-            </DiscoverCardStyled>
+        </CurrencyContainerStyled>
+        <DiscoverTitleStyled>
+          <h1>Top Coins Based Volume</h1>
+        </DiscoverTitleStyled>
+        <CurrencyContainerStyled>
+          {gainCoins.map((coin, i) => (
+            <Link to={`/currencies/${coin.id}`}>
+              <CoinCard coin={coin} key={i} formatCurrency={formatCurrency} />
+            </Link>
           ))}
-        </div>
-        <div>
-          <h1>Trending</h1>
-        </div>
-      </DiscoverContainerStyled>
+        </CurrencyContainerStyled>
+        <div>ETH:{price.slice(-1)}</div>
+      </WrapperStyled>
     </SectionStyled>
   );
 };

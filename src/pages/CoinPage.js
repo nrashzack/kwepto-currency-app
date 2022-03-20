@@ -35,10 +35,11 @@ const CoinPage = ({ currency }) => {
     coin.market_data?.current_price.usd.toLocaleString()
   );
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const backBtn = () => {
-    navigate("/currencies");
+    // navigate("/currencies");
+    window.history.go(-1);
   };
 
   useEffect(() => {

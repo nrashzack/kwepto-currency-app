@@ -1,13 +1,15 @@
 import styled from "styled-components/macro";
 
 export const DiscoverTitleStyled = styled.div`
-  text-align: center;
+  text-align: left;
   width: 100%;
+  margin: 1.5em 0;
   h1 {
-    font-size: clamp(25px, 10vw, 55px);
-    font-weight: 800;
+    font-size: clamp(20px, 10vw, 25px);
+    font-weight: 500;
   }
-  p {
+  @media (max-width: 945px) {
+    text-align: center;
   }
 `;
 
@@ -19,16 +21,22 @@ export const DiscoverContainerStyled = styled.div`
   width: 100%;
   gap: 2em;
 
-  .topCoins {
+  .coins-row {
     display: grid;
-    align-items: center;
-    width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    column-gap: 1em;
-    row-gap: 1em;
-  }
+    grid-template-columns: repeat(auto-fill, minmax(290px, auto));
+    column-gap: 2.5em;
+    row-gap: 1.5em;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 50vh;
 
-  .trendingCoins {
+    @media (max-width: 1279px) {
+      justify-content: center;
+    }
+    @media (max-width: 500px) {
+      margin: 0 auto;
+      max-width: 375px;
+    }
   }
 `;
 
@@ -40,33 +48,48 @@ export const DiscoverCardStyled = styled.div`
 
   /* regular size cards */
   .regular {
-    max-width: 280px;
-    height: 300px;
+    margin: 0 auto;
+    max-width: 220px;
+    height: 230px;
     padding: 1em;
-    width: 100%;
+    border: 1px solid red;
   }
 
   /* content within the regular card */
   .content-container {
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    img {
-      width: 40px;
-      height: 100%;
-      border-radius: 25px;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    .discover-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      border: 1px solid green;
+      img {
+        width: 50px;
+        height: 100%;
+        border-radius: 25px;
+        margin-bottom: 0.5em;
+      }
+      strong {
+        font-size: 18px;
+        font-weight: 800;
+        color: #484848;
+        width: 100%;
+        line-height: 1;
+      }
+      p {
+        font-size: 12px;
+        font-weight: 800;
+        color: #8a8a8a;
+      }
     }
-    h1 {
-      font-size: 20px;
-      font-weight: 800;
-      color: #484848;
-    }
-    p {
-      font-size: 15px;
-      font-weight: 800;
-      color: #8a8a8a;
+    .discover-footer {
+      border: 1px solid green;
     }
   }
 `;
