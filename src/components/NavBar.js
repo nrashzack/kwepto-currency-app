@@ -66,9 +66,6 @@ const NavBar = ({ currency, setCurrency, setOrder }) => {
           <Link to="/news">
             <li>News</li>
           </Link>
-          <Link to="/livegraph">
-            <li>Live Graph</li>
-          </Link>
         </ul>
         <div className="end">
           <FilterCoinList currency={currency} setCurrency={setCurrency} />

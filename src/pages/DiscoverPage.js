@@ -96,7 +96,12 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
+<div data-aos="fade-up" data-aos-duration="1000">
     <SectionStyled>
       <WrapperStyled>
         <DiscoverHeaderStyled>
@@ -158,6 +163,7 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
         </CurrencyContainerStyled>
       </WrapperStyled>
     </SectionStyled>
+    </div>
   );
 };
 
