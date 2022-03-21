@@ -24,6 +24,8 @@ const App = () => {
   const [exchanges, setExchanges] = useState();
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
+  // const [trendCoins, setTrendCoins] = useState([]);
+  // const [coinInfo, setCoinInfo] = useState([]);
 
   // Get Data
   useEffect(() => {
@@ -42,6 +44,20 @@ const App = () => {
       });
   }, [currency]);
 
+  // Get TrendCoins
+  // useEffect(async () => {
+  //   await axios
+  //     .get(`https://api.coingecko.com/api/v3/search/trending`)
+  //     .then((res) => {
+  //       console.log(res.data.coins);
+  //       setTrendCoins(res.data.coins);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
+  // Get Exchanges
   useEffect(() => {
     setLoading(true);
     axios
@@ -103,14 +119,27 @@ const App = () => {
               <CurrencyPage coins={coins} formatCurrency={formatCurrency} />
             }
           />
-          <Route path="/discover" element={<DiscoverPage />} />
+          <Route
+            path="/discover"
+            element={
+              <DiscoverPage
+                currency={currency}
+                formatCurrency={formatCurrency}
+              />
+            }
+          />
           <Route
             path="/exchanges"
             element={<ExchangePage loading={loading} exchanges={exchanges} />}
           />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/livegraph" element={<LiveGraphPage />} />
-          <Route path="/currencies/:coinid" element={<CoinPage />} />
+          <Route
+            path="/currencies/:coinid"
+            element={
+              <CoinPage currency={currency} formatCurrency={formatCurrency} />
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BodyStyled>

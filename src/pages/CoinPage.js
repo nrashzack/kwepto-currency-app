@@ -25,7 +25,7 @@ import MarketList from "../components/MarketList";
 import { CardStyled, MarketHeaderStyled } from "../styles/MarketList.styled";
 import { SectionStyled } from "../styles/Main.styled";
 
-const CoinPage = (loading) => {
+const CoinPage = ({ currency }) => {
   const [coin, setCoin] = useState({});
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
@@ -35,10 +35,11 @@ const CoinPage = (loading) => {
     coin.market_data?.current_price.usd.toLocaleString()
   );
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const backBtn = () => {
-    navigate("/currencies");
+    // navigate("/currencies");
+    window.history.go(-1);
   };
 
   useEffect(() => {

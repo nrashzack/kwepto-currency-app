@@ -59,7 +59,7 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
                   <div data-aos="flip-left" data-aos-duration="1000">
                     <CoinCard
                       coin={coin}
-                      key={coin.market_cap_rank}
+                      key={i}
                       formatCurrency={formatCurrency}
                     />
                   </div>

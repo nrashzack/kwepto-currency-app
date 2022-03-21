@@ -15,12 +15,12 @@ const HomePage = ({ loading, coins, formatCurrency }) => {
   return (
     <>
       <Banner />
-      <div data-aos="fade-up" id="trend">
-        <Trending />
-        <div data-aos="fade-up">
-          <MarketData coins={coins} formatCurrency={formatCurrency} />
-        </div>
+      {/* <div data-aos="fade-up" id="trend">
+        <Trending /> */}
+      <div data-aos="fade-up">
+        <MarketData coins={coins} formatCurrency={formatCurrency} />
       </div>
+      {/* </div> */}
     </>
   );
 };
