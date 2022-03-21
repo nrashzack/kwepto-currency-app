@@ -41,12 +41,13 @@ export const BannerContainer = styled.div`
     padding: 2rem;
     line-height: 1;
     h1 {
-      font-size: clamp(75px, 6vw, 125px);
+      font-size: clamp(55px, 10vw, 125px);
       font-weight: 850;
     }
     p {
-      font-size: clamp(20px, 2.5vw, 30px);
-      font-weight: 500;
+      font-size: clamp(25px, 3vw, 55px);
+      width: 80%;
+      font-weight: 300;
     }
   }
 
@@ -61,6 +62,10 @@ export const BannerContainer = styled.div`
 
     .banner-txt {
       align-items: center;
+      text-align: center;
+      p {
+        width: 100%;
+      }
     }
   }
 `;
@@ -68,9 +73,9 @@ export const BannerContainer = styled.div`
 export const Button = styled.button`
   border-radius: 25px;
   background: #f7a528;
-  padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
+  padding: ${({ big }) => (big ? "3em 3.5em" : ".5em 1.5em")};
   color: #fff;
-  font-size: 20px;
+  font-size: 40px;
   margin-top: 20px;
 
   transition: all 0.2s ease-in-out;

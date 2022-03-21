@@ -82,6 +82,9 @@ const NavBar = ({ currency, setCurrency, setOrder }) => {
               <Link to="/currencies" onClick={toggleNav}>
                 <li>Currencies</li>
               </Link>
+              <Link to="/discover" onClick={toggleNav}>
+                <li>Discover</li>
+              </Link>
               <Link to="/exchanges" onClick={toggleNav}>
                 <li>Exchanges</li>
               </Link>

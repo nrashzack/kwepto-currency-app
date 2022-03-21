@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import CoinCard from "../components/CoinCard";
-import { SectionStyled, HeaderStyled } from "../styles/Main.styled";
+import {
+  SectionStyled,
+  HeaderStyled,
+  WrapperStyled,
+} from "../styles/Main.styled";
 import {
   CryptoSearhStyled,
   CurrencyContainerStyled,
@@ -34,7 +38,7 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
   };
 
   return (
-    <>
+    <WrapperStyled>
       <div data-aos="fade-up" data-aos-duration="1000">
         <SectionStyled>
           <HeaderStyled>
@@ -83,7 +87,7 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
           </CurrencyPageStyled>
         </SectionStyled>
       </div>
-    </>
+    </WrapperStyled>
   );
 };
 

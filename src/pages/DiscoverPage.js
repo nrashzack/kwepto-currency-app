@@ -9,9 +9,12 @@ import { Link } from "react-router-dom";
 import { CurrencyContainerStyled } from "../styles/CoinCard.styled";
 import DiscoverCard from "../components/DiscoverCard";
 import CoinCard from "../components/CoinCard";
-import { DiscoverTitleStyled } from "../styles/Discover.styled";
+import {
+  DiscoverTitleStyled,
+  RealTimeContainerStyled,
+} from "../styles/Discover.styled";
 
-const DiscoverPage = ({ currency, formatCurrency }) => {
+const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
   const [trendCoins, setTrendCoins] = useState([]);
   const [gainCoins, setGainCoins] = useState([]);
 
@@ -28,7 +31,9 @@ const DiscoverPage = ({ currency, formatCurrency }) => {
 
   // Get Trending Coins
   useEffect(async () => {
+    setLoading(true);
     getTrendCoins();
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -45,11 +50,16 @@ const DiscoverPage = ({ currency, formatCurrency }) => {
       });
   }, []);
 
-  const [price, setPrice] = useState([]);
+  const [btcPrice, setBtcPrice] = useState([]);
+  const [ethPrice, setEthPrice] = useState([]);
+  const [xrpPrice, setXrpPrice] = useState([]);
+
   // Get Current Price For Currencies
   useEffect(() => {
     console.log("open connection");
-    var ws = new WebSocket("wss://ws.coincap.io/prices?assets=ethereum");
+    var ws = new WebSocket(
+      "wss://ws.coincap.io/prices?assets=bitcoin,ethereum,xrp"
+    );
 
     ws.onopen = () => {
       console.log("connection is on");
@@ -57,9 +67,21 @@ const DiscoverPage = ({ currency, formatCurrency }) => {
 
     ws.onmessage = (msg) => {
       var data = JSON.parse(msg.data);
-      var coinPrice = data.ethereum;
-      console.log("Price right here", coinPrice);
-      setPrice((currentPrice) => [...currentPrice, coinPrice]);
+      var btcCoinPrice = data.bitcoin;
+      var ethCoinPrice = data.ethereum;
+      var xrpCoinPrice = data.xrp;
+      if (
+        btcCoinPrice != null &&
+        ethCoinPrice != null &&
+        xrpCoinPrice != null
+      ) {
+        console.log("ETH", ethPrice);
+        console.log("BTC", btcPrice);
+        console.log("XRP", xrpPrice);
+        setBtcPrice((currentPrice) => [...currentPrice, btcCoinPrice]);
+        setEthPrice((currentPrice) => [...currentPrice, ethCoinPrice]);
+        setXrpPrice((currentPrice) => [...currentPrice, xrpCoinPrice]);
+      }
     };
 
     return () => {
@@ -72,8 +94,25 @@ const DiscoverPage = ({ currency, formatCurrency }) => {
     <SectionStyled>
       <WrapperStyled>
         <HeaderStyled>
-          <h1>Discover</h1>
+          <h1>DISCOVER</h1>
+          <p>Real time prices and Trending currencies</p>
         </HeaderStyled>
+        <WrapperStyled>
+          <RealTimeContainerStyled>
+            <div className="price-column">
+              <strong>BTC</strong>
+              <p>{btcPrice.slice(-1)}</p>
+            </div>
+            <div className="price-column">
+              <strong>ETH</strong>
+              <p>{ethPrice.slice(-1)}</p>
+            </div>
+            <div className="price-column">
+              <strong>XRP</strong>
+              <p>{xrpPrice.slice(-1)}</p>
+            </div>
+          </RealTimeContainerStyled>
+        </WrapperStyled>
         <DiscoverTitleStyled>
           <h1>Trending Coin</h1>
         </DiscoverTitleStyled>
@@ -99,7 +138,6 @@ const DiscoverPage = ({ currency, formatCurrency }) => {
             </Link>
           ))}
         </CurrencyContainerStyled>
-        <div>ETH:{price.slice(-1)}</div>
       </WrapperStyled>
     </SectionStyled>
   );
