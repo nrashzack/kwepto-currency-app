@@ -123,6 +123,7 @@ const App = () => {
             path="/discover"
             element={
               <DiscoverPage
+                setLoading={setLoading}
                 currency={currency}
                 formatCurrency={formatCurrency}
               />

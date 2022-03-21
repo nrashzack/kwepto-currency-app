@@ -40,6 +40,33 @@ export const DiscoverContainerStyled = styled.div`
   }
 `;
 
+export const RealTimeContainerStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .price-column {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #fff;
+    width: 318px;
+    height: 200px;
+    border-radius: 25px;
+
+    strong {
+      color: #f7a528;
+      font-size: 35px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 25px;
+      font-weight: 500;
+    }
+  }
+`;
+
 export const DiscoverCardStyled = styled.div`
   background-color: #fff;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,

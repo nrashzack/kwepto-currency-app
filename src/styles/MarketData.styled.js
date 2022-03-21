@@ -30,6 +30,9 @@ export const MarketInfoContainer = styled.div`
         align-items: center;
         justify-content: center;
       }
+      p {
+        text-align: center;
+      }
     }
   }
 
@@ -189,4 +192,66 @@ export const MarketCardStyled = styled.div`
   .red {
     color: #ff0000;
   }
+`;
+
+export const DiscoverContainerStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .market-img {
+    width: 50%;
+    text-align: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .market-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.2;
+    width: 65%;
+
+    h1 {
+      font-size: clamp(40px, 5.5vw, 85px);
+      font-weight: 800;
+    }
+    p {
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 450;
+      color: #8f8f8f;
+    }
+    @media (max-width: 450px) {
+      .market-txt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  @media (max-width: 1030px) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-between;
+    .market-img{
+      width: 50%;
+    }
+
+      .market-txt {
+        width: 100%;
+        text-align: center;
+         align-items: center;
+         line-height: 1;
+         p{
+           margin: 1em 0;
+         }
+      }
 `;
