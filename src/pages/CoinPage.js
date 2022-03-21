@@ -12,11 +12,7 @@ import {
   CoinDescriptionStyled,
   CoinContainerStyled,
 } from "../styles/CoinPage.styled";
-import {
-  FaLink,
-  FaRegArrowAltCircleUp,
-  FaRegArrowAltCircleDown,
-} from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 import { CgArrowsExchange } from "react-icons/cg";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
