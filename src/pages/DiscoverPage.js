@@ -101,68 +101,68 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
   }, []);
 
   return (
-<div data-aos="fade-up" data-aos-duration="1000">
-    <SectionStyled>
-      <WrapperStyled>
-        <DiscoverHeaderStyled>
-          <img src={TrendingImg} alt="trending" />
-          <div className="title-container">
-            <h1>DISCOVER</h1>
-            <p>Real time prices and Trending currencies</p>
-          </div>
-        </DiscoverHeaderStyled>
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <SectionStyled>
         <WrapperStyled>
-          <RealTimeContainerStyled>
-            <div className="realtime-card">
-              <img src={BTCIcon} alt="bitcoin" />
-              <div className="price-column">
-                <strong>BTC</strong>
-                <p>{btcPrice.slice(-1)}</p>
-              </div>
+          <DiscoverHeaderStyled>
+            <img src={TrendingImg} alt="trending" />
+            <div className="title-container">
+              <h1>DISCOVER</h1>
+              <p>Real time prices and Trending currencies</p>
             </div>
-            <div className="realtime-card">
-              <img src={ETHIcon} alt="ethereum" />
-              <div className="price-column">
-                <strong>ETH</strong>
-                <p>{ethPrice.slice(-1)}</p>
+          </DiscoverHeaderStyled>
+          <WrapperStyled>
+            <RealTimeContainerStyled>
+              <div className="realtime-card">
+                <img src={BTCIcon} alt="bitcoin" />
+                <div className="price-column">
+                  <strong>BTC</strong>
+                  <p>{btcPrice.slice(-1)}</p>
+                </div>
               </div>
-            </div>
-            <div className="realtime-card">
-              <img src={XRPIcon} alt="xrp" />
-              <div className="price-column">
-                <strong>XRP</strong>
-                <p>{xrpPrice.slice(-1)}</p>
+              <div className="realtime-card">
+                <img src={ETHIcon} alt="ethereum" />
+                <div className="price-column">
+                  <strong>ETH</strong>
+                  <p>{ethPrice.slice(-1)}</p>
+                </div>
               </div>
-            </div>
-          </RealTimeContainerStyled>
+              <div className="realtime-card">
+                <img src={XRPIcon} alt="xrp" />
+                <div className="price-column">
+                  <strong>XRP</strong>
+                  <p>{xrpPrice.slice(-1)}</p>
+                </div>
+              </div>
+            </RealTimeContainerStyled>
+          </WrapperStyled>
+          <DiscoverTitleStyled>
+            <h1>Trending Coin</h1>
+          </DiscoverTitleStyled>
+          <CurrencyContainerStyled>
+            {trendCoins.map((coin, i) => (
+              <Link to={`/currencies/${coin.item.id}`}>
+                <DiscoverCard
+                  key={i}
+                  coin={coin}
+                  currency={currency}
+                  formatCurrency={formatCurrency}
+                />
+              </Link>
+            ))}
+          </CurrencyContainerStyled>
+          <DiscoverTitleStyled>
+            <h1>Top Coins Based Volume</h1>
+          </DiscoverTitleStyled>
+          <CurrencyContainerStyled>
+            {gainCoins.map((coin, i) => (
+              <Link to={`/currencies/${coin.id}`}>
+                <CoinCard coin={coin} key={i} formatCurrency={formatCurrency} />
+              </Link>
+            ))}
+          </CurrencyContainerStyled>
         </WrapperStyled>
-        <DiscoverTitleStyled>
-          <h1>Trending Coin</h1>
-        </DiscoverTitleStyled>
-        <CurrencyContainerStyled>
-          {trendCoins.map((coin, i) => (
-            <Link to={`/currencies/${coin.item.id}`}>
-              <DiscoverCard
-                key={i}
-                coin={coin}
-                currency={currency}
-                formatCurrency={formatCurrency}
-              />
-            </Link>
-          ))}
-        </CurrencyContainerStyled>
-        <DiscoverTitleStyled>
-          <h1>Top Coins Based Volume</h1>
-        </DiscoverTitleStyled>
-        <CurrencyContainerStyled>
-          {gainCoins.map((coin, i) => (
-            <Link to={`/currencies/${coin.id}`}>
-              <CoinCard coin={coin} key={i} formatCurrency={formatCurrency} />
-            </Link>
-          ))}
-        </CurrencyContainerStyled>
-      </WrapperStyled>
-    </SectionStyled>
+      </SectionStyled>
     </div>
   );
 };
