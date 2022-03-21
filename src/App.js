@@ -44,19 +44,6 @@ const App = () => {
       });
   }, [currency]);
 
-  // Get TrendCoins
-  // useEffect(async () => {
-  //   await axios
-  //     .get(`https://api.coingecko.com/api/v3/search/trending`)
-  //     .then((res) => {
-  //       console.log(res.data.coins);
-  //       setTrendCoins(res.data.coins);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
-
   // Get Exchanges
   useEffect(() => {
     setLoading(true);

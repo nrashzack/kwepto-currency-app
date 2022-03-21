@@ -6,9 +6,6 @@ const MarketList = ({ market }) => {
     <>
       <MarketListStyled>
         <div className="market-name">{market?.market.name}</div>
-        {/* <div className="market-pair">
-          {market?.base}/{market?.target}
-        </div> */}
         <div className="market-volume">
           {market?.volume.toLocaleString(undefined, {
             maximumFractionDigits: 2,

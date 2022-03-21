@@ -5,12 +5,15 @@ import { CardCointainerStyled, CoinRowStyled } from "../styles/CoinCard.styled";
 
 const DiscoverCard = ({ coin, currency, formatCurrency }) => {
   const [coinInfo, setCoinInfo] = useState({});
+  // const [currencyType, setCurrencyType] = useState(currency);
   useEffect(async () => {
+    console.log(currency);
     await axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${coin?.item.id}?tickers=false&market_data=true&sparkline=true`
       )
       .then((res) => {
+        console.log(res.data);
         setCoinInfo(res.data);
       })
       .catch((error) => {
@@ -19,7 +22,7 @@ const DiscoverCard = ({ coin, currency, formatCurrency }) => {
   }, []);
 
   const sparkLine = coinInfo.market_data?.sparkline_7d.price
-    .slice(0, 10)
+    .slice(50, 60)
     .map((data) => data);
 
   return (
@@ -31,7 +34,9 @@ const DiscoverCard = ({ coin, currency, formatCurrency }) => {
           <p>{coinInfo.symbol?.toUpperCase()}</p>
         </div>
         <div className="price-col">
-          <strong>{formatCurrency(coinInfo.market_data?.current_price)}</strong>
+          <strong>
+            {formatCurrency(coinInfo.market_data?.current_price[currency])}
+          </strong>
           {coinInfo.market_data?.price_change_percentage_24h < 0 ? (
             <p className="percent bold red ">
               {coinInfo.market_data?.price_change_percentage_24h.toFixed(2)}%

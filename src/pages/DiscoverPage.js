@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  HeaderStyled,
-  SectionStyled,
-  WrapperStyled,
-} from "../styles/Main.styled";
+import { SectionStyled, WrapperStyled } from "../styles/Main.styled";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { CurrencyContainerStyled } from "../styles/CoinCard.styled";
@@ -14,7 +10,6 @@ import {
   DiscoverTitleStyled,
   RealTimeContainerStyled,
 } from "../styles/Discover.styled";
-
 import TrendingImg from "../assets/Trending.svg";
 import BTCIcon from "../assets/BTC.svg";
 import ETHIcon from "../assets/ETH.svg";
