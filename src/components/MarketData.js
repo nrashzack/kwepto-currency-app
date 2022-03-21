@@ -6,14 +6,13 @@ import {
   MarketContainerStyled,
   MarketCardStyled,
   DiscoverContainerStyled,
-
 } from "../styles/MarketData.styled";
 import MarketCapIcon from "../assets/DogChartIcon.svg";
 import ActiveCryptoIcon from "../assets/DogCoinIcon.svg";
 import TotalVolumeIcon from "../assets/CryptoIcon.svg";
 import DiscoverImg from "../assets/Discover.svg";
 
-const MarketData = ({ coins, formatCurrency }) => {
+const MarketData = ({ data, coins, formatCurrency }) => {
   return (
     <>
       <SectionStyled>
@@ -42,7 +41,7 @@ const MarketData = ({ coins, formatCurrency }) => {
                 </div>
                 <div className="info-text">
                   <p>MARKET CAP:</p>
-                  <strong>40.6%</strong>
+                  <strong>{data.market_cap_percentage?.btc.toFixed(2)}</strong>
                 </div>
               </div>
               <div className="info-card" data-aos="zoom-in">
@@ -51,7 +50,7 @@ const MarketData = ({ coins, formatCurrency }) => {
                 </div>
                 <div className="info-text">
                   <p>ACTIVE CRYPTOS:</p>
-                  <strong>13076</strong>
+                  <strong>{data.active_cryptocurrencies}</strong>
                 </div>
               </div>
               <div className="info-card" data-aos="zoom-in">
@@ -75,7 +74,10 @@ const MarketData = ({ coins, formatCurrency }) => {
             </div>
             <div className="market-txt">
               <h1>Discover Coins</h1>
-              <p>Trending and best performing crytpo</p>
+              <p>Trending and best performing crytpo right now</p>
+              <Link to="/discover">
+                <button>View More</button>
+              </Link>
             </div>
           </DiscoverContainerStyled>
         </WrapperStyled>
@@ -90,6 +92,9 @@ const MarketData = ({ coins, formatCurrency }) => {
             >
               <h1>Explore prices of your favourite coins</h1>
               <p>See all Crypto assets</p>
+              <Link to="/currencies">
+                <button>View More</button>
+              </Link>
             </div>
             <div
               className="market-coin"

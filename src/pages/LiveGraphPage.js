@@ -3,26 +3,28 @@ import { SectionStyled } from "../styles/Main.styled";
 import { Line } from "react-chartjs-2";
 import {
   LiveContainerStyled,
-  LiveHeaderStyled,
   GraphContainerStyled,
-  CoinInfoStyled,
 } from "../styles/LiveGraph.styled";
 import moment from "moment";
 
 const LiveGraphPage = () => {
   const [price, setPrice] = useState([]);
   const [time, setTime] = useState([]);
-  // const [coin, setCoin] = useState({});
+
   const data = {
     labels: time,
     datasets: [
       {
         label: "Bitcoin",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "#F7A528",
+        borderColor: "#F7A528",
         data: price,
       },
     ],
+  };
+
+  const options = {
+    maintainAspectRatio: false, // Don't maintain w/h ratio
   };
 
   useEffect(() => {
@@ -70,31 +72,10 @@ const LiveGraphPage = () => {
 
   return (
     <SectionStyled>
-      <LiveHeaderStyled>
-        <h1>Live Graph Charts</h1>
-        <p>Real-time prices for BTC and ETH</p>
-      </LiveHeaderStyled>
       <LiveContainerStyled>
         <GraphContainerStyled>
-          <Line data={data} />
+          <Line data={data} options={options} />
         </GraphContainerStyled>
-        <CoinInfoStyled>
-          <div className="info-content">
-            <p>img</p>
-            <div className="info-row">
-              <strong>Bitcoin</strong>
-              <p>BTC</p>
-            </div>
-            <div className="info-row">
-              <strong>Price</strong>
-              <p>{price.slice(-1)}</p>
-            </div>
-            <div className="info-row">
-              <strong>24hr%</strong>
-              <p>+2.55%</p>
-            </div>
-          </div>
-        </CoinInfoStyled>
       </LiveContainerStyled>
     </SectionStyled>
   );

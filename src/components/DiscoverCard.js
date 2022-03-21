@@ -7,13 +7,11 @@ const DiscoverCard = ({ coin, currency, formatCurrency }) => {
   const [coinInfo, setCoinInfo] = useState({});
   // const [currencyType, setCurrencyType] = useState(currency);
   useEffect(async () => {
-    console.log(currency);
     await axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${coin?.item.id}?tickers=false&market_data=true&sparkline=true`
       )
       .then((res) => {
-        console.log(res.data);
         setCoinInfo(res.data);
       })
       .catch((error) => {

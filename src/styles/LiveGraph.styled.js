@@ -1,9 +1,8 @@
 import styled from "styled-components/macro";
 
 export const LiveContainerStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  place-content: center;
 `;
 
 export const LiveHeaderStyled = styled.div`
@@ -30,6 +29,11 @@ export const GraphContainerStyled = styled.div`
   padding: 2em;
   display: grid;
   place-content: center;
+
+  canvas {
+    height: 250px;
+    width: auto;
+  }
 `;
 
 export const CoinInfoStyled = styled.div`

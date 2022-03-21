@@ -198,9 +198,10 @@ export const DiscoverContainerStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2em;
 
   .market-img {
-    width: 50%;
+    width: 45%;
     text-align: center;
     img {
       width: 100%;
@@ -211,18 +212,31 @@ export const DiscoverContainerStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    line-height: 1.2;
+    justify-content: space-between;
     width: 65%;
+    line-height: 1.3;
+    padding: 1.5em;
 
     h1 {
       font-size: clamp(40px, 5.5vw, 85px);
-      font-weight: 800;
+      font-weight: 700;
     }
     p {
       font-size: clamp(20px, 2.5vw, 30px);
       font-weight: 450;
       color: #8f8f8f;
+      width: 80%;
+    }
+        button {
+      margin: 1em 0em;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 600;
+      padding: 0.5em 2em;
+      border-radius: 25px;
+      background-color: #f8a122;
+      animation: pulse infinite;
+      animation-duration: 1s;
     }
     @media (max-width: 450px) {
       .market-txt {
@@ -230,9 +244,19 @@ export const DiscoverContainerStyled = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-      }
-      p {
+              p {
         text-align: center;
+        width: 100%;
+      }
+      button{
+        margin: 0;
+      }
+      }
+      .market-img{
+        img{
+        width: auto;
+        height: 75%;
+        }
       }
     }
   }

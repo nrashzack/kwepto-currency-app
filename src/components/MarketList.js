@@ -3,27 +3,30 @@ import { MarketListStyled } from "../styles/MarketList.styled";
 
 const MarketList = ({ market }) => {
   return (
-    <>
-      <MarketListStyled>
-        <div className="market-name">{market?.market.name}</div>
+    <MarketListStyled>
+      <div className="market-name">
+        <a href={market?.trade_url} target="_blank">
+          <strong>{market?.market.name}</strong>
+        </a>
+      </div>
+      <div className="market-volume-score">
         <div className="market-volume">
-          {market?.volume.toLocaleString(undefined, {
-            maximumFractionDigits: 2,
-          })}
+          <p>Volume:</p>
+          <strong>
+            {market?.volume.toLocaleString(undefined, {
+              maximumFractionDigits: 2,
+            })}
+          </strong>
         </div>
         {market?.trust_score === "green" ? (
           <div className="market-score">
-            <div className="green-dot"></div>
             <div>High</div>
           </div>
         ) : (
           ""
         )}
-        <div className="trade-button">
-          <a href={market?.trade_url}>TRADE</a>
-        </div>
-      </MarketListStyled>
-    </>
+      </div>
+    </MarketListStyled>
   );
 };
 

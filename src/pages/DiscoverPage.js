@@ -108,25 +108,30 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
           </DiscoverHeaderStyled>
           <WrapperStyled>
             <RealTimeContainerStyled>
-              <div className="realtime-card">
-                <img src={BTCIcon} alt="bitcoin" />
-                <div className="price-column">
-                  <strong>BTC</strong>
-                  <p>{btcPrice.slice(-1)}</p>
+              <Link to="/livegraph">
+                <div className="realtime-card hover">
+                  <img src={BTCIcon} alt="bitcoin" />
+                  <div className="price-column">
+                    <strong>BTC</strong>
+
+                    <p>$ {btcPrice.slice(-1)}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
               <div className="realtime-card">
                 <img src={ETHIcon} alt="ethereum" />
                 <div className="price-column">
                   <strong>ETH</strong>
-                  <p>{ethPrice.slice(-1)}</p>
+
+                  <p>$ {ethPrice.slice(-1)}</p>
                 </div>
               </div>
               <div className="realtime-card">
                 <img src={XRPIcon} alt="xrp" />
                 <div className="price-column">
                   <strong>XRP</strong>
-                  <p>{xrpPrice.slice(-1)}</p>
+
+                  <p>$ {xrpPrice.slice(-1)}</p>
                 </div>
               </div>
             </RealTimeContainerStyled>
