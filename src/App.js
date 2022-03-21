@@ -24,8 +24,6 @@ const App = () => {
   const [exchanges, setExchanges] = useState();
   const [currency, setCurrency] = useState("myr");
   const [loading, setLoading] = useState(false);
-  // const [trendCoins, setTrendCoins] = useState([]);
-  // const [coinInfo, setCoinInfo] = useState([]);
 
   // Get Data
   useEffect(() => {

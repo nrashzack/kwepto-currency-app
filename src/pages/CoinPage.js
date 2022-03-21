@@ -20,6 +20,7 @@ import DOMPurify from "dompurify";
 import MarketList from "../components/MarketList";
 import { CardStyled, MarketHeaderStyled } from "../styles/MarketList.styled";
 import { SectionStyled } from "../styles/Main.styled";
+import { ImCross } from "react-icons/im";
 
 const CoinPage = ({ currency, formatCurrency }) => {
   const [coin, setCoin] = useState({});
@@ -47,8 +48,6 @@ const CoinPage = ({ currency, formatCurrency }) => {
         //   },
         // } = res.data;
         setCoin(res.data);
-        // console.table(coin.tickers);
-        // setUsdValue(usd);
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +61,6 @@ const CoinPage = ({ currency, formatCurrency }) => {
       )
       .then((res) => {
         setHistoricalData(res.data.prices);
-        // console.log(historicalData);
       })
       .catch((error) => {
         console.log(error);
@@ -70,12 +68,10 @@ const CoinPage = ({ currency, formatCurrency }) => {
   }, []);
 
   useEffect(() => {
-    // const floatValue = parseFloat(coinValue) || 0;
     setUsdValue(coinValue * coin.market_data?.current_price.usd);
   }, [coinValue]);
 
   useEffect(() => {
-    // const floatValue = parseFloat(usdValue) || 0;
     setCoinValue(usdValue / coin.market_data?.current_price.usd);
   }, [usdValue]);
 
@@ -122,11 +118,12 @@ const CoinPage = ({ currency, formatCurrency }) => {
   return (
     <>
       <SectionStyled>
+        <div className="backBtn">
+          <button onClick={backBtn}>
+            <ImCross />
+          </button>
+        </div>
         <CoinContainerStyled>
-          <div className="backBtn">
-            <button onClick={backBtn}>Back</button>
-          </div>
-
           <CoinInfoDataStyled>
             {/* Left */}
             <div className="coin-info-card">

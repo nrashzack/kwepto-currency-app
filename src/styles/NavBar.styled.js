@@ -80,16 +80,17 @@ export const NavLinksStyled = styled.div`
 
       ul {
         margin: 0;
+        padding-top: 2.5em;
         position: fixed;
-        top: 120px;
+        top: 110px;
         height: 100vh;
         right: 0%;
         width: 100vw;
         background-color: #fff;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         align-items: center;
+        gap: 3em;
       }
       li {
         color: #484848;

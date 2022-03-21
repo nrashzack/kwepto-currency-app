@@ -18,6 +18,7 @@ import XRPIcon from "../assets/XRP.svg";
 const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
   const [trendCoins, setTrendCoins] = useState([]);
   const [gainCoins, setGainCoins] = useState([]);
+  const [loadingPrices, setLoadingPrices] = useState(false);
 
   const getTrendCoins = async () => {
     await axios
@@ -82,6 +83,9 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
         setBtcPrice((currentPrice) => [...currentPrice, btcCoinPrice]);
         setEthPrice((currentPrice) => [...currentPrice, ethCoinPrice]);
         setXrpPrice((currentPrice) => [...currentPrice, xrpCoinPrice]);
+        setLoadingPrices(false);
+      } else {
+        setLoadingPrices(true);
       }
     };
 
@@ -112,21 +116,33 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
                 <img src={BTCIcon} alt="bitcoin" />
                 <div className="price-column">
                   <strong>BTC</strong>
-                  <p>{btcPrice.slice(-1)}</p>
+                  {loadingPrices(true) ? (
+                    <p>Fetching Data...</p>
+                  ) : (
+                    <p>{btcPrice.slice(-1)}</p>
+                  )}
                 </div>
               </div>
               <div className="realtime-card">
                 <img src={ETHIcon} alt="ethereum" />
                 <div className="price-column">
                   <strong>ETH</strong>
-                  <p>{ethPrice.slice(-1)}</p>
+                  {loadingPrices(true) ? (
+                    <p>Fetching Data...</p>
+                  ) : (
+                    <p>{ethPrice.slice(-1)}</p>
+                  )}
                 </div>
               </div>
               <div className="realtime-card">
                 <img src={XRPIcon} alt="xrp" />
                 <div className="price-column">
                   <strong>XRP</strong>
-                  <p>{xrpPrice.slice(-1)}</p>
+                  {loadingPrices(true) ? (
+                    <p>Fetching Data...</p>
+                  ) : (
+                    <p>{xrpPrice.slice(-1)}</p>
+                  )}
                 </div>
               </div>
             </RealTimeContainerStyled>
