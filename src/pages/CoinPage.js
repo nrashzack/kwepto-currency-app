@@ -2,6 +2,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
+  BackBtnStyled,
   CoinInfoDataStyled,
   CoinPriceStyled,
   CoinRightContainerStyled,
@@ -35,18 +36,13 @@ const CoinPage = ({ currency, formatCurrency }) => {
   const navigate = useNavigate();
 
   const backBtn = () => {
-    navigate("/currencies");
+    navigate(-1);
   };
 
   useEffect(() => {
     axios
       .get(`https://api.coingecko.com/api/v3/coins/${params.coinid}`)
       .then((res) => {
-        // let {
-        //   market_data: {
-        //     current_price: { usd },
-        //   },
-        // } = res.data;
         setCoin(res.data);
       })
       .catch((error) => {
@@ -78,51 +74,14 @@ const CoinPage = ({ currency, formatCurrency }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // useEffect(() => {
-  //   let ws = new WebSocket(
-  //     `wss://stream.binance.com:9443/ws/${coin?.symbol}usdt@trade`
-  //   );
-  //   console.log(ws);
-  //   let stockPriceElement = document.getElementById("price");
-  //   let lastPrice = null;
-
-  //   ws.onopen = () => {
-  //     console.log("Connection Started");
-  //   };
-
-  //   ws.onmessage = (event) => {
-  //     let stockObject = JSON.parse(event.data);
-  //     console.log(stockObject);
-
-  //     let price = parseFloat(stockObject.p);
-  //     stockPriceElement.innerText =
-  //       price > 0
-  //         ? price
-  //         : coin.market_data?.current_price.usd.toLocaleString();
-  //     stockPriceElement.style.color =
-  //       !lastPrice || lastPrice === price
-  //         ? "#484848"
-  //         : price > lastPrice
-  //         ? "green"
-  //         : "red";
-  //     lastPrice = price;
-  //   };
-
-  //   return () => {
-  //     ws.close();
-  //     console.log("Connection Closed");
-  //   };
-  // }, [coin.symbol]);
-
   return (
     <>
       <SectionStyled>
-        <div className="backBtn">
+        <BackBtnStyled>
           <button onClick={backBtn}>
             <ImCross />
           </button>
-        </div>
+        </BackBtnStyled>
         <CoinContainerStyled>
           <CoinInfoDataStyled>
             {/* Left */}
@@ -403,26 +362,13 @@ const CoinPage = ({ currency, formatCurrency }) => {
             ></div>
           </div>
         </CoinDescriptionStyled>
-
         <CardStyled>
           <div className="market-title">{coin.name} Markets</div>
-          <MarketHeaderStyled>
-            <div className="source">
-              <strong>Source</strong>
-            </div>
-            <div>
-              <strong>24h Volume</strong>
-            </div>
-            <div>
-              <strong>Trust</strong>
-            </div>
-            <div>
-              <strong>Link</strong>
-            </div>
-          </MarketHeaderStyled>
-          {coin.tickers?.slice(0, 3)?.map((market) => {
-            return <MarketList key={market?.id} market={market} />;
-          })}
+          <div className="market-info-container">
+            {coin.tickers?.slice(0, 3)?.map((market) => {
+              return <MarketList key={market?.id} market={market} />;
+            })}
+          </div>
         </CardStyled>
       </SectionStyled>
     </>

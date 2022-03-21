@@ -61,10 +61,11 @@ export const NavLinksStyled = styled.div`
   @media (max-width: 800px) {
     padding: 0;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     .logo {
       margin: 2rem;
     }
+    .end,
     .links {
       display: none;
     }
@@ -114,6 +115,12 @@ export const CrytoMarketStyled = styled.ul`
   background-color: #fff;
   background-color: #f7a528;
   padding: 1em;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
   span {
     color: #fff;

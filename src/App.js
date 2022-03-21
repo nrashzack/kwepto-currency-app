@@ -23,6 +23,7 @@ const App = () => {
   const [coins, setCoins] = useState([]);
   const [exchanges, setExchanges] = useState();
   const [currency, setCurrency] = useState("myr");
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   // Get Data
@@ -54,6 +55,21 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  // Get Crypto Market Data
+  useEffect(() => {
+    axios
+      .get(`https://api.coingecko.com/api/v3/global`)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return () => {
+      setData();
+    };
+  }, []);
+
   // Format Currency
   const formatCurrency = (price) => {
     let newPrice = 0;
@@ -83,7 +99,12 @@ const App = () => {
   return (
     <AppStyled>
       <NavStyled>
-        <NavBar currency={currency} setCurrency={setCurrency} />
+        <NavBar
+          data={data}
+          currency={currency}
+          setCurrency={setCurrency}
+          formatCurrency={formatCurrency}
+        />
       </NavStyled>
       <BodyStyled>
         <Routes>
@@ -91,6 +112,7 @@ const App = () => {
             path="/"
             element={
               <HomePage
+                data={data}
                 coins={coins}
                 currency={currency}
                 setCurrency={setCurrency}

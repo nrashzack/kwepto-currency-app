@@ -16,20 +16,22 @@ export const DiscoverTitleStyled = styled.div`
 export const DiscoverHeaderStyled = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   img {
+    width: 35%;
+    height: auto;
   }
   .title-container {
     text-align: left;
     margin-bottom: 1.5em;
     line-height: 1.2;
     h1 {
-      font-size: clamp(45px, 5.5vw, 75px);
+      font-size: clamp(45px, 10vw, 85px);
       font-weight: 800;
     }
     p {
-      font-size: clamp(18px, 2.5vw, 25px);
+      font-size: clamp(18px, 3.5vw, 25px);
       font-weight: 400;
     }
   }
@@ -97,6 +99,11 @@ export const RealTimeContainerStyled = styled.div`
       height: 100%;
     }
   }
+  .hover {
+    &:hover {
+      box-shadow: 0 4px 30px #f7a528;
+    }
+  }
 
   .price-column {
     display: flex;
@@ -113,9 +120,6 @@ export const RealTimeContainerStyled = styled.div`
       font-size: 30px;
       font-weight: 500;
     }
-  }
-
-  @media screen {
   }
 `;
 
