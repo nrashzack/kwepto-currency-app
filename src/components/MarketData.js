@@ -6,7 +6,6 @@ import {
   MarketContainerStyled,
   MarketCardStyled,
   DiscoverContainerStyled,
-  HomeButtonStyled,
 } from "../styles/MarketData.styled";
 import MarketCapIcon from "../assets/DogChartIcon.svg";
 import ActiveCryptoIcon from "../assets/DogCoinIcon.svg";
@@ -90,6 +89,10 @@ const MarketData = ({ coins, formatCurrency }) => {
             >
               <h1>Explore prices of your favourite coins</h1>
               <p>See all Crypto assets</p>
+
+              <Link to="/currencies">
+                <button>View More</button>
+              </Link>
             </div>
             <div
               className="market-coin"

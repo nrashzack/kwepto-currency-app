@@ -10,9 +10,15 @@ import { CurrencyContainerStyled } from "../styles/CoinCard.styled";
 import DiscoverCard from "../components/DiscoverCard";
 import CoinCard from "../components/CoinCard";
 import {
+  DiscoverHeaderStyled,
   DiscoverTitleStyled,
   RealTimeContainerStyled,
 } from "../styles/Discover.styled";
+
+import TrendingImg from "../assets/Trending.svg";
+import BTCIcon from "../assets/BTC.svg";
+import ETHIcon from "../assets/ETH.svg";
+import XRPIcon from "../assets/XRP.svg";
 
 const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
   const [trendCoins, setTrendCoins] = useState([]);
@@ -93,23 +99,35 @@ const DiscoverPage = ({ setLoading, currency, formatCurrency }) => {
   return (
     <SectionStyled>
       <WrapperStyled>
-        <HeaderStyled>
-          <h1>DISCOVER</h1>
-          <p>Real time prices and Trending currencies</p>
-        </HeaderStyled>
+        <DiscoverHeaderStyled>
+          <img src={TrendingImg} alt="trending" />
+          <div className="title-container">
+            <h1>DISCOVER</h1>
+            <p>Real time prices and Trending currencies</p>
+          </div>
+        </DiscoverHeaderStyled>
         <WrapperStyled>
           <RealTimeContainerStyled>
-            <div className="price-column">
-              <strong>BTC</strong>
-              <p>{btcPrice.slice(-1)}</p>
+            <div className="realtime-card">
+              <img src={BTCIcon} alt="bitcoin" />
+              <div className="price-column">
+                <strong>BTC</strong>
+                <p>{btcPrice.slice(-1)}</p>
+              </div>
             </div>
-            <div className="price-column">
-              <strong>ETH</strong>
-              <p>{ethPrice.slice(-1)}</p>
+            <div className="realtime-card">
+              <img src={ETHIcon} alt="ethereum" />
+              <div className="price-column">
+                <strong>ETH</strong>
+                <p>{ethPrice.slice(-1)}</p>
+              </div>
             </div>
-            <div className="price-column">
-              <strong>XRP</strong>
-              <p>{xrpPrice.slice(-1)}</p>
+            <div className="realtime-card">
+              <img src={XRPIcon} alt="xrp" />
+              <div className="price-column">
+                <strong>XRP</strong>
+                <p>{xrpPrice.slice(-1)}</p>
+              </div>
             </div>
           </RealTimeContainerStyled>
         </WrapperStyled>

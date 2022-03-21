@@ -33,7 +33,7 @@ export const HeaderStyled = styled.div`
   margin-bottom: 1.5em;
   line-height: 1.2;
   h1 {
-    font-size: clamp(45px, 5.5vw, 65px);
+    font-size: clamp(25px, 8vw, 65px);
     font-weight: 800;
   }
   p {

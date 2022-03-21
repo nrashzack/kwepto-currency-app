@@ -6,6 +6,7 @@ import {
   HeaderStyled,
   WrapperStyled,
 } from "../styles/Main.styled";
+import { ExchangeBannerStyled } from "../styles/ExchangeList.styled";
 import {
   CryptoSearhStyled,
   CurrencyContainerStyled,
@@ -13,6 +14,7 @@ import {
 } from "../styles/CoinCard.styled";
 import { RiArrowLeftSFill, RiArrowRightSFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import CurrencyImg from "../assets/CurrencyImg.svg";
 
 const CurrencyPage = ({ coins, formatCurrency }) => {
   const [pageNumber, setPageNumber] = useState(0);
@@ -42,6 +44,9 @@ const CurrencyPage = ({ coins, formatCurrency }) => {
       <div data-aos="fade-up" data-aos-duration="1000">
         <SectionStyled>
           <HeaderStyled>
+            <ExchangeBannerStyled>
+              <img src={CurrencyImg} alt="currency" />
+            </ExchangeBannerStyled>
             <h1>CRYPTOCURRENCIES</h1>
             <p>Today's Cryptocurrency Prices by Market Cap</p>
           </HeaderStyled>
