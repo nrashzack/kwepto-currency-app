@@ -68,40 +68,52 @@ const DiscoverPage = ({ currency, formatCurrency }) => {
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <SectionStyled>
-      <WrapperStyled>
-        <HeaderStyled>
-          <h1>Discover</h1>
-        </HeaderStyled>
-        <DiscoverTitleStyled>
-          <h1>Trending Coin</h1>
-        </DiscoverTitleStyled>
-        <CurrencyContainerStyled>
-          {trendCoins.map((coin, i) => (
-            <Link to={`/currencies/${coin.item.id}`}>
-              <DiscoverCard
-                key={i}
-                coin={coin}
-                currency={currency}
-                formatCurrency={formatCurrency}
-              />
-            </Link>
-          ))}
-        </CurrencyContainerStyled>
-        <DiscoverTitleStyled>
-          <h1>Top Coins Based Volume</h1>
-        </DiscoverTitleStyled>
-        <CurrencyContainerStyled>
-          {gainCoins.map((coin, i) => (
-            <Link to={`/currencies/${coin.id}`}>
-              <CoinCard coin={coin} key={i} formatCurrency={formatCurrency} />
-            </Link>
-          ))}
-        </CurrencyContainerStyled>
-        <div>ETH:{price.slice(-1)}</div>
-      </WrapperStyled>
-    </SectionStyled>
+    <>
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <SectionStyled>
+          <WrapperStyled>
+            <HeaderStyled>
+              <h1>Discover</h1>
+            </HeaderStyled>
+            <DiscoverTitleStyled>
+              <h1>Trending Coin</h1>
+            </DiscoverTitleStyled>
+            <CurrencyContainerStyled>
+              {trendCoins.map((coin, i) => (
+                <Link to={`/currencies/${coin.item.id}`} key={i}>
+                  <DiscoverCard
+                    key={i}
+                    coin={coin}
+                    currency={currency}
+                    formatCurrency={formatCurrency}
+                  />
+                </Link>
+              ))}
+            </CurrencyContainerStyled>
+            <DiscoverTitleStyled>
+              <h1>Top Coins Based Volume</h1>
+            </DiscoverTitleStyled>
+            <CurrencyContainerStyled>
+              {gainCoins.map((coin, i) => (
+                <Link to={`/currencies/${coin.id}`} key={i}>
+                  <CoinCard
+                    coin={coin}
+                    key={i}
+                    formatCurrency={formatCurrency}
+                  />
+                </Link>
+              ))}
+            </CurrencyContainerStyled>
+            <div>ETH:{price.slice(-1)}</div>
+          </WrapperStyled>
+        </SectionStyled>
+      </div>
+    </>
   );
 };
 
