@@ -4,6 +4,8 @@ export const NavContainerStyled = styled.nav`
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: fixed;
+  z-index: 1000;
 
   li {
     font-size: clamp(12px, 5vw, 18px);
@@ -59,10 +61,11 @@ export const NavLinksStyled = styled.div`
   @media (max-width: 800px) {
     padding: 0;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     .logo {
       margin: 2rem;
     }
+    .end,
     .links {
       display: none;
     }
@@ -78,16 +81,17 @@ export const NavLinksStyled = styled.div`
 
       ul {
         margin: 0;
-        position: absolute;
-        top: 120px;
+        padding-top: 2.5em;
+        position: fixed;
+        top: 110px;
         height: 100vh;
         right: 0%;
         width: 100vw;
         background-color: #fff;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
         align-items: center;
+        gap: 3em;
       }
       li {
         color: #484848;
@@ -112,6 +116,12 @@ export const CrytoMarketStyled = styled.ul`
   background-color: #f7a528;
   padding: 1em;
 
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   span {
     color: #fff;
     font-weight: bolder;
@@ -122,5 +132,18 @@ export const CrytoMarketStyled = styled.ul`
   }
   @media (max-width: 800px) {
     display: none;
+  }
+`;
+
+export const DropdownLinksStyled = styled.ul`
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 80px;
+  }
+  .clicked {
+    display: block;
+  }
+  .dropdown-link {
   }
 `;

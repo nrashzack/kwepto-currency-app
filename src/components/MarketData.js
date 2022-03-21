@@ -5,12 +5,14 @@ import {
   MarketInfoContainer,
   MarketContainerStyled,
   MarketCardStyled,
+  DiscoverContainerStyled,
 } from "../styles/MarketData.styled";
 import MarketCapIcon from "../assets/DogChartIcon.svg";
 import ActiveCryptoIcon from "../assets/DogCoinIcon.svg";
 import TotalVolumeIcon from "../assets/CryptoIcon.svg";
+import DiscoverImg from "../assets/Discover.svg";
 
-const MarketData = ({ coins, formatCurrency }) => {
+const MarketData = ({ data, coins, formatCurrency }) => {
   return (
     <>
       <SectionStyled>
@@ -19,10 +21,10 @@ const MarketData = ({ coins, formatCurrency }) => {
             <div
               className="market-text"
               data-aos="fade-up"
-              data-aos-duration="1000"
+              data-aos-duration="800"
             >
               <h1>Market Data</h1>
-              <p>Latest and in-depth data from CoinGecko</p>
+              <p>Latest and in-depth data from trusted sources</p>
             </div>
             <div
               className="info-card-container"
@@ -39,7 +41,7 @@ const MarketData = ({ coins, formatCurrency }) => {
                 </div>
                 <div className="info-text">
                   <p>MARKET CAP:</p>
-                  <strong>40.6%</strong>
+                  <strong>{data.market_cap_percentage?.btc.toFixed(2)}</strong>
                 </div>
               </div>
               <div className="info-card" data-aos="zoom-in">
@@ -48,7 +50,7 @@ const MarketData = ({ coins, formatCurrency }) => {
                 </div>
                 <div className="info-text">
                   <p>ACTIVE CRYPTOS:</p>
-                  <strong>13076</strong>
+                  <strong>{data.active_cryptocurrencies}</strong>
                 </div>
               </div>
               <div className="info-card" data-aos="zoom-in">
@@ -66,6 +68,22 @@ const MarketData = ({ coins, formatCurrency }) => {
       </SectionStyled>
       <SectionStyled>
         <WrapperStyled>
+          <DiscoverContainerStyled>
+            <div className="market-img">
+              <img src={DiscoverImg} alt="discover" />
+            </div>
+            <div className="market-txt">
+              <h1>Discover Coins</h1>
+              <p>Trending and best performing crytpo right now</p>
+              <Link to="/discover">
+                <button>View More</button>
+              </Link>
+            </div>
+          </DiscoverContainerStyled>
+        </WrapperStyled>
+      </SectionStyled>
+      <SectionStyled>
+        <WrapperStyled>
           <MarketContainerStyled>
             <div
               className="market-txt"
@@ -74,7 +92,6 @@ const MarketData = ({ coins, formatCurrency }) => {
             >
               <h1>Explore prices of your favourite coins</h1>
               <p>See all Crypto assets</p>
-
               <Link to="/currencies">
                 <button>View More</button>
               </Link>

@@ -13,6 +13,7 @@ export const NavStyled = styled.nav`
 
 // Base style for MainSection
 export const BodyStyled = styled.div`
+  margin-top: 15vh;
   grid-row-start: 2;
   width: 100%;
   @media (max-width: 425px) {
@@ -32,7 +33,7 @@ export const HeaderStyled = styled.div`
   margin-bottom: 1.5em;
   line-height: 1.2;
   h1 {
-    font-size: clamp(35px, 5.5vw, 50px);
+    font-size: clamp(25px, 8vw, 65px);
     font-weight: 800;
   }
   p {
@@ -71,4 +72,28 @@ export const WrapperStyled = styled.div`
 export const CenterEverythingStyled = styled.div`
   display: grid;
   place-items: center;
+`;
+
+export const PageNotFoundStyled = styled.div`
+  display: grid;
+  place-items: center;
+  height: 80vh;
+  .center-elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .error-msg {
+    text-align: center;
+    strong {
+      font-size: 40px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
 `;

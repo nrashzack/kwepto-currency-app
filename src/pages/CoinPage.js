@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
+  BackBtnStyled,
   CoinInfoDataStyled,
   CoinPriceStyled,
   CoinRightContainerStyled,
@@ -12,11 +13,7 @@ import {
   CoinDescriptionStyled,
   CoinContainerStyled,
 } from "../styles/CoinPage.styled";
-import {
-  FaLink,
-  FaRegArrowAltCircleUp,
-  FaRegArrowAltCircleDown,
-} from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 import { CgArrowsExchange } from "react-icons/cg";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
@@ -24,8 +21,9 @@ import DOMPurify from "dompurify";
 import MarketList from "../components/MarketList";
 import { CardStyled, MarketHeaderStyled } from "../styles/MarketList.styled";
 import { SectionStyled } from "../styles/Main.styled";
+import { ImCross } from "react-icons/im";
 
-const CoinPage = () => {
+const CoinPage = ({ currency, formatCurrency }) => {
   const [coin, setCoin] = useState({});
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
@@ -35,18 +33,17 @@ const CoinPage = () => {
     coin.market_data?.current_price.usd.toLocaleString()
   );
 
+  const navigate = useNavigate();
+
+  const backBtn = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     axios
       .get(`https://api.coingecko.com/api/v3/coins/${params.coinid}`)
       .then((res) => {
-        let {
-          market_data: {
-            current_price: { usd },
-          },
-        } = res.data;
         setCoin(res.data);
-        // console.table(coin.tickers);
-        setUsdValue(usd);
       })
       .catch((error) => {
         console.log(error);
@@ -60,7 +57,6 @@ const CoinPage = () => {
       )
       .then((res) => {
         setHistoricalData(res.data.prices);
-        // console.log(historicalData);
       })
       .catch((error) => {
         console.log(error);
@@ -68,22 +64,24 @@ const CoinPage = () => {
   }, []);
 
   useEffect(() => {
-    // const floatValue = parseFloat(coinValue) || 0;
     setUsdValue(coinValue * coin.market_data?.current_price.usd);
   }, [coinValue]);
 
   useEffect(() => {
-    // const floatValue = parseFloat(usdValue) || 0;
     setCoinValue(usdValue / coin.market_data?.current_price.usd);
   }, [usdValue]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return (
     <>
       <SectionStyled>
+        <BackBtnStyled>
+          <button onClick={backBtn}>
+            <ImCross />
+          </button>
+        </BackBtnStyled>
         <CoinContainerStyled>
           <CoinInfoDataStyled>
             {/* Left */}
@@ -100,7 +98,7 @@ const CoinPage = () => {
                 </div>
 
                 <div className="coin-rank-categories">
-                  <div className="coin-rank">Rank #{coin.coingecko_rank}</div>
+                  <div className="coin-rank">Rank #{coin?.market_cap_rank}</div>
                   {coin.categories?.[0] ? (
                     <div className="coin-categories">
                       {coin.categories?.[0]}
@@ -136,33 +134,9 @@ const CoinPage = () => {
           {/* Rigth */}
           <CoinRightContainerStyled>
             <CoinPriceStyled>
-              <div className="coin-price-change">
-                {coin.market_data?.price_change_percentage_24h_in_currency.usd <
-                0 ? (
-                  <div className="coin-price-red">
-                    <div>
-                      <FaRegArrowAltCircleDown />
-                    </div>
-                    <div>
-                      {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
-                        2
-                      )}
-                      %
-                    </div>
-                  </div>
-                ) : (
-                  <div className="coin-price-green">
-                    <FaRegArrowAltCircleUp />
-                    {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
-                      2
-                    )}
-                    %
-                  </div>
-                )}
-              </div>
               <div className="coin-price">
                 <strong>
-                  $ {coin.market_data?.current_price.usd.toLocaleString()}
+                  {formatCurrency(coin.market_data?.current_price[currency])}
                 </strong>
               </div>
             </CoinPriceStyled>
@@ -309,7 +283,7 @@ const CoinPage = () => {
 
                 datasets: [
                   {
-                    data: historicalData.map((coin, i) => coin[1]),
+                    data: historicalData.map((coin) => coin[1]),
                     label: "24hr Price in USD",
                     borderColor: "#F7A528",
                   },
@@ -372,10 +346,6 @@ const CoinPage = () => {
                   $ {coin.market_data?.ath.usd.toLocaleString()}
                 </div>
               </div>
-              <div className="coin-stats-list">
-                <div className="coin-stats-title">Market Cap Rank</div>
-                <div className="coin-stats-value">#{coin?.market_cap_rank}</div>
-              </div>
             </div>
           </div>
         </CoinGraphStatsStyled>
@@ -392,27 +362,14 @@ const CoinPage = () => {
             ></div>
           </div>
         </CoinDescriptionStyled>
-
-        {/* <CardStyled>
+        <CardStyled>
           <div className="market-title">{coin.name} Markets</div>
-          <MarketHeaderStyled>
-            <div className="source">
-              <strong>Source</strong>
-            </div>
-            <div>
-              <strong>24h Volume</strong>
-            </div>
-            <div>
-              <strong>Trust</strong>
-            </div>
-            <div>
-              <strong>Link</strong>
-            </div>
-          </MarketHeaderStyled>
-          {coin.tickers?.slice(0, 6)?.map((market) => {
-            return <MarketList key={market?.id} market={market} />;
-          })}
-        </CardStyled> */}
+          <div className="market-info-container">
+            {coin.tickers?.slice(0, 3)?.map((market) => {
+              return <MarketList key={market?.id} market={market} />;
+            })}
+          </div>
+        </CardStyled>
       </SectionStyled>
     </>
   );

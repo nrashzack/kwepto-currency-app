@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import FilterCoinList from "./FilterCoinList";
 
-const NavBar = ({ currency, setCurrency }) => {
-  const [data, setData] = useState([]);
+const NavBar = ({ data, currency, setCurrency, formatCurrency }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const toggleNav = () => {
@@ -21,21 +20,6 @@ const NavBar = ({ currency, setCurrency }) => {
   const closeNav = () => {
     setToggleMenu(false);
   };
-
-  useEffect(() => {
-    // Get Crypto Market Data
-    axios
-      .get(`https://api.coingecko.com/api/v3/global`)
-      .then((res) => {
-        setData(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return () => {
-      setData();
-    };
-  }, []);
 
   return (
     <NavContainerStyled>
@@ -48,6 +32,9 @@ const NavBar = ({ currency, setCurrency }) => {
         <ul className="links">
           <Link to="/currencies">
             <li>Currencies</li>
+          </Link>
+          <Link to="/discover">
+            <li>Discover</li>
           </Link>
           <Link to="/exchanges">
             <li>Exchanges</li>
@@ -68,12 +55,16 @@ const NavBar = ({ currency, setCurrency }) => {
               <Link to="/currencies" onClick={toggleNav}>
                 <li>Currencies</li>
               </Link>
+              <Link to="/discover" onClick={toggleNav}>
+                <li>Discover</li>
+              </Link>
               <Link to="/exchanges" onClick={toggleNav}>
                 <li>Exchanges</li>
               </Link>
               <Link to="/news" onClick={toggleNav}>
                 <li>News</li>
               </Link>
+              <FilterCoinList currency={currency} setCurrency={setCurrency} />
             </ul>
           )}
         </div>
@@ -91,12 +82,16 @@ const NavBar = ({ currency, setCurrency }) => {
         </li>
         <li>
           <p>
-            Market Cap: <span>$1,707,443,014,522</span>
+            Market Cap:{" "}
+            <span>{formatCurrency(data.total_market_cap?.[currency])}</span>
           </p>
         </li>
         <li>
           <p>
-            24h Vol: <span>$83,173,623,418</span>
+            24h Vol:{" "}
+            <span>
+              {data.market_cap_change_percentage_24h_usd?.toFixed(2)}%
+            </span>
           </p>
         </li>
       </CrytoMarketStyled>

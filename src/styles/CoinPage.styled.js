@@ -1,5 +1,16 @@
 import styled from "styled-components/macro";
 
+export const BackBtnStyled = styled.div`
+  margin: 2em 0.5em;
+  button {
+    font-size: 30px;
+    color: #484848;
+  }
+  @media (max-width: 768px) {
+    margin: 2.5em;
+  }
+`;
+
 export const CoinContainerStyled = styled.div`
   /* base styling */
   width: 100%;
@@ -19,6 +30,19 @@ export const CoinContainerStyled = styled.div`
       .coin-info-card {
         width: 100%;
       }
+    }
+  }
+
+  .backBtn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: #ddd;
+      color: black;
     }
   }
   /* card-content */
@@ -52,6 +76,7 @@ export const CoinContainerStyled = styled.div`
       img {
         width: 150px;
         height: auto;
+        border-radius: 50%;
       }
       @media (max-width: 768px) {
         .coin-symbol-name {

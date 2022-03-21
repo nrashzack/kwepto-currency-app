@@ -13,14 +13,17 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import CurrencyPage from "./pages/CurrencyPage";
 import CoinPage from "./pages/CoinPage";
-import Exchange from "./pages/Exchange";
-import News from "./pages/News";
+import NewsPage from "./pages/NewsPage";
 import PageNotFound from "./pages/PageNotFound";
+import ExchangePage from "./pages/ExchangePage";
+import LiveGraphPage from "./pages/LiveGraphPage";
+import DiscoverPage from "./pages/DiscoverPage";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
   const [exchanges, setExchanges] = useState();
   const [currency, setCurrency] = useState("myr");
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   // Get Data
@@ -40,6 +43,7 @@ const App = () => {
       });
   }, [currency]);
 
+  // Get Exchanges
   useEffect(() => {
     setLoading(true);
     axios
@@ -49,6 +53,21 @@ const App = () => {
       )
       .then((res) => setExchanges(res.data))
       .catch((error) => console.log(error));
+  }, []);
+
+  // Get Crypto Market Data
+  useEffect(() => {
+    axios
+      .get(`https://api.coingecko.com/api/v3/global`)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return () => {
+      setData();
+    };
   }, []);
 
   // Format Currency
@@ -80,7 +99,12 @@ const App = () => {
   return (
     <AppStyled>
       <NavStyled>
-        <NavBar currency={currency} setCurrency={setCurrency} />
+        <NavBar
+          data={data}
+          currency={currency}
+          setCurrency={setCurrency}
+          formatCurrency={formatCurrency}
+        />
       </NavStyled>
       <BodyStyled>
         <Routes>
@@ -88,6 +112,7 @@ const App = () => {
             path="/"
             element={
               <HomePage
+                data={data}
                 coins={coins}
                 currency={currency}
                 setCurrency={setCurrency}
@@ -102,11 +127,27 @@ const App = () => {
             }
           />
           <Route
-            path="/exchanges"
-            element={<Exchange loading={loading} exchanges={exchanges} />}
+            path="/discover"
+            element={
+              <DiscoverPage
+                setLoading={setLoading}
+                currency={currency}
+                formatCurrency={formatCurrency}
+              />
+            }
           />
-          <Route path="/news" element={<News />} />
-          <Route path="/currencies/:coinid" element={<CoinPage />} />
+          <Route
+            path="/exchanges"
+            element={<ExchangePage loading={loading} exchanges={exchanges} />}
+          />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/livegraph" element={<LiveGraphPage />} />
+          <Route
+            path="/currencies/:coinid"
+            element={
+              <CoinPage currency={currency} formatCurrency={formatCurrency} />
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BodyStyled>

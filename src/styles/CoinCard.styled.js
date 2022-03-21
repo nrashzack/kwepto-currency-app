@@ -1,5 +1,22 @@
 import styled from "styled-components/macro";
 
+export const HeaderCurrencyStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img {
+    height: 50%;
+    width: auto;
+    @media (max-width: 768px) {
+      img {
+        height: 25%;
+        width: auto;
+      }
+    }
+  }
+`;
+
 export const CryptoSearhStyled = styled.form`
   margin: 2.5em auto;
   text-align: center;
@@ -22,15 +39,10 @@ export const CryptoSearhStyled = styled.form`
     }
   }
 
-  @media (max-width: 425px) {
-    input {
-      width: 280px;
-    }
-  }
-
   @media (max-width: 768px) {
+    width: 375px;
     input {
-      width: 400px;
+      width: 100%;
     }
   }
 `;
@@ -46,6 +58,10 @@ export const CurrencyContainerStyled = styled.div`
 
   @media (max-width: 1279px) {
     justify-content: center;
+  }
+  @media (max-width: 500px) {
+    margin: 0 auto;
+    max-width: 375px;
   }
 `;
 
