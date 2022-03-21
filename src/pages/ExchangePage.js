@@ -38,36 +38,38 @@ function ExchangePage({ loading, exchanges }) {
 
   return (
     <>
-      <SectionStyled>
-        <HeaderStyled>
-          <ExchangeBannerStyled>
-            <img src={ExchangeBanner} alt="Exchange Banner" />
-          </ExchangeBannerStyled>
-          <h1>EXCHANGES</h1>
-          <p>Top Exchanges ranked by trading volume</p>
-        </HeaderStyled>
-        <ExchangeContainerStyled>
-          {exchanges
-            ?.slice(pagesVisited, pagesVisited + exchangesPerPage)
-            ?.map((exchange) => {
-              return <ExchangeList key={exchange?.id} exchange={exchange} />;
-            })}
-        </ExchangeContainerStyled>
-        <CurrencyPageStyled>
-          <ReactPaginate
-            previousLabel={<RiArrowLeftSFill />}
-            nextLabel={<RiArrowRightSFill />}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            pageRangeDisplayed="10"
-            containerClassName={"paginate-container"}
-            previousLinkClassName={"paginate-prev"}
-            nextLinkClassName={"paginate-next"}
-            disabledClassName={"paginate-disable"}
-            activeClassName={"paginate-active"}
-          />
-        </CurrencyPageStyled>
-      </SectionStyled>
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <SectionStyled>
+          <HeaderStyled>
+            <ExchangeBannerStyled>
+              <img src={ExchangeBanner} alt="Exchange Banner" />
+            </ExchangeBannerStyled>
+            <h1>EXCHANGES</h1>
+            <p>Top Exchanges ranked by trading volume</p>
+          </HeaderStyled>
+          <ExchangeContainerStyled>
+            {exchanges
+              ?.slice(pagesVisited, pagesVisited + exchangesPerPage)
+              ?.map((exchange) => {
+                return <ExchangeList key={exchange?.id} exchange={exchange} />;
+              })}
+          </ExchangeContainerStyled>
+          <CurrencyPageStyled>
+            <ReactPaginate
+              previousLabel={<RiArrowLeftSFill />}
+              nextLabel={<RiArrowRightSFill />}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              pageRangeDisplayed="10"
+              containerClassName={"paginate-container"}
+              previousLinkClassName={"paginate-prev"}
+              nextLinkClassName={"paginate-next"}
+              disabledClassName={"paginate-disable"}
+              activeClassName={"paginate-active"}
+            />
+          </CurrencyPageStyled>
+        </SectionStyled>
+      </div>
     </>
   );
 }

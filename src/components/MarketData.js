@@ -6,7 +6,7 @@ import {
   MarketContainerStyled,
   MarketCardStyled,
   DiscoverContainerStyled,
-  HomeButtonStyled,
+
 } from "../styles/MarketData.styled";
 import MarketCapIcon from "../assets/DogChartIcon.svg";
 import ActiveCryptoIcon from "../assets/DogCoinIcon.svg";
