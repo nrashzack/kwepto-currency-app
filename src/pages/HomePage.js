@@ -14,12 +14,9 @@ const HomePage = ({ loading, coins, formatCurrency }) => {
   return (
     <WrapperStyled>
       <Banner />
-      {/* <div data-aos="fade-up" id="trend">*/}
       <div data-aos="fade-up">
         <MarketData coins={coins} formatCurrency={formatCurrency} />
       </div>
-
-      {/* </div> */}
     </WrapperStyled>
   );
 };

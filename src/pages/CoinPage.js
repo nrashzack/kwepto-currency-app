@@ -12,11 +12,7 @@ import {
   CoinDescriptionStyled,
   CoinContainerStyled,
 } from "../styles/CoinPage.styled";
-import {
-  FaLink,
-  FaRegArrowAltCircleUp,
-  FaRegArrowAltCircleDown,
-} from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 import { CgArrowsExchange } from "react-icons/cg";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
@@ -25,7 +21,7 @@ import MarketList from "../components/MarketList";
 import { CardStyled, MarketHeaderStyled } from "../styles/MarketList.styled";
 import { SectionStyled } from "../styles/Main.styled";
 
-const CoinPage = ({ currency }) => {
+const CoinPage = ({ currency, formatCurrency }) => {
   const [coin, setCoin] = useState({});
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
@@ -35,25 +31,24 @@ const CoinPage = ({ currency }) => {
     coin.market_data?.current_price.usd.toLocaleString()
   );
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const backBtn = () => {
-    // navigate("/currencies");
-    window.history.go(-1);
+    navigate("/currencies");
   };
 
   useEffect(() => {
     axios
       .get(`https://api.coingecko.com/api/v3/coins/${params.coinid}`)
       .then((res) => {
-        let {
-          market_data: {
-            current_price: { usd },
-          },
-        } = res.data;
+        // let {
+        //   market_data: {
+        //     current_price: { usd },
+        //   },
+        // } = res.data;
         setCoin(res.data);
         // console.table(coin.tickers);
-        setUsdValue(usd);
+        // setUsdValue(usd);
       })
       .catch((error) => {
         console.log(error);
@@ -88,41 +83,41 @@ const CoinPage = ({ currency }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    let ws = new WebSocket(
-      `wss://stream.binance.com:9443/ws/${coin?.symbol}usdt@trade`
-    );
-    console.log(ws);
-    let stockPriceElement = document.getElementById("price");
-    let lastPrice = null;
+  // useEffect(() => {
+  //   let ws = new WebSocket(
+  //     `wss://stream.binance.com:9443/ws/${coin?.symbol}usdt@trade`
+  //   );
+  //   console.log(ws);
+  //   let stockPriceElement = document.getElementById("price");
+  //   let lastPrice = null;
 
-    ws.onopen = () => {
-      console.log("Connection Started");
-    };
+  //   ws.onopen = () => {
+  //     console.log("Connection Started");
+  //   };
 
-    ws.onmessage = (event) => {
-      let stockObject = JSON.parse(event.data);
-      console.log(stockObject);
+  //   ws.onmessage = (event) => {
+  //     let stockObject = JSON.parse(event.data);
+  //     console.log(stockObject);
 
-      let price = parseFloat(stockObject.p);
-      stockPriceElement.innerText =
-        price > 0
-          ? price
-          : coin.market_data?.current_price.usd.toLocaleString();
-      stockPriceElement.style.color =
-        !lastPrice || lastPrice === price
-          ? "#484848"
-          : price > lastPrice
-          ? "green"
-          : "red";
-      lastPrice = price;
-    };
+  //     let price = parseFloat(stockObject.p);
+  //     stockPriceElement.innerText =
+  //       price > 0
+  //         ? price
+  //         : coin.market_data?.current_price.usd.toLocaleString();
+  //     stockPriceElement.style.color =
+  //       !lastPrice || lastPrice === price
+  //         ? "#484848"
+  //         : price > lastPrice
+  //         ? "green"
+  //         : "red";
+  //     lastPrice = price;
+  //   };
 
-    return () => {
-      ws.close();
-      console.log("Connection Closed");
-    };
-  }, [coin.symbol]);
+  //   return () => {
+  //     ws.close();
+  //     console.log("Connection Closed");
+  //   };
+  // }, [coin.symbol]);
 
   return (
     <>
@@ -183,33 +178,9 @@ const CoinPage = ({ currency }) => {
           {/* Rigth */}
           <CoinRightContainerStyled>
             <CoinPriceStyled>
-              <div className="coin-price-change">
-                {coin.market_data?.price_change_percentage_24h_in_currency.usd <
-                0 ? (
-                  <div className="coin-price-red">
-                    <div>
-                      <FaRegArrowAltCircleDown />
-                    </div>
-                    <div>
-                      {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
-                        2
-                      )}
-                      %
-                    </div>
-                  </div>
-                ) : (
-                  <div className="coin-price-green">
-                    <FaRegArrowAltCircleUp />
-                    {coin.market_data?.price_change_percentage_24h_in_currency.usd.toFixed(
-                      2
-                    )}
-                    %
-                  </div>
-                )}
-              </div>
               <div className="coin-price">
                 <strong>
-                  $ {coin.market_data?.current_price.usd.toLocaleString()}
+                  {formatCurrency(coin.market_data?.current_price[currency])}
                 </strong>
               </div>
             </CoinPriceStyled>
@@ -452,7 +423,7 @@ const CoinPage = ({ currency }) => {
               <strong>Link</strong>
             </div>
           </MarketHeaderStyled>
-          {coin.tickers?.slice(0, 6)?.map((market) => {
+          {coin.tickers?.slice(0, 3)?.map((market) => {
             return <MarketList key={market?.id} market={market} />;
           })}
         </CardStyled>
