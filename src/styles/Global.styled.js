@@ -1,19 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+    
     html {
-        margin:0;
-        padding:0;
         box-sizing: border-box;
     }
-
     body {
-        background-color: #fff;
-        color: #2d3436;
-        font-family: 'Roboto', sans-serif;
-        letter-spacing: .01rem;
+        margin:0;
+        padding:0;
+        background-color: #FFF6EA;
+        color: #000;
+        font-family: 'Poppins', sans-serif;
     }
 
     p,
@@ -28,17 +25,35 @@ export const GlobalStyle = createGlobalStyle`
     ul,
     img, 
     div, 
-    nav {
+    nav, 
+    table, 
+    thead, 
+    tbody, 
+    tr, 
+    td {
         padding:0;
         margin:0;
     }
 
     p {
         font-size: 12px;
+        font-weight: 400;
+        color: #484848;
+    }
+
+    h1,strong {
+        color:#484848;
     }
 
     h1 {
-        font-weight:bolder;
+        font-weight: 900;
+    }
+
+    a{
+        text-decoration:none;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     button {
@@ -50,5 +65,14 @@ export const GlobalStyle = createGlobalStyle`
         &:hover {
             cursor: pointer;
         }
+    }
+
+    li {
+    list-style-type: none;
+    color: #484848;
+    }
+
+    img{
+            pointer-events:none;
     }
 `;
