@@ -11,12 +11,13 @@ You can visit https://www.kwepto.xyz/
 # Pre-Installation
 Before running or contribute to this project, you need to have the setup of the following packages in your environment
 
-node >=16.10.0
-npm >=7.24.0
-git (for `contribution`)
+- node >=16.10.0
+- npm >=7.24.0
+- git (for `contribution`)
+
 Moreover, having these extensions will help you to speed up the development process and adhere to the best practices
 
-Prettier: setup in your editor https://prettier.io/ (or you can run `npm run` format)
+- Prettier: setup in your editor https://prettier.io/ (or you can run `npm run` format)
 
 #Quick Start
 
